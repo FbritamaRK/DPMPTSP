@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Search, ArrowRight, FileText } from 'lucide-react';
+import { ReactTyped } from 'react-typed';
 
 const Hero: React.FC = () => {
   const [trackId, setTrackId] = useState('');
@@ -31,8 +32,8 @@ const Hero: React.FC = () => {
           <span className="text-gk-yellow">DPMPTSP Gunungkidul</span>
         </h1>
         
-        <p className="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto font-light">
-          Wujudkan kemudahan berinvestasi dan pelayanan perizinan yang cepat, transparan, dan terintegrasi di Kabupaten Gunungkidul.
+        <p className="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto font-light-bold">
+          <ReactTyped strings={["Wujudkan kemudahan berinvestasi dan pelayanan perizinan yang cepat, transparan, dan terintegrasi di Kabupaten Gunungkidul."]} typeSpeed={150} loop/>
         </p>
 
         {/* Tracking Search Box */}

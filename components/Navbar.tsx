@@ -74,7 +74,7 @@ const Navbar: React.FC = () => {
                 key={item.label}
                 to={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className={`text-l font-bold transition-colors hover:text-gk-blue ${
+                className={`text-l font-bold transition-colors hover:text-gk-yellow ${
                   isScrolled || location.pathname !== '/' ? 'text-gray-700' : 'text-gray-100'
                 } ${location.pathname === item.href ? 'text-gk-green font-bold' : ''}`}
               >
