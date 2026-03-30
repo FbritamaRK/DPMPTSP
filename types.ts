@@ -75,3 +75,9 @@ export interface ComplaintTicket {
   reply?: string;
   date: string;
 }
+
+export interface profile {
+  judul:string;
+  deskripsi:string;
+  gambar:string;
+}

@@ -8,11 +8,11 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 const navItems: NavItem[] = [
   { label: 'Beranda', href: '/' },
   { label: 'Profil', href: '/#profil' },
-  { label: 'Layanan', href: '/#layanan' },
-  // { label: 'Produk Hukum', href: '/produk-hukum' },
-  // { label: 'Prospektus', href: '/prospektus' },
   { label: 'Berita', href: '/#berita' },
-  { label: 'MPP', href: '/#mpp' },
+  { label: 'Layanan', href: '/#layanan' },
+  { label: 'Produk Hukum', href: '/produk-hukum' },
+  { label: 'Investasi', href: '/prospektus' },
+  // { label: 'Kontak', href: '/#kontak' },
 ];
 
 const Navbar: React.FC = () => {
@@ -74,7 +74,7 @@ const Navbar: React.FC = () => {
                 key={item.label}
                 to={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className={`text-l font-bold transition-colors hover:text-gk-yellow ${
+                className={`text-sm font-medium transition-colors hover:text-gk-blue ${
                   isScrolled || location.pathname !== '/' ? 'text-gray-700' : 'text-gray-100'
                 } ${location.pathname === item.href ? 'text-gk-green font-bold' : ''}`}
               >
@@ -83,13 +83,13 @@ const Navbar: React.FC = () => {
             ))}
 
             {/* Button Pengaduan */}
-            {/* <button 
+            <button 
               onClick={handleComplaintClick}
               className="bg-gk-green text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-green-700 transition shadow-lg flex items-center gap-2"
             >
               <Phone size={16} />
               Pengaduan
-            </button> */}
+            </button>
           </div>
 
           <div className="md:hidden flex items-center">

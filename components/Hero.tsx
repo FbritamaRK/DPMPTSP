@@ -57,11 +57,38 @@ const Hero: React.FC = () => {
           </button>
         </div>
 
-        <div className="mt-12 flex justify-center gap-4 text-sm font-medium text-gray-300">
-           <span>#InvestasiGunungkidul</span>
-           <span>#MalPelayananPublik</span>
-           <span>#Gampil</span>
-        </div>
+<div className="relative mt-20 w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] border-y border-gray-100 bg-white py-4 text-sm font-medium text-gray-900 overflow-hidden">
+  <style>{`
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-container {
+      display: flex;
+      width: max-content;
+      animation: marquee 30s linear infinite;
+    }
+  `}</style>
+
+  <div className="marquee-container">
+    {/* Grup Teks 1 */}
+    <div className="flex shrink-0 items-center">
+      <span className="px-10 text-gray-900 font-bold">🕛JAM BUKA: SENIN - KAMIS 08:00 - 15:30 | JUMAT 08:00 - 14:30 </span>
+      <span className="px-10 text-blue-500 font-bold">🏢WILAYAH BEBAS KORUPSI DAN MENUJU WILAYAH BIROKRASI BERSIH MELAYANI </span>
+      <span className="px-10 text-gray-900 font-bold">🕛JAM BUKA: SENIN - KAMIS 08:00 - 15:30 | JUMAT 08:00 - 14:30 </span>
+      <span className="px-10 text-red-500 font-bold">⚠️NO KORUPSI, GRATIFIKASI, dan PUNGLI </span>
+    </div>
+
+    {/* Grup Teks 2 (Duplikat Persis untuk Loop Mulus) */}
+    <div className="flex shrink-0 items-center">
+      <span className="px-10 text-gray-900 font-bold">🕛JAM BUKA: SENIN - KAMIS 08:00 - 15:30 | JUMAT 08:00 - 14:30 </span>
+      <span className="px-10 text-blue-500 font-bold">🏢WILAYAH BEBAS KORUPSI DAN MENUJU WILAYAH BIROKRASI BERSIH MELAYANI </span>
+      <span className="px-10 text-gray-900 font-bold">🕛JAM BUKA: SENIN - KAMIS 08:00 - 15:30 | JUMAT 08:00 - 14:30 </span>
+      <span className="px-10 text-red-500 font-bold">⚠️NO KORUPSI, GRATIFIKASI, dan PUNGLI </span>
+    </div>
+  </div>
+</div>
+
       </div>
       
       {/* Decorative Wave at bottom */}
