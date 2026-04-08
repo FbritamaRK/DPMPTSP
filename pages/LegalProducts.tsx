@@ -1,6 +1,8 @@
+
 import React, { useState, useEffect } from 'react';
 import { Search, FileText, Download, Filter, ChevronRight } from 'lucide-react';
 import { LegalDocument } from '../types';
+import { Button, Card, Badge } from '../components';
 
 const mockDocuments: LegalDocument[] = [
   {
@@ -115,7 +117,8 @@ const mockDocuments: LegalDocument[] = [
 
 const categories = ["Semua", "Perda", "Perbup", "UU", "SOP", "Lainnya"];
 
-const LegalProducts: React.FC = () => {
+// Fix: Removed React.FC to avoid "Cannot find namespace 'React'" error
+const LegalProducts = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("Semua");
 
@@ -150,10 +153,11 @@ const LegalProducts: React.FC = () => {
                     <div className="flex flex-col md:flex-row gap-6">
                         {/* Search */}
                         <div className="flex-1">
-                            <label className="block text-sm font-medium text-gray-700 mb-2">Cari Dokumen</label>
+                            <label htmlFor="search-doc" className="block text-sm font-medium text-gray-700 mb-2">Cari Dokumen</label>
                             <div className="relative">
-                                <Search className="absolute left-3 top-3 text-gray-400" size={20} />
+                                <Search className="absolute left-3 top-3 text-gray-400" size={20} aria-hidden="true" />
                                 <input 
+                                    id="search-doc"
                                     type="text" 
                                     placeholder="Kata kunci: Perda, Izin, Bangunan..." 
                                     className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gk-green focus:border-transparent bg-slate-50"
@@ -165,10 +169,11 @@ const LegalProducts: React.FC = () => {
                         
                         {/* Category Filter */}
                         <div className="md:w-1/3">
-                            <label className="block text-sm font-medium text-gray-700 mb-2">Filter Kategori</label>
+                            <label htmlFor="category-filter" className="block text-sm font-medium text-gray-700 mb-2">Filter Kategori</label>
                             <div className="relative">
-                                <Filter className="absolute left-3 top-3 text-gray-400" size={20} />
+                                <Filter className="absolute left-3 top-3 text-gray-400" size={20} aria-hidden="true" />
                                 <select 
+                                    id="category-filter"
                                     className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gk-green bg-slate-50 appearance-none"
                                     value={selectedCategory}
                                     onChange={(e) => setSelectedCategory(e.target.value)}
@@ -178,7 +183,7 @@ const LegalProducts: React.FC = () => {
                                     ))}
                                 </select>
                                 <div className="absolute right-3 top-3 pointer-events-none">
-                                    <ChevronRight className="rotate-90 text-gray-400" size={20}/>
+                                    <ChevronRight className="rotate-90 text-gray-400" size={20} aria-hidden="true" />
                                 </div>
                             </div>
                         </div>
@@ -194,13 +199,13 @@ const LegalProducts: React.FC = () => {
                                     selectedCategory === cat 
                                     ? 'bg-gk-green text-white border-gk-green' 
                                     : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
-                                }`}
+                                } focus-visible:ring-2 focus-visible:ring-gk-green focus-visible:outline-none`}
                             >
                                 {cat}
                             </button>
                         ))}
                          {selectedCategory !== 'Semua' && (
-                            <button onClick={() => setSelectedCategory('Semua')} className="text-xs text-gk-red hover:underline ml-2">
+                            <button onClick={() => setSelectedCategory('Semua')} className="text-xs text-gk-red hover:underline ml-2 focus-visible:ring-2 focus-visible:ring-gk-red rounded-sm">
                                 Reset Filter
                             </button>
                         )}
@@ -217,26 +222,26 @@ const LegalProducts: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {filteredDocs.length > 0 ? (
                         filteredDocs.map((doc) => (
-                            <div key={doc.id} className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-lg hover:border-gk-blue/20 transition-all flex flex-col sm:flex-row gap-5 items-start group">
+                            <Card key={doc.id} hoverable className="p-6 flex flex-col sm:flex-row gap-5 items-start group">
                                 <div className={`w-14 h-14 rounded-lg flex items-center justify-center shrink-0 shadow-sm transition-transform group-hover:scale-110 ${
                                     doc.category === 'Perda' ? 'bg-red-50 text-red-600' :
                                     doc.category === 'Perbup' ? 'bg-blue-50 text-blue-600' :
                                     doc.category === 'UU' ? 'bg-yellow-50 text-yellow-600' :
                                     'bg-green-50 text-green-600'
                                 }`}>
-                                    <FileText size={28} />
+                                    <FileText size={28} aria-hidden="true" />
                                 </div>
                                 
                                 <div className="flex-1 w-full">
                                     <div className="flex items-center gap-2 mb-2">
-                                        <span className={`text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider ${
-                                            doc.category === 'Perda' ? 'bg-red-100 text-red-700' :
-                                            doc.category === 'Perbup' ? 'bg-blue-100 text-blue-700' :
-                                            doc.category === 'UU' ? 'bg-yellow-100 text-yellow-700' :
-                                            'bg-green-100 text-green-700'
-                                        }`}>
+                                        <Badge variant={
+                                            doc.category === 'Perda' ? 'danger' :
+                                            doc.category === 'Perbup' ? 'primary' :
+                                            doc.category === 'UU' ? 'warning' :
+                                            'success'
+                                        }>
                                             {doc.category}
-                                        </span>
+                                        </Badge>
                                         <span className="text-xs text-gray-500 font-medium bg-gray-100 px-2 py-0.5 rounded">Tahun {doc.year}</span>
                                     </div>
                                     <h3 className="font-bold text-gray-900 mb-2 leading-snug text-lg group-hover:text-gk-blue transition-colors">{doc.title}</h3>
@@ -244,26 +249,27 @@ const LegalProducts: React.FC = () => {
                                     
                                     <div className="flex items-center justify-between border-t border-gray-50 pt-3 mt-auto w-full">
                                         <span className="text-xs text-gray-400 font-medium bg-gray-50 px-2 py-1 rounded border border-gray-100">{doc.fileSize}</span>
-                                        <button 
+                                        <Button 
+                                            size="sm"
                                             onClick={() => alert(`Mengunduh dokumen: ${doc.title}`)}
-                                            className="flex items-center gap-1.5 text-sm font-semibold text-white bg-gk-blue hover:bg-blue-800 px-4 py-2 rounded-lg transition-colors shadow-sm"
+                                            aria-label={`Unduh ${doc.title}`}
                                         >
-                                            <Download size={16} /> Unduh
-                                        </button>
+                                            <Download size={16} className="mr-1.5" aria-hidden="true" /> Unduh
+                                        </Button>
                                     </div>
                                 </div>
-                            </div>
+                            </Card>
                         ))
                     ) : (
                         <div className="col-span-full py-20 text-center bg-white rounded-xl border border-dashed border-gray-300">
                              <div className="mx-auto w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mb-4 text-gray-300">
-                                <Search size={40} />
+                                <Search size={40} aria-hidden="true" />
                              </div>
                             <h3 className="text-xl font-bold text-gray-900">Dokumen tidak ditemukan</h3>
                             <p className="text-gray-500 mt-2 max-w-md mx-auto">Maaf, kami tidak dapat menemukan dokumen yang sesuai dengan kriteria pencarian Anda.</p>
                             <button 
                                 onClick={() => {setSearchTerm(''); setSelectedCategory('Semua');}}
-                                className="mt-6 text-gk-blue font-semibold hover:underline"
+                                className="mt-6 text-gk-blue font-semibold hover:underline focus-visible:ring-2 focus-visible:ring-gk-blue rounded-sm"
                             >
                                 Reset Pencarian
                             </button>

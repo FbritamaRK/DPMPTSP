@@ -1,13 +1,14 @@
 
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import Hero from '../components/Hero.tsx';
-import Services from '../components/Services.tsx';
-import Stats from '../components/Stats.tsx';
-import Investment from '../components/Investment.tsx';
-import News from '../components/News.tsx';
+import Hero from './Hero.tsx';
+import Services from './Services.tsx';
+import Stats from './Stats.tsx';
+import Investment from './Investment.tsx';
+import News from './News.tsx';
 
-const Home: React.FC = () => {
+// Fix: Removed React.FC to avoid "Cannot find namespace 'React'" error
+const Home = () => {
   const location = useLocation();
 
   useEffect(() => {
@@ -24,13 +25,13 @@ const Home: React.FC = () => {
   }, [location]);
 
   return (
-    <>
+    <main id="main-content">
       <Hero />
       <Services />
       <Stats />
       <Investment />
       <News />
-    </>
+    </main>
   );
 };
 

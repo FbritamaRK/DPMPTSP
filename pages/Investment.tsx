@@ -1,7 +1,9 @@
+
 import React from 'react';
 import { InvestmentSector } from '../types';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import { Button } from '../components';
 
 const sectors: InvestmentSector[] = [
   {
@@ -24,7 +26,7 @@ const sectors: InvestmentSector[] = [
   }
 ];
 
-const Investment: React.FC = () => {
+const Investment = () => {
   const navigate = useNavigate();
 
   return (
@@ -36,12 +38,13 @@ const Investment: React.FC = () => {
             <p className="mt-4 text-gray-400">Jelajahi peluang emas di Bumi Handayani. Kami menyediakan data dan fasilitasi bagi calon investor.</p>
           </div>
           <div className="flex gap-4 mt-4 md:mt-0">
-            <button 
+            <Button 
+              variant="secondary"
+              className="rounded-full hover:scale-105 transition-transform"
               onClick={() => navigate('/prospektus')}
-              className="bg-gk-yellow text-gk-dark px-6 py-2 rounded-full font-bold hover:scale-105 transition flex items-center gap-2"
             >
-              Lihat Prospektus Finansial <ArrowRight size={18} />
-            </button>
+              Lihat Prospektus Finansial <ArrowRight size={18} className="ml-2" aria-hidden="true" />
+            </Button>
           </div>
         </div>
 
@@ -63,7 +66,8 @@ const Investment: React.FC = () => {
                 <div className="mt-4 h-0 group-hover:h-auto overflow-hidden transition-all">
                   <button 
                     onClick={() => navigate('/prospektus')}
-                    className="text-sm font-semibold underline decoration-gk-yellow underline-offset-4"
+                    className="text-sm font-semibold underline decoration-gk-yellow underline-offset-4 focus-visible:ring-2 focus-visible:ring-gk-yellow rounded-sm"
+                    aria-label={`Pelajari Selengkapnya tentang ${sector.title}`}
                   >
                     Pelajari Selengkapnya
                   </button>
@@ -75,9 +79,12 @@ const Investment: React.FC = () => {
         
         <div className="mt-12 text-center">
            <p className="text-gray-500 text-sm italic mb-4">Ingin berdiskusi lebih lanjut mengenai peluang investasi?</p>
-           <button className="inline-block text-gk-yellow border border-gk-yellow px-8 py-3 rounded-full hover:bg-gk-yellow hover:text-gk-dark transition">
+           <Button 
+             variant="outline" 
+             className="rounded-full border-gk-yellow text-gk-yellow hover:bg-gk-yellow hover:text-gk-dark focus-visible:ring-gk-yellow focus-visible:ring-offset-gk-dark"
+           >
             Jadwalkan Konsultasi Investor
-          </button>
+          </Button>
         </div>
       </div>
     </section>

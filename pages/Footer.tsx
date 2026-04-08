@@ -20,10 +20,10 @@ const Footer: React.FC = () => {
               Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu Kabupaten Gunungkidul. Melayani dengan Sepenuh Hati, Cepat, dan Transparan.
             </p>
             <div className="flex space-x-4 pt-2">
-              <a href="#" className="hover:text-gk-yellow transition"><Facebook size={20} /></a>
-              <a href="#" className="hover:text-gk-yellow transition"><Instagram size={20} /></a>
-              <a href="#" className="hover:text-gk-yellow transition"><Youtube size={20} /></a>
-              <a href="#" className="hover:text-gk-yellow transition"><Globe size={20} /></a>
+              <a href="#" className="hover:text-gk-yellow transition focus-visible:ring-2 focus-visible:ring-gk-blue rounded-sm" aria-label="Facebook"><Facebook size={20} aria-hidden="true" /></a>
+              <a href="#" className="hover:text-gk-yellow transition focus-visible:ring-2 focus-visible:ring-gk-blue rounded-sm" aria-label="Instagram"><Instagram size={20} aria-hidden="true" /></a>
+              <a href="#" className="hover:text-gk-yellow transition focus-visible:ring-2 focus-visible:ring-gk-blue rounded-sm" aria-label="Youtube"><Youtube size={20} aria-hidden="true" /></a>
+              <a href="#" className="hover:text-gk-yellow transition focus-visible:ring-2 focus-visible:ring-gk-blue rounded-sm" aria-label="Website Resmi"><Globe size={20} aria-hidden="true" /></a>
             </div>
           </div>
 
@@ -32,15 +32,15 @@ const Footer: React.FC = () => {
             <h3 className="text-white font-bold text-lg mb-4">Hubungi Kami</h3>
             <ul className="space-y-3 text-sm">
               <li className="flex items-start">
-                <MapPin size={18} className="mr-2 mt-1 text-gk-green shrink-0" />
+                <MapPin size={18} className="mr-2 mt-1 text-gk-green shrink-0" aria-hidden="true" />
                 <span>Jl. Kyai Morang, Wonosari, Gunungkidul, Daerah Istimewa Yogyakarta 55812</span>
               </li>
               <li className="flex items-center">
-                <Phone size={18} className="mr-2 text-gk-green shrink-0" />
+                <Phone size={18} className="mr-2 text-gk-green shrink-0" aria-hidden="true" />
                 <span>(0274) 391234</span>
               </li>
               <li className="flex items-center">
-                <Mail size={18} className="mr-2 text-gk-green shrink-0" />
+                <Mail size={18} className="mr-2 text-gk-green shrink-0" aria-hidden="true" />
                 <span>dpmptsp@gunungkidulkab.go.id</span>
               </li>
             </ul>
