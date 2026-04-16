@@ -1,26 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Phone, ChevronDown } from 'lucide-react';
-import { NavItem } from '../types.ts';
+import React, { useState, useEffect, useRef } from 'react';
+import { Menu, X, Phone, ChevronDown, ExternalLink } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Button } from '../components/index.ts';
 
-const navItems: NavItem[] = [
+const navItems = [
   { label: 'Beranda', href: '/' },
-  { 
-    label: 'Profil', 
+  {
+    label: 'Profil',
     children: [
       { label: 'Visi & Misi', href: '/#visi-misi' },
       { label: 'Struktur Organisasi', href: '/#struktur' },
       { label: 'Tugas & Fungsi', href: '/#tugas' },
-    ]
+    ],
   },
-  { label: 'Layanan', 
+  {
+    label: 'Layanan',
     children: [
       { label: 'Produk Hukum', href: '/produk-hukum' },
       { label: 'Prospek Investasi', href: '/prospektus' },
-      { label: 'OSS RBA', href: 'https://oss.go.id' },
-    ]
-
+      { label: 'OSS RBA', href: 'https://oss.go.id', external: true },
+    ],
   },
   { label: 'Berita', href: '/#berita' },
 ];
@@ -31,74 +29,130 @@ const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const location = useLocation();
   const navigate = useNavigate();
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const isHome = location.pathname === '/';
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (e: any, href: string) => {
+  /* Close dropdown on outside click */
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setActiveDropdown(null);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
+
+  /* Close mobile menu on route change */
+  useEffect(() => {
+    setIsOpen(false);
+    setActiveDropdown(null);
+  }, [location]);
+
+  const handleNavClick = (e: React.MouseEvent, href: string) => {
     setIsOpen(false);
     setActiveDropdown(null);
     if (href.startsWith('/#')) {
       const hash = href.substring(1);
       if (location.pathname === '/') {
         e.preventDefault();
-        const element = document.querySelector(hash);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
+        document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' });
       }
     }
   };
 
+  const navBg = isScrolled || !isHome
+    ? 'bg-[#1d3e61] backdrop-blur-md shadow-sm border-b border-slate-100'
+    : 'bg-transparent';
+
+  const textColor = isScrolled || !isHome ? 'text-white' : 'text-white';
+  const hoverColor = 'hover:text-[#FFCA28]';
+
   return (
-    <header className="fixed w-full z-50">
-      <nav className={`transition-all duration-300 ${
-        isScrolled || location.pathname !== '/' ? 'bg-white shadow-md py-2' : 'bg-gk-dark/60 backdrop-blur-md py-4'
-      }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center">
-            {/* Logo Section */}
-            <Link to="/" className="flex items-center space-x-3 group">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Lambang_Kabupaten_Gunungkidul.png" className="w-10 h-12" alt="Logo" />
-              <div className={`flex flex-col ${isScrolled || location.pathname !== '/' ? 'text-gk-dark' : 'text-white'}`}>
-                <span className="font-bold text-lg leading-tight group-hover:text-gk-green transition-colors">DPMPTSP</span>
-                <span className="text-xs font-medium tracking-wide uppercase">Gunungkidul</span>
-              </div>
-            </Link>
+    <>
+      {/* Skip to main content — WCAG 2.4.1 */}
+      <a
+        href="#pengaduan"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-emerald-600 focus:text-white focus:px-5 focus:py-3 focus:rounded-lg focus:font-semibold focus:text-sm focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-white"
+      >
+        Lewati ke konten utama
+      </a>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-6">
-              {navItems.map((item) => (
-                <div 
-                  key={item.label}
-                  className="relative group"
-                  onMouseEnter={() => item.children && setActiveDropdown(item.label)}
-                  onMouseLeave={() => setActiveDropdown(null)}
-                >
-                  {item.children ? (
-                    <button className={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-gk-yellow ${
-                      isScrolled || location.pathname !== '/' ? 'text-gray-700' : 'text-gray-100'
-                    }`}>
-                      {item.label} <ChevronDown size={14} className={`transition-transform ${activeDropdown === item.label ? 'rotate-180' : ''}`} />
-                    </button>
-                  ) : (
-                    <Link
-                      to={item.href!}
-                      onClick={(e) => handleNavClick(e, item.href!)}
-                      className={`text-sm font-medium transition-colors hover:text-gk-yellow ${
-                        isScrolled || location.pathname !== '/' ? 'text-gray-700' : 'text-gray-100'
-                      } ${location.pathname === item.href ? 'text-gk-green font-bold' : ''}`}
-                    >
-                      {item.label}
-                    </Link>
-                  )}
+      <header className="fixed w-full z-50" role="banner">
+        <nav
+          className={`transition-all duration-300 ${navBg}`}
+          aria-label="Navigasi utama"
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center h-16 md:h-18">
 
-                  {/* Dropdown Menu Desktop */}
+              {/* Logo */}
+              <Link
+                to="/"
+                className="flex items-center gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 rounded-lg p-1"
+                aria-label="DPMPTSP Kabupaten Gunungkidul — Beranda"
+              >
+                <div className="relative">
+                  <div className="absolute inset-0 bg-emerald-500/20 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300" />
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/2/29/Lambang_Kabupaten_Gunungkidul.png"
+                    alt=""
+                    aria-hidden="true"
+                    className="w-9 h-11 relative z-10"
+                  />
+                </div>
+                <div className={`flex flex-col transition-colors ${textColor}`}>
+                  <span className="font-bold text-base leading-tight tracking-tight group-hover:text-emerald-600 transition-colors">
+                    DPMPTSP
+                  </span>
+                  <span className="text-[10px] font-medium tracking-widest uppercase opacity-70">
+                    Gunungkidul
+                  </span>
+                </div>
+              </Link>
+
+              {/* Desktop nav */}
+              <div ref={dropdownRef} className="hidden md:flex items-center gap-1">
+                {navItems.map((item) => (
+                  <div
+                    key={item.label}
+                    className="relative"
+                    onMouseEnter={() => item.children && setActiveDropdown(item.label)}
+                    onMouseLeave={() => setActiveDropdown(null)}
+                  >
+                    {item.children ? (
+                      <button
+                        aria-expanded={activeDropdown === item.label}
+                        aria-haspopup="true"
+                        onClick={() => setActiveDropdown(activeDropdown === item.label ? null : item.label)}
+                        className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-all ${textColor} ${hoverColor} hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2`}
+                      >
+                        {item.label}
+                        <ChevronDown
+                          size={14}
+                          aria-hidden="true"
+                          className={`transition-transform duration-200 ${activeDropdown === item.label ? 'rotate-180' : ''}`}
+                        />
+                      </button>
+                    ) : (
+                      <Link
+                        to={item.href!}
+                        onClick={(e) => handleNavClick(e, item.href!)}
+                        aria-current={location.pathname === item.href ? 'page' : undefined}
+                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-all block ${textColor} ${hoverColor} hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 ${location.pathname === item.href ? 'text-emerald-500 font-semibold' : ''}`}
+                      >
+                        {item.label}
+                      </Link>
+                    )}
+
+                   {/* Dropdown Menu Desktop */}
                   {item.children && activeDropdown === item.label && (
                     <div className="absolute top-full left-0 w-56 pt-4">
                       <div className="bg-white rounded-lg shadow-xl border border-gray-100 overflow-hidden py-2 animate-in fade-in slide-in-from-top-2 duration-200">
@@ -117,54 +171,96 @@ const Navbar = () => {
                   )}
                 </div>
               ))}
-              <Button onClick={() => navigate('/pengaduan')} variant="primary" size="sm" className="bg-gk-green hover:bg-green-700 rounded-full flex items-center gap-2">
-                <Phone size={16} /> Pengaduan
-              </Button>
             </div>
 
-            {/* Mobile Toggle */}
-            <div className="md:hidden">
-              <button onClick={() => setIsOpen(!isOpen)} className={isScrolled || location.pathname !== '/' ? 'text-gray-700' : 'text-white'}>
-                {isOpen ? <X size={24} /> : <Menu size={24} />}
+                <button
+                  onClick={() => navigate('/pengaduan')}
+                  className="ml-3 flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white px-4 py-2 rounded-full text-sm font-semibold transition-all shadow-md hover:shadow-lg hover:-translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
+                >
+                  <Phone size={14} aria-hidden="true" />
+                  Pengaduan
+                </button>
+              </div>
+
+              {/* Mobile toggle */}
+              <button
+                className={`md:hidden p-2 rounded-lg transition-colors ${textColor} hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500`}
+                onClick={() => setIsOpen(!isOpen)}
+                aria-expanded={isOpen}
+                aria-controls="mobile-menu"
+                aria-label={isOpen ? 'Tutup menu navigasi' : 'Buka menu navigasi'}
+              >
+                {isOpen ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
               </button>
             </div>
-          </div>
-        </div>
+       
 
-        {/* Mobile Menu */}
-        <div className={`md:hidden bg-white shadow-xl absolute w-full left-0 border-t transition-all duration-300 ${isOpen ? 'top-full opacity-100' : 'top-[-1000px] opacity-0'}`}>
-          <div className="px-4 pt-2 pb-6 space-y-1">
-            {navItems.map((item) => (
-              <div key={item.label}>
-                {item.children ? (
-                  <>
-                    <button 
-                      onClick={() => setActiveDropdown(activeDropdown === item.label ? null : item.label)}
-                      className="w-full flex justify-between items-center px-3 py-3 text-base font-medium text-gray-700 hover:bg-gray-50"
+          {/* Mobile menu */}
+          <div
+            id="mobile-menu"
+            className={`md:hidden bg-white border-t border-slate-100 shadow-xl transition-all duration-300 overflow-hidden ${isOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'}`}
+            aria-hidden={!isOpen}
+          >
+            <div className="px-4 py-4 space-y-1">
+              {navItems.map((item) => (
+                <div key={item.label}>
+                  {item.children ? (
+                    <>
+                      <button
+                        onClick={() => setActiveDropdown(activeDropdown === item.label ? null : item.label)}
+                        aria-expanded={activeDropdown === item.label}
+                        className="w-full flex justify-between items-center px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-emerald-700 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+                      >
+                        {item.label}
+                        <ChevronDown
+                          size={16}
+                          aria-hidden="true"
+                          className={`transition-transform ${activeDropdown === item.label ? 'rotate-180' : ''}`}
+                        />
+                      </button>
+                      {activeDropdown === item.label && (
+                        <div className="ml-4 mt-1 space-y-0.5 border-l-2 border-emerald-100 pl-3">
+                          {item.children.map((child) => (
+                            <Link
+                              key={child.label}
+                              to={child.href}
+                              onClick={(e) => handleNavClick(e, child.href)}
+                              className="flex items-center justify-between py-2.5 px-2 text-sm text-slate-600 hover:text-emerald-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 rounded"
+                            >
+                              {child.label}
+                              {(child as any).external && <ExternalLink size={11} aria-label="(eksternal)" className="text-slate-400" />}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <Link
+                      to={item.href!}
+                      onClick={(e) => handleNavClick(e, item.href!)}
+                      aria-current={location.pathname === item.href ? 'page' : undefined}
+                      className="block px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-emerald-700 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
                     >
-                      {item.label} <ChevronDown size={18} className={activeDropdown === item.label ? 'rotate-180' : ''} />
-                    </button>
-                    {activeDropdown === item.label && (
-                      <div className="bg-gray-50 rounded-lg ml-4">
-                        {item.children.map((child) => (
-                          <Link key={child.label} to={child.href} onClick={(e) => handleNavClick(e, child.href)} className="block px-4 py-3 text-sm text-gray-600 hover:text-gk-green">
-                            {child.label}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </>
-                ) : (
-                  <Link to={item.href!} onClick={(e) => handleNavClick(e, item.href!)} className="block px-3 py-3 text-base font-medium text-gray-700 hover:text-gk-green hover:bg-gray-50 rounded-md">
-                    {item.label}
-                  </Link>
-                )}
+                      {item.label}
+                    </Link>
+                  )}
+                </div>
+              ))}
+
+              <div className="pt-3 border-t border-slate-100">
+                <button
+                  onClick={() => navigate('/pengaduan')}
+                  className="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-3 rounded-xl text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 min-h-[48px]"
+                >
+                  <Phone size={16} aria-hidden="true" />
+                  Layanan Pengaduan
+                </button>
               </div>
-            ))}
+            </div>
           </div>
-        </div>
-      </nav>
-    </header>
+        </nav>
+      </header>
+    </>
   );
 };
 

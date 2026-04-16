@@ -63,7 +63,7 @@ const Hero = () => {
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
           {/* Left Text */}
           <div className="lg:w-1/2 text-left">
-            <p className="text-gray-200 text-m md:text-xl mb-2 font-light tracking-wide">Selamat datang di situs web</p>
+            <p className="text-white text-m md:text-xl mb-2 font-light tracking-wide">Selamat datang di situs web</p>
             <h1 className="text-5x1 md:text-5xl lg:text-6x2 font-bold mb-8 leading-tight drop-shadow-lg">
               Dinas Penanaman Modal<br />
               dan Pelayanan Terpadu<br />
@@ -90,9 +90,9 @@ const Hero = () => {
 
           {/* Right Image */}
           <div className="lg:w-1/2 flex justify-center lg:justify-end relative">
-            <div className="relative w-full max-w-lg aspect-[4/3] rounded-xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500 animate-[float_4s_ease-in-out_infinite]">
+            <div className="relative w-full max-w-lg aspect-[10/5] rounded-xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500 animate-[float_4s_ease-in-out_infinite]">
                 <img 
-                  src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800&h=600" 
+                  src="https://bakpiakukustugu.co.id/uploads/11/2023-09/4_wisata_gunung_kidul.jpg" 
                   alt="Gedung Pemerintahan" 
                   className="w-full h-full object-cover"
 
@@ -108,11 +108,11 @@ const Hero = () => {
 
        </div>
       
-     {/* Bottom Angled Shape */}
-      <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none" aria-hidden="true">
-        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto drop-shadow-md" preserveAspectRatio="none">
-          <path d="M0 120L1440 120L1440 40Z" fill="#f8fafc" />
-          <path d="M0 120L1440 40L1440 32L0 112Z" fill="#ffca28" />
+      {/* ── Angled divider ── */}
+      <div className="absolute bottom-12 left-0 right-0 pointer-events-none z-20" aria-hidden="true">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" className="w-full h-8 md:h-12">
+          <path d="M0 60L1440 60L1440 20Z" fill="#f8fafc" />
+          <path d="M0 60L1440 20L1440 12L0 52Z" fill="#FFCA28" fillOpacity="0.6" />
         </svg>
       </div>
     </section>

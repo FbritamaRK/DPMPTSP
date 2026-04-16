@@ -111,7 +111,7 @@ const InvestmentProspectus = () => {
                 </div>
 
                 <div className="mt-auto flex flex-col sm:flex-row gap-4 pt-6 border-t border-gray-100">
-                  <button className="flex-1 bg-gk-green text-white py-3 rounded-lg font-bold hover:bg-green-700 transition flex items-center justify-center gap-2 shadow-lg hover:shadow-gk-green/20 focus-visible:ring-2 focus-visible:ring-gk-green focus-visible:ring-offset-2">
+                  <button className="flex-1 bg-white text-white py-3 rounded-lg font-bold hover:bg-green-700 transition flex items-center justify-center gap-2 shadow-lg hover:shadow-gk-green/20 focus-visible:ring-2 focus-visible:ring-gk-green focus-visible:ring-offset-2">
                     <ExternalLink size={18} aria-hidden="true" /> Ajukan LoI
                   </button>
                   <button 

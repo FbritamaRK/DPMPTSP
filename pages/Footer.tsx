@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
               <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Lambang_Kabupaten_Gunungkidul.png" alt="Logo" className="w-10 h-12" />
               <div>
                 <h3 className="text-white font-bold text-lg">DPMPTSP</h3>
-                <p className="text-xs text-gray-500">KABUPATEN GUNUNGKIDUL</p>
+                <p className="text-xs text-white">KABUPATEN GUNUNGKIDUL</p>
               </div>
             </div>
             <p className="text-sm leading-relaxed">
@@ -72,7 +72,7 @@ const Footer: React.FC = () => {
               </li>
               <li className="flex justify-between items-center pt-2">
                 <span>Sabtu - Minggu</span>
-                <span className="text-gk-red font-semibold">Tutup</span>
+                <span className="text-gk-white font-semibold">Tutup</span>
               </li>
             </ul>
           </div>
@@ -81,7 +81,7 @@ const Footer: React.FC = () => {
       
       {/* Copyright */}
       <div className="bg-black py-4">
-        <div className="max-w-7xl mx-auto px-4 text-center text-xs text-gray-500">
+        <div className="max-w-7xl mx-auto px-4 text-center text-xs text-white">
           © {new Date().getFullYear()} DPMPTSP Kabupaten Gunungkidul. All rights reserved.
         </div>
       </div>
