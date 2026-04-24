@@ -1,17 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, Phone, ChevronDown, ExternalLink } from 'lucide-react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { href, Link, useLocation, useNavigate } from 'react-router-dom';
 
 const navItems = [
   { label: 'Beranda', href: '/' },
   {
-    label: 'Profil',
-    children: [
-      { label: 'Visi & Misi', href: '/#visi-misi' },
-      { label: 'Struktur Organisasi', href: '/#struktur' },
-      { label: 'Tugas & Fungsi', href: '/#tugas' },
-    ],
-  },
+    label: 'Profil', href: '/profil'},
   {
     label: 'Layanan',
     children: [
@@ -69,18 +63,18 @@ const Navbar = () => {
   };
 
   const navBg = isScrolled || !isHome
-    ? 'bg-[#1d3e61] backdrop-blur-md shadow-sm border-b border-slate-100'
+    ? 'bg-[#111827] backdrop-blur-md shadow-sm border-b border-slate-100'
     : 'bg-transparent';
 
-  const textColor = isScrolled || !isHome ? 'text-white' : 'text-white';
-  const hoverColor = 'hover:text-[#FFCA28]';
+  const textColor = isScrolled || !isHome ? 'text-white ' : 'text-white';
+  const hoverColor = 'hover:text-[#ffca28]';
 
   return (
     <>
       {/* Skip to main content — WCAG 2.4.1 */}
       <a
         href="#pengaduan"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-emerald-600 focus:text-white focus:px-5 focus:py-3 focus:rounded-lg focus:font-semibold focus:text-sm focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-white"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-emerald-500 focus:text-white focus:px-5 focus:py-3 focus:rounded-lg focus:font-semibold focus:text-sm focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-white"
       >
         Lewati ke konten utama
       </a>
@@ -102,17 +96,17 @@ const Navbar = () => {
                 <div className="relative">
                   <div className="absolute inset-0 bg-emerald-500/20 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300" />
                   <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/2/29/Lambang_Kabupaten_Gunungkidul.png"
+                    src="https://dpmpt.gunungkidulkab.go.id/themes/smartadmin/landing/images/logo.png"
                     alt=""
                     aria-hidden="true"
                     className="w-9 h-11 relative z-10"
                   />
                 </div>
                 <div className={`flex flex-col transition-colors ${textColor}`}>
-                  <span className="font-bold text-base leading-tight tracking-tight group-hover:text-emerald-600 transition-colors">
+                  <span className="font-bold text-base leading-tight tracking-tight group-hover:text-[#ffca28] transition-colors">
                     DPMPTSP
                   </span>
-                  <span className="text-[10px] font-medium tracking-widest uppercase opacity-70">
+                  <span className="text-[10px] font-medium tracking-widest uppercase">
                     Gunungkidul
                   </span>
                 </div>
@@ -146,7 +140,7 @@ const Navbar = () => {
                         to={item.href!}
                         onClick={(e) => handleNavClick(e, item.href!)}
                         aria-current={location.pathname === item.href ? 'page' : undefined}
-                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-all block ${textColor} ${hoverColor} hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 ${location.pathname === item.href ? 'text-emerald-500 font-semibold' : ''}`}
+                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-all block ${textColor} ${hoverColor} hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 ${location.pathname === item.href ? 'text-[#ffca28] font-semibold' : ''}`}
                       >
                         {item.label}
                       </Link>
@@ -161,7 +155,7 @@ const Navbar = () => {
                             key={child.label}
                             to={child.href}
                             onClick={(e) => handleNavClick(e, child.href)}
-                            className="block px-4 py-2.5 text-sm text-gray-900 hover:bg-gk-black/10 hover:text-gk-blue transition-colors"
+                            className="block px-4 py-2.5 text-sm text-gray-900 hover:bg-gk-black/10 hover:text-[#ffca28] transition-colors"
                           >
                             {child.label}
                           </Link>

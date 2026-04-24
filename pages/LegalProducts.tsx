@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Search, FileText, Download, Filter, ChevronRight } from 'lucide-react';
 import { LegalDocument } from '../types';
@@ -155,7 +154,7 @@ const LegalProducts = () => {
                         <div className="flex-1">
                             <label htmlFor="search-doc" className="block text-sm font-medium text-gray-700 mb-2">Cari Dokumen</label>
                             <div className="relative">
-                                <Search className="absolute left-3 top-3 text-gray-400" size={20} aria-hidden="true" />
+                                <Search className="absolute left-3 top-3 text-gray-900" size={20} aria-hidden="true" />
                                 <input 
                                     id="search-doc"
                                     type="text" 
@@ -171,7 +170,7 @@ const LegalProducts = () => {
                         <div className="md:w-1/3">
                             <label htmlFor="category-filter" className="block text-sm font-medium text-gray-700 mb-2">Filter Kategori</label>
                             <div className="relative">
-                                <Filter className="absolute left-3 top-3 text-gray-400" size={20} aria-hidden="true" />
+                                <Filter className="absolute left-3 top-3 text-black" size={20} aria-hidden="true" />
                                 <select 
                                     id="category-filter"
                                     className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gk-green bg-slate-50 appearance-none"
@@ -242,17 +241,17 @@ const LegalProducts = () => {
                                         }>
                                             {doc.category}
                                         </Badge>
-                                        <span className="text-xs text-gray-500 font-medium bg-gray-100 px-2 py-0.5 rounded">Tahun {doc.year}</span>
+                                        <span className="text-xs text-black font-medium bg-gray-100 px-2 py-0.5 rounded">Tahun {doc.year}</span>
                                     </div>
                                     <h3 className="font-bold text-gray-900 mb-2 leading-snug text-lg group-hover:text-gk-blue transition-colors">{doc.title}</h3>
                                     <p className="text-sm text-gray-600 mb-4 line-clamp-2">{doc.description}</p>
                                     
                                     <div className="flex items-center justify-between border-t border-gray-50 pt-3 mt-auto w-full">
-                                        <span className="text-xs text-gray-400 font-medium bg-gray-50 px-2 py-1 rounded border border-gray-100">{doc.fileSize}</span>
+                                        <span className="text-xs text-black font-medium bg-gray-50 px-2 py-1 rounded border border-gray-100">{doc.fileSize}</span>
                                         <Button 
                                             size="sm"
                                             onClick={() => alert(`Mengunduh dokumen: ${doc.title}`)}
-                                            aria-label={`Unduh ${doc.title}`}
+                                            aria-label={`Unduh ${doc.title} (PDF, ${doc.fileSize})`}
                                         >
                                             <Download size={16} className="mr-1.5" aria-hidden="true" /> Unduh
                                         </Button>

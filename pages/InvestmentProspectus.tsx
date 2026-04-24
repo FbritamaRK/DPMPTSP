@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { TrendingUp, DollarSign, Download, MapPin, ExternalLink, FileBarChart } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -21,12 +20,15 @@ const InvestmentProspectus = () => {
             <div className="text-center md:text-left">
               <span className="inline-block bg-gk-yellow/20 text-gk-yellow px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-4">Investor Relations</span>
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Prospektus Investasi <br/><span className="text-gk-yellow">Gunungkidul</span></h1>
-              <p className="text-gray-400 text-lg max-w-2xl">
+              <p className="text-white text-lg max-w-2xl">
                 Data komprehensif peluang investasi strategis di Kabupaten Gunungkidul. Analisis kelayakan finansial yang transparan untuk mendukung keputusan investasi Anda.
               </p>
             </div>
             <div className="flex gap-4">
-              <button className="bg-white text-gk-dark px-6 py-3 rounded-lg font-bold flex items-center gap-2 hover:bg-gray-100 transition shadow-xl focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gk-dark">
+              <button 
+                className="bg-white text-gk-dark px-6 py-3 rounded-lg font-bold flex items-center gap-2 hover:bg-gray-100 transition shadow-xl focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gk-dark"
+                aria-label="Unduh Katalog Prospektus Investasi Gunungkidul (PDF)"
+              >
                 <Download size={20} aria-hidden="true" /> Unduh Katalog PDF
               </button>
             </div>
@@ -64,43 +66,43 @@ const InvestmentProspectus = () => {
                     <h2 className="text-2xl md:text-3xl font-bold text-gk-dark group-hover:text-gk-green transition-colors">{project.name}</h2>
                   </div>
                   <div className="text-right">
-                    <span className="text-xs text-gray-500 block font-medium uppercase mb-1">Total Nilai Investasi</span>
+                    <span className="text-xs text-black block font-medium uppercase mb-1">Total Nilai Investasi</span>
                     <span className="text-2xl font-bold text-gk-blue">{project.totalInvestment}</span>
                   </div>
                 </div>
 
-                <p className="text-gray-600 mb-8 leading-relaxed line-clamp-2">
+                <p className="text-black mb-8 leading-relaxed line-clamp-2">
                   {project.description}
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                   <div className="bg-slate-50 p-6 rounded-xl border border-slate-100">
-                    <h3 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+                    <h3 className="text-sm font-bold text-black uppercase tracking-widest mb-4 flex items-center gap-2">
                       <DollarSign size={16} aria-hidden="true" /> Alokasi Biaya
                     </h3>
                     <div className="space-y-4">
                       <div className="flex justify-between items-center border-b border-gray-200 pb-2">
-                        <span className="text-gray-600 text-sm">Investasi Tanah</span>
+                        <span className="text-black text-sm">Investasi Tanah</span>
                         <span className="font-bold text-gray-900 text-sm">{project.landCost}</span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="text-gray-600 text-sm">Pekerjaan Sipil</span>
+                        <span className="text-black text-sm">Pekerjaan Sipil</span>
                         <span className="font-bold text-gray-900 text-sm">{project.civilWorkCost}</span>
                       </div>
                     </div>
                   </div>
 
                   <div className="bg-gk-blue/5 p-6 rounded-xl border border-gk-blue/10">
-                    <h3 className="text-sm font-bold text-gk-blue/60 uppercase tracking-widest mb-4 flex items-center gap-2">
+                    <h3 className="text-sm font-bold text-gk-blue uppercase tracking-widest mb-4 flex items-center gap-2">
                       <TrendingUp size={16} aria-hidden="true" /> Indikator Kelayakan
                     </h3>
                     <div className="grid grid-cols-3 gap-4 text-center">
                       <div>
-                        <span className="block text-[10px] font-bold text-gray-400 uppercase">NPV</span>
+                        <span className="block text-[10px] font-bold text-gray-800 uppercase">NPV</span>
                         <span className="text-base font-bold text-gk-blue">{project.npv}</span>
                       </div>
                       <div>
-                        <span className="block text-[10px] font-bold text-gray-400 uppercase">IRR</span>
+                        <span className="block text-[10px] font-bold text-gray-800 uppercase">IRR</span>
                         <span className="text-base font-bold text-gk-blue">{project.irr}</span>
                       </div>
                       <div className="flex items-center justify-center">
@@ -110,8 +112,8 @@ const InvestmentProspectus = () => {
                   </div>
                 </div>
 
-                <div className="mt-auto flex flex-col sm:flex-row gap-4 pt-6 border-t border-gray-100">
-                  <button className="flex-1 bg-white text-white py-3 rounded-lg font-bold hover:bg-green-700 transition flex items-center justify-center gap-2 shadow-lg hover:shadow-gk-green/20 focus-visible:ring-2 focus-visible:ring-gk-green focus-visible:ring-offset-2">
+                <div className="mt-auto flex flex-col sm:flex-row gap-4 pt-6 border-t border-b-black-700">
+                  <button className="flex-1 bg-black text-white py-3 rounded-lg font-bold hover:bg-green-700 transition flex items-center justify-center gap-2 shadow-lg hover:shadow-gk-green/20 focus-visible:ring-2 focus-visible:ring-gk-green focus-visible:ring-offset-2">
                     <ExternalLink size={18} aria-hidden="true" /> Ajukan LoI
                   </button>
                   <button 

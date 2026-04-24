@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Send, Search, CheckCircle, Clock, MessageSquare, User, FileText, Hash } from 'lucide-react';
 import { ComplaintTicket } from '../types';
@@ -74,7 +73,7 @@ const Complaints = () => {
 
   return (
     <div className="bg-slate-50 min-h-screen pt-20">
-      <header className="bg-gk-green py-12 md:py-20 relative overflow-hidden">
+      <header className="bg-gk-green/90 py-12 md:py-20 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <h1 className="text-3xl md:text-5xl font-extrabold text-white mb-4">Layanan Pengaduan Masyarakat</h1>
           <p className="text-green-50 text-lg max-w-2xl mx-auto font-medium">
@@ -137,10 +136,10 @@ const Complaints = () => {
             <div id="create-panel" role="tabpanel" aria-labelledby="create-tab">
               <form onSubmit={handleSubmit} className="space-y-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="space-y-6">
-                    <h3 className="text-xl font-bold text-gk-dark flex items-center gap-2 border-b pb-2">
+                  <fieldset className="space-y-6">
+                    <legend className="text-xl font-bold text-gk-dark flex items-center gap-2 border-b pb-2 w-full">
                        <User size={20} className="text-gk-green" aria-hidden="true" /> Data Diri
-                    </h3>
+                    </legend>
                     
                     <div>
                       <label htmlFor="nik" className="block text-sm font-bold text-gray-700 mb-2">NIK <span className="text-red-600" aria-hidden="true">*</span></label>
@@ -152,7 +151,9 @@ const Complaints = () => {
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-gk-blue outline-none"
                         placeholder="16 digit NIK"
                         aria-required="true"
+                        aria-describedby="nik-help"
                       />
+                      <p id="nik-help" className="text-xs text-gray-500 mt-1">Nomor Induk Kependudukan sesuai KTP, terdiri dari 16 digit angka.</p>
                     </div>
 
                     <div>
@@ -165,7 +166,9 @@ const Complaints = () => {
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-gk-blue outline-none"
                         placeholder="Nama sesuai KTP"
                         aria-required="true"
+                        aria-describedby="name-help"
                       />
+                      <p id="name-help" className="text-xs text-gray-500 mt-1">Tuliskan nama lengkap sesuai yang tertera pada KTP Anda.</p>
                     </div>
 
                     <div>
@@ -178,14 +181,16 @@ const Complaints = () => {
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-gk-blue outline-none"
                         placeholder="Contoh: 081234..."
                         aria-required="true"
+                        aria-describedby="phone-help"
                       />
+                      <p id="phone-help" className="text-xs text-gray-500 mt-1">Nomor aktif yang dapat dihubungi untuk tindak lanjut pengaduan.</p>
                     </div>
-                  </div>
+                  </fieldset>
 
-                  <div className="space-y-6">
-                    <h3 className="text-xl font-bold text-gk-dark flex items-center gap-2 border-b pb-2">
+                  <fieldset className="space-y-6">
+                    <legend className="text-xl font-bold text-gk-dark flex items-center gap-2 border-b pb-2 w-full">
                        <FileText size={20} className="text-gk-green" aria-hidden="true" /> Detail Laporan
-                    </h3>
+                    </legend>
 
                     <div>
                       <label htmlFor="category" className="block text-sm font-bold text-gray-700 mb-2">Jenis Laporan <span className="text-red-600" aria-hidden="true">*</span></label>
@@ -213,7 +218,9 @@ const Complaints = () => {
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-gk-blue outline-none"
                         placeholder="Inti dari laporan Anda"
                         aria-required="true"
+                        aria-describedby="subject-help"
                       />
+                      <p id="subject-help" className="text-xs text-gray-500 mt-1">Tuliskan inti atau judul singkat dari laporan Anda, maksimal 100 karakter.</p>
                     </div>
 
                     <div>
@@ -227,9 +234,11 @@ const Complaints = () => {
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-gk-blue outline-none resize-none"
                         placeholder="Ceritakan kronologi secara lengkap..."
                         aria-required="true"
+                        aria-describedby="message-help"
                       />
+                      <p id="message-help" className="text-xs text-gray-500 mt-1">Semakin detail laporan Anda, semakin cepat kami dapat menindaklanjutinya.</p>
                     </div>
-                  </div>
+                  </fieldset>
                 </div>
 
                 <div className="pt-6 border-t border-gray-100 text-right">

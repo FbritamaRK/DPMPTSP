@@ -1,118 +1,214 @@
-import React from 'react';
+import { Clock, CheckCircle, Phone } from "lucide-react";
+
+
+const JAM_LAYANAN = [
+  { hari: "Senin – Kamis", jam: "07.30 – 15.30 WIB" },
+  { hari: "Jumat",         jam: "07.30 – 14.00 WIB" },
+  { hari: "Sabtu – Minggu", jam: "Tutup" },
+];
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen w-full flex items-center justify-center text-white overflow-hidden pt-20 pb-12" aria-label="Hero">
-      {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#1a365d] via-[#205284] to-[#00a8e8] z-0"></div>
-      
-      {/* Faint Background Image (Optional texture) */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center z-0 opacity-10 mix-blend-overlay"
-        style={{ 
-          
-          backgroundImage: 'url("https://images.unsplash.com/photo-1524230572899-a752b3835840?auto=format&fit=crop&q=80&w=1920")',
-        }}
-        aria-hidden="true"
-      />
-      
-      {/* Floating Line Art Shapes */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
+    <section
+      aria-labelledby="hero-heading"
+      className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden"
+    >
+      {/* ── FOTO LATAR PENUH */}
+      <div className="absolute inset-0 z-0" aria-hidden="true">
+        <img
+        src="https://images.unsplash.com/photo-1602057512587-76d5cc4b34e2?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        // "https://images.unsplash.com/photo-1524230572899-a752b3835840?auto=format&fit=crop&q=80&w=1920"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover object-center brightness-50 "
+        />
+
+        {/* Overlay — WCAG 1.4.3: teks putih kontras ≥4.5:1 */}
+        <div className="absolute inset-0 bg-black/40" />
+
+        {/* Vignet bawah agar konten tidak bersaing dengan divider */}
+        <div className="absolute bottom-0 inset-x-0 h-64
+                       bg-gradient-to-t from-black/70 to-transparent" />
+      </div>
+
+      {/* ── KONTEN UTAMA — TERPUSAT ── */}
+      <div className="relative z-10 flex flex-col items-center text-center
+                     px-4 sm:px-6 w-full max-w-4xl mx-auto pt-24 pb-40
+                     animate-[fadeInUp_0.8s_ease-out_both]">
         <style>{`
-          @keyframes float-slow {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
+          @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(28px); }
+            to   { opacity: 1; transform: translateY(0); }
           }
-          @keyframes float-sideways {
-            0%, 100% { transform: translateX(0) translateY(0); }
-            50% { transform: translateX(15px) translateY(-15px); }
+          @keyframes fadeInUp2 {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
           }
-          @keyframes spin-slow {
-            from { transform: rotate(45deg); }
-            to { transform: rotate(405deg); }
+          @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.92); }
+            to   { opacity: 1; transform: scale(1); }
           }
         `}</style>
 
-        {/* Circle - Gerakan Naik Turun Lembut */}
-        <svg 
-          className="absolute top-1/4 left-[20%] w-12 h-12 text-white/20 animate-[float-slow_6s_ease-in-out_infinite]" 
-          viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1"
+        {/* Logo / lambang (ganti dengan <img> lambang Gunungkidul) */}
+        <div
+          className="w-20 h-20 sm:w-24 sm:h-24 mb-6 rounded-full
+                     bg-white/15 border-2 border-white/30 backdrop-blur-sm
+                     flex items-center justify-center
+                     shadow-[0_0_40px_rgba(255,255,255,0.15)]
+                     animate-[scaleIn_0.6s_ease-out_0.1s_both]"
+          aria-hidden="true"
         >
-          <circle cx="12" cy="12" r="10" />
-        </svg>
-
-        {/* Square - Gerakan Diagonal */}
-        <svg 
-          className="absolute top-1/3 left-[50%] w-10 h-10 text-white/20 animate-[float-sideways_8s_ease-in-out_infinite]" 
-          viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1"
-        >
-          <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-        </svg>
-
-        {/* Diamond - Berputar Pelan */}
-        <svg 
-          className="absolute bottom-1/4 left-[15%] w-16 h-16 text-white/20 animate-[spin-slow_12s_linear_infinite]" 
-          viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1"
-        >
-          <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-        </svg>
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
-          {/* Left Text */}
-          <div className="lg:w-1/2 text-left">
-            <p className="text-white text-m md:text-xl mb-2 font-light tracking-wide">Selamat datang di situs web</p>
-            <h1 className="text-5x1 md:text-5xl lg:text-6x2 font-bold mb-8 leading-tight drop-shadow-lg">
-              Dinas Penanaman Modal<br />
-              dan Pelayanan Terpadu<br />
-              Satu Pintu <span className="text-[#ffca28]">Kabupaten Gunungkidul</span>
-            </h1>
-            
-        <div className="mb-10 inline-block bg-white/20 backdrop-blur-sm px-4 py-1 rounded-full border border-white/30 animate-[pulse-glow_3s_infinite]">
-          <style>{`
-            @keyframes float {
-              0%, 100% { transform: translateY(0); }
-              50% { transform: translateY(-10px); }
-            }
-            @keyframes pulse-glow {
-              0%, 100% { box-shadow: 0 0 0px rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.3); }
-              50% { box-shadow: 0 0 15px rgba(255,255,255,0.5); border-color: rgba(255,255,255,0.6); }
-            }
-          `}</style>
-
-         <span className="text-sm font-semibold tracking-wider uppercase text-gk-yellow drop-shadow-md">
-            Handal • Profesional • Akuntabel
-          </span>
+          {
+            <img src="https://dpmpt.gunungkidulkab.go.id/themes/smartadmin/landing/images/logo.png"
+                 alt="Lambang Kabupaten Gunungkidul"
+                 className="w-25 h-25 object-contain" />
+          }
         </div>
-      </div>
 
-          {/* Right Image */}
-          <div className="lg:w-1/2 flex justify-center lg:justify-end relative">
-            <div className="relative w-full max-w-lg aspect-[10/5] rounded-xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500 animate-[float_4s_ease-in-out_infinite]">
-                <img 
-                  src="https://bakpiakukustugu.co.id/uploads/11/2023-09/4_wisata_gunung_kidul.jpg" 
-                  alt="Gedung Pemerintahan" 
-                  className="w-full h-full object-cover"
+        {/* Sub-judul kecil */}
+        <p
+          className="text-white text-xs sm:text-sm font-semibold
+                     tracking-[0.18em] uppercase mb-3
+                     animate-[fadeInUp_0.7s_ease-out_0.2s_both]"
+        >
+          Pemerintah Kabupaten Gunungkidul
+        </p>
 
-                  style={{
-                    animation: `
-                      float 4s ease-in-out infinite,
-                    `
-                  }}
-                />
+        {/* JUDUL UTAMA */}
+        <h1
+          id="hero-heading"
+          className="text-white font-black leading-[1.1] mb-4
+                     text-3xl sm:text-4xl md:text-5xl lg:text-6xl
+                     drop-shadow-[0_2px_24px_rgba(0,0,0,0.5)]
+                     animate-[fadeInUp_0.7s_ease-out_0.3s_both]"
+          style={{ fontFamily: "'Georgia', 'Times New Roman', serif", letterSpacing: "-0.01em" }}
+        >
+          Selamat Datang di<br />
+          <span className="text-[#FFCA28]">DPMPTSP</span>
+        </h1>
+
+        {/* Sub-judul panjang */}
+        <p
+          className="text-white font-semibold text-base sm:text-lg md:text-xl
+                     font-light leading-snug mb-10 max-w-2xl
+                     animate-[fadeInUp_0.7s_ease-out_0.4s_both]"
+        >
+          Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu
+          <span className="block text-gray 900 text-sm sm:text-base mt-1 font-normal">
+            Kabupaten Gunungkidul, Daerah Istimewa Yogyakarta
+          </span>
+        </p>
+
+        {/* ── JAM BUKA LAYANAN KANTOR */}
+        <div
+          className="w-full max-w-lg animate-[fadeInUp_0.7s_ease-out_0.55s_both]"
+          role="region"
+          aria-label="Jam buka layanan kantor"
+        >
+          {/* Header kotak */}
+          <div
+            className="flex items-center justify-center gap-2 mb-0
+                       bg-[#023e70] text-white   px-6 py-3 rounded-t-2xl"
+          >
+            <Clock className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span className="text-sm font-black tracking-wide uppercase">
+              Jam Buka Layanan Kantor
+            </span>
+          </div>
+
+          {/* Baris jam */}
+          <div className="bg-white/70 backdrop-blur-md border border-white/20
+                         rounded-b-2xl overflow-hidden">
+            {JAM_LAYANAN.map((item, idx) => {
+              const isTutup = item.jam === "Tutup";
+              return (
+                <div
+                  key={item.hari}
+                  className={`flex items-center justify-between
+                             px-6 py-3.5 gap-4
+                             ${idx < JAM_LAYANAN.length - 1 ? "border-b border-white/10" : ""}
+                             ${isTutup ? "opacity-90" : ""}`}
+                >
+                  <span className="text-black text-sm font-medium text-left">
+                    {item.hari}
+                  </span>
+                  <span
+                    className={`text-sm font-bold tabular-nums
+                               ${isTutup ? "text-[#FF0000]" : "text-black"}`}
+                  >
+                    {item.jam}
+                  </span>
+                </div>
+              );
+            })}
+
+            {/* Footer kotak — kontak WA */}
+            <div className="flex items-center justify-center gap-2 px-6 py-3
+                           bg-white 30 border-t border-white/10">
+              <Phone className="w-3.5 h-3.5 text-white/50 flex-shrink-0" aria-hidden="true" />
+              <p className="text-black text-xs text-center">
+                Konsultasi:{" "}
+                <a
+                  href="https://wa.me/628112953451"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-black hover:text-[#FFCA28] transition-colors
+                             underline underline-offset-2
+                             focus-visible:outline-none focus-visible:ring-2
+                             focus-visible:ring-white focus-visible:rounded"
+                >
+                  0811-2953-451
+                  <span className="sr-only">(WhatsApp, membuka tab baru)</span>
+                </a>
+                {" "}·{" "}
+                <a
+                  href="tel:+62274391942"
+                  className="text-black hover:text-[#FFCA28] transition-colors
+                             underline underline-offset-2
+                             focus-visible:outline-none focus-visible:ring-2
+                             focus-visible:ring-white focus-visible:rounded"
+                >
+                  (0274) 391942
+                </a>
+              </p>
             </div>
           </div>
-        </div>
 
-       </div>
-      
-      {/* ── Angled divider ── */}
-      <div className="absolute bottom-12 left-0 right-0 pointer-events-none z-20" aria-hidden="true">
-        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" className="w-full h-8 md:h-12">
-          <path d="M0 60L1440 60L1440 20Z" fill="#f8fafc" />
-          <path d="M0 60L1440 20L1440 12L0 52Z" fill="#FFCA28" fillOpacity="0.6" />
+          {/* Badge di bawah kotak */}
+          <div className="flex flex-wrap items-center justify-center gap-4 mt-5">
+            {[
+              "Pelayanan Gratis",
+              "Terverifikasi OSS-RBA",
+              "Handal • Profesional • Akuntabel",
+            ].map((badge) => (
+              <span
+                key={badge}
+                className="inline-flex items-center gap-1.5
+                           text-white text-xs font-semibold"
+              >
+                <CheckCircle className="w-3.5 h-3.5 text-[#FFCA28] flex-shrink-0" aria-hidden="true" />
+                {badge}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ── ANGLED DIVIDER*/}
+      <div
+        className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none"
+        aria-hidden="true"
+      >
+        <svg
+          viewBox="0 0 1440 72"
+          preserveAspectRatio="none"
+          className="w-full h-12 sm:h-16 md:h-20 lg:h-[72px]"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          {/* Layer kuning  */}
+          <path d="M0 72 L1440 72 L1440 24 L0 60 Z" fill="#FFCA28" fillOpacity="0.55" />
+          {/* Layer putih/abu — lapisan utama */}
+          <path d="M0 72 L1440 72 L1440 36 L0 72 Z" fill="#f8fafc" />
         </svg>
       </div>
     </section>
@@ -120,4 +216,3 @@ const Hero = () => {
 };
 
 export default Hero;
-

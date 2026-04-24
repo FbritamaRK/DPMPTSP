@@ -6,6 +6,7 @@ import Services from './Services.tsx';
 import Stats from './Stats.tsx';
 import Investment from './Investment.tsx';
 import News from './News.tsx';
+import Banner from '../components/Banner.tsx';
 
 // Fix: Removed React.FC to avoid "Cannot find namespace 'React'" error
 const Home = () => {
@@ -27,6 +28,7 @@ const Home = () => {
   return (
     <main id="main-content">
       <Hero />
+      <Banner />
       <Services />
       <Stats />
       <Investment />

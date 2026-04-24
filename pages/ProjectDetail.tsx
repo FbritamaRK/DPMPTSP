@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { ArrowLeft, MapPin, TrendingUp, DollarSign, Clock, ShieldCheck, Download, ExternalLink, Info, CheckCircle, Zap, Droplets, HardHat, ChevronLeft, ChevronRight, FileText, Phone } from 'lucide-react';
@@ -113,7 +112,7 @@ const ProjectDetail = () => {
                   <img 
                     key={idx} 
                     src={img} 
-                    alt={`${(project as any).name} view ${idx + 1}`} 
+                    alt={`Foto ${(project as any).name} - Gambar ${idx + 1} dari ${((project as any).images || []).length}`}
                     className="w-full h-full object-cover shrink-0" 
                   />
                 ))}
@@ -254,7 +253,10 @@ const ProjectDetail = () => {
                    <Download size={20} className="text-gk-green" aria-hidden="true" /> Dokumen Penunjang
                  </h3>
                  <div className="space-y-4">
-                    <button className="w-full flex items-center justify-between p-4 rounded-xl border border-gray-100 hover:border-gk-green hover:bg-green-50 transition group text-left focus-visible:ring-2 focus-visible:ring-gk-green focus-visible:outline-none">
+                    <button 
+                      className="w-full flex items-center justify-between p-4 rounded-xl border border-gray-100 hover:border-gk-green hover:bg-green-50 transition group text-left focus-visible:ring-2 focus-visible:ring-gk-green focus-visible:outline-none"
+                      aria-label="Unduh Pre-Feasibility Study (PDF, 12.5 MB)"
+                    >
                        <div className="flex items-center gap-3">
                           <div className="w-10 h-10 bg-red-50 text-red-600 rounded flex items-center justify-center group-hover:scale-110 transition">
                              <FileText size={20} aria-hidden="true" />
@@ -266,7 +268,10 @@ const ProjectDetail = () => {
                        </div>
                        <Download size={18} className="text-gray-400" aria-hidden="true" />
                     </button>
-                    <button className="w-full flex items-center justify-between p-4 rounded-xl border border-gray-100 hover:border-gk-green hover:bg-green-50 transition group text-left focus-visible:ring-2 focus-visible:ring-gk-green focus-visible:outline-none">
+                    <button 
+                      className="w-full flex items-center justify-between p-4 rounded-xl border border-gray-100 hover:border-gk-green hover:bg-green-50 transition group text-left focus-visible:ring-2 focus-visible:ring-gk-green focus-visible:outline-none"
+                      aria-label="Unduh Site Plan dan Layout Proyek (JPG, 4.2 MB)"
+                    >
                        <div className="flex items-center gap-3">
                           <div className="w-10 h-10 bg-blue-50 text-blue-600 rounded flex items-center justify-center group-hover:scale-110 transition">
                              <MapPin size={20} aria-hidden="true" />
@@ -278,7 +283,10 @@ const ProjectDetail = () => {
                        </div>
                        <Download size={18} className="text-gray-400" aria-hidden="true" />
                     </button>
-                    <button className="w-full flex items-center justify-between p-4 rounded-xl border border-gray-100 hover:border-gk-green hover:bg-green-50 transition group text-left focus-visible:ring-2 focus-visible:ring-gk-green focus-visible:outline-none">
+                    <button 
+                      className="w-full flex items-center justify-between p-4 rounded-xl border border-gray-100 hover:border-gk-green hover:bg-green-50 transition group text-left focus-visible:ring-2 focus-visible:ring-gk-green focus-visible:outline-none"
+                      aria-label="Unduh Peraturan Zonasi Kawasan (PDF, 1.8 MB)"
+                    >
                        <div className="flex items-center gap-3">
                           <div className="w-10 h-10 bg-yellow-50 text-yellow-600 rounded flex items-center justify-center group-hover:scale-110 transition">
                              <Info size={20} aria-hidden="true" />

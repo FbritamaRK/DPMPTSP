@@ -20,10 +20,10 @@ const Footer: React.FC = () => {
               Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu Kabupaten Gunungkidul. Melayani dengan Sepenuh Hati, Cepat, dan Transparan.
             </p>
             <div className="flex space-x-4 pt-2">
-              <a href="#" className="hover:text-gk-yellow transition focus-visible:ring-2 focus-visible:ring-gk-blue rounded-sm" aria-label="Facebook"><Facebook size={20} aria-hidden="true" /></a>
-              <a href="#" className="hover:text-gk-yellow transition focus-visible:ring-2 focus-visible:ring-gk-blue rounded-sm" aria-label="Instagram"><Instagram size={20} aria-hidden="true" /></a>
-              <a href="#" className="hover:text-gk-yellow transition focus-visible:ring-2 focus-visible:ring-gk-blue rounded-sm" aria-label="Youtube"><Youtube size={20} aria-hidden="true" /></a>
-              <a href="#" className="hover:text-gk-yellow transition focus-visible:ring-2 focus-visible:ring-gk-blue rounded-sm" aria-label="Website Resmi"><Globe size={20} aria-hidden="true" /></a>
+              <a href="#" className="hover:text-gk-yellow transition focus-visible:ring-2 focus-visible:ring-gk-blue rounded-sm" aria-label="Halaman Facebook DPMPTSP Gunungkidul"><Facebook size={20} aria-hidden="true" /></a>
+              <a href="#" className="hover:text-gk-yellow transition focus-visible:ring-2 focus-visible:ring-gk-blue rounded-sm" aria-label="Halaman Instagram DPMPTSP Gunungkidul"><Instagram size={20} aria-hidden="true" /></a>
+              <a href="#" className="hover:text-gk-yellow transition focus-visible:ring-2 focus-visible:ring-gk-blue rounded-sm" aria-label="Channel YouTube DPMPTSP Gunungkidul"><Youtube size={20} aria-hidden="true" /></a>
+              <a href="#" className="hover:text-gk-yellow transition focus-visible:ring-2 focus-visible:ring-gk-blue rounded-sm" aria-label="Website Resmi DPMPTSP Gunungkidul"><Globe size={20} aria-hidden="true" /></a>
             </div>
           </div>
 

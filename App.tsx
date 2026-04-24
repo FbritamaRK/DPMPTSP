@@ -8,6 +8,8 @@ import Complaints from './pages/Complaints.tsx';
 import InvestmentProspectus from './pages/InvestmentProspectus.tsx';
 import ProjectDetail from './pages/ProjectDetail.tsx';
 import Footer from './pages/Footer.tsx';
+import Profil from './pages/Profile.tsx';
+
 
 function App() {
   return (
@@ -21,6 +23,7 @@ function App() {
             <Route path="/pengaduan" element={<Complaints />} />
             <Route path="/prospektus" element={<InvestmentProspectus />} />
             <Route path="/prospektus/:id" element={<ProjectDetail />} />
+            <Route path="/profil" element={<Profil />} />
           </Routes>
         </main>
         <Footer />
