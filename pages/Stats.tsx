@@ -142,11 +142,11 @@ const Stats = () => {
             </div>
             <div className="flex items-center gap-5 text-xs font-semibold" aria-hidden="true">
               <span className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-sm bg-slate-300 inline-block" />
+                <span className="w-3 h-3 rounded-sm bg-[#e5ff00] inline-block" />
                 Target
               </span>
               <span className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-sm bg-emerald-500 inline-block" />
+                <span className="w-3 h-3 rounded-sm bg-[#fd0101] inline-block" />
                 Realisasi
               </span>
             </div>
@@ -168,9 +168,9 @@ const Stats = () => {
                   tick={{ fontSize: 12, fill: '#374151' }}
                   tickFormatter={(v) => `${v}`}
                 />
-                <Tooltip content={<CustomTooltip />} cursor={{ fill: '#ffebeb', radius: 8 }} />
-                <Bar dataKey="target"    name="Target"    fill="#374151" radius={[6, 6, 0, 0]} maxBarSize={36} />
-                <Bar dataKey="realisasi" name="Realisasi" fill="#10b981" radius={[6, 6, 0, 0]} maxBarSize={36} />
+                <Tooltip content={<CustomTooltip />} cursor={{ fill: '#1a1a1a', radius: 8 }} />
+                <Bar dataKey="target"    name="Target"    fill="#e5ff00" radius={[6, 6, 0, 0]} maxBarSize={36} />
+                <Bar dataKey="realisasi" name="Realisasi" fill="#fd0101" radius={[6, 6, 0, 0]} maxBarSize={36} />
               </BarChart>
             </ResponsiveContainer>
           </div>

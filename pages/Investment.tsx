@@ -35,7 +35,7 @@ const Investment = () => {
         <div className="flex flex-col md:flex-row justify-between items-end mb-12">
           <div className="max-w-2xl">
             <h2 className="text-3xl font-bold sm:text-4xl text-white">Potensi Investasi Unggulan</h2>
-            <p className="mt-4 text-gray-400">Jelajahi peluang emas di Bumi Handayani. Kami menyediakan data dan fasilitasi bagi calon investor.</p>
+            <p className="mt-4 text-white">Jelajahi peluang emas di Bumi Handayani. Kami menyediakan data dan fasilitasi bagi calon investor.</p>
           </div>
           <div className="flex gap-4 mt-4 md:mt-0">
             <Button 
@@ -78,7 +78,7 @@ const Investment = () => {
         </div>
         
         <div className="mt-12 text-center">
-           <p className="text-gray-500 text-sm italic mb-4">Ingin berdiskusi lebih lanjut mengenai peluang investasi?</p>
+           <p className="text-white text-sm italic mb-4">Ingin berdiskusi lebih lanjut mengenai peluang investasi?</p>
            <Button 
              variant="outline" 
              className="rounded-full border-gk-yellow text-gk-yellow hover:bg-gk-yellow hover:text-gk-dark focus-visible:ring-gk-yellow focus-visible:ring-offset-gk-dark"

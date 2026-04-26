@@ -1,55 +1,20 @@
 import React, { useState, useId } from 'react';
 import {
-  Building2, Laptop, Stethoscope, Ruler,
-  Search, FileText, ArrowUpRight,
+  Briefcase,
+  FileText,
+  Map,
+  ArrowRight,
+  Search,
+  CheckCircle2,
+  Clock,
+  Phone
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
-const services = [
-  {
-    title: 'Produk Hukum & Regulasi',
-    description:
-      'Akses peraturan daerah, Perbup, SOP, dan dokumen hukum terkait perizinan yang berlaku di Kabupaten Gunungkidul.',
-    icon: Building2,
-    link: '#produk-hukum',
-    color: 'bg-emerald-50 text-emerald-700 border-emerald-100',
-    hoverBorder: 'hover:border-emerald-300',
-    badge: 'Regulasi',
-    badgeStyle: 'bg-emerald-100 text-emerald-800',
-  },
-  {
-    title: 'Prospek Investasi',
-    description:
-      'Data kelayakan finansial, NPV, IRR, dan peluang investasi strategis di berbagai sektor unggulan Gunungkidul.',
-    icon: Stethoscope,
-    link: '#prospektus',
-    color: 'bg-sky-50 text-sky-700 border-sky-100',
-    hoverBorder: 'hover:border-sky-300',
-    badge: 'Investasi',
-    badgeStyle: 'bg-sky-100 text-sky-800',
-  },
-  {
-    title: 'Layanan Pengaduan',
-    description:
-      'Sampaikan keluhan, saran, dan aspirasi Anda. Tiket tercatat dan dapat dilacak secara real-time.',
-    icon: Ruler,
-    link: '#pengaduan',
-    color: 'bg-amber-50 text-amber-700 border-amber-100',
-    hoverBorder: 'hover:border-amber-300',
-    badge: 'Pengaduan',
-    badgeStyle: 'bg-amber-100 text-amber-800',
-  },
-  {
-    title: 'OSS RBA',
-    description:
-      'Perizinan Berusaha Berbasis Risiko terintegrasi nasional. Urus NIB dan izin usaha Anda secara elektronik.',
-    icon: Laptop,
-    link: 'https://oss.go.id',
-    external: true,
-    color: 'bg-violet-50 text-violet-700 border-violet-100',
-    hoverBorder: 'hover:border-violet-300',
-    badge: 'Eksternal',
-    badgeStyle: 'bg-violet-100 text-violet-800',
-  },
+const JAM_LAYANAN = [
+  { hari: "Senin – Kamis", jam: "07.30 - 15.30", bg: "bg-slate-800" },
+  { hari: "Jumat",         jam: "07.30 - 14.00", bg: "bg-slate-800" },
+  { hari: "Sabtu – Minggu", jam: "Tutup", bg: "bg-emerald-900/40 text-emerald-400 border border-emerald-900/50" },
 ];
 
 const Services = () => {
@@ -65,129 +30,202 @@ const Services = () => {
   return (
     <section
       id="layanan"
-      className="py-20 bg-slate-50"
+      className="py-24 bg-slate-50"
       aria-labelledby="layanan-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Top Section: Header, Tracking, and Office Hours */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-16">
+          
+          {/* Left Column: Heading & Tracking */}
+          <div className="lg:col-span-7 xl:col-span-8 flex flex-col justify-center">
+            <div className="mb-8">
+              <span className="inline-block text-emerald-600 text-sm font-bold tracking-widest uppercase mb-3">
+                Layanan Kami
+              </span>
+              <h2
+                id="layanan-heading"
+                className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight mb-6 leading-tight"
+              >
+                Akses Layanan<br className="hidden md:block"/>Publik Terpadu
+              </h2>
+              <p className="text-slate-600 text-lg leading-relaxed max-w-xl font-medium">
+                Platform digital yang memudahkan pelaku usaha dalam mengelola perizinan dan memantau status aplikasi secara real-time.
+              </p>
+            </div>
 
-        {/* Section header */}
-        <div className="text-center mb-14">
-          <span className="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full mb-4">
-            Layanan Kami
-          </span>
-          <h2
-            id="layanan-heading"
-            className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight"
-          >
-            Layanan DPMPTSP
-          </h2>
-          <p className="mt-4 text-lg text-[#374151] max-w-xl mx-auto">
-            Akses berbagai layanan DPMPTSP secara online, transparan, dan mudah.
-          </p>
-          <div className="mt-5 flex items-center justify-center gap-3" aria-hidden="true">
-            <div className="h-px w-12 bg-slate-200" />
-            <div className="w-2 h-2 rounded-full bg-emerald-500" />
-            <div className="h-px w-12 bg-slate-200" />
+            {/* Berkas tracking */}
+            <form
+              onSubmit={handleTrack}
+              aria-label="Lacak status berkas perizinan"
+              className="flex flex-col sm:flex-row gap-3 bg-white p-3 rounded-2xl shadow-sm border border-slate-200 w-full max-w-2xl"
+            >
+               <div className="flex items-center pl-4 bg-slate-50 rounded-xl flex-1 border border-slate-100 focus-within:border-emerald-500 focus-within:ring-1 focus-within:ring-emerald-500 transition-all">
+                  <FileText size={20} className="text-slate-400 shrink-0" aria-hidden="true" />
+                  <input
+                    id={inputId}
+                    type="text"
+                    value={trackId}
+                    onChange={(e) => setTrackId(e.target.value)}
+                    placeholder="Lacak ID Berkas (e.g. GK-24-123)"
+                    className="w-full bg-transparent text-slate-900 placeholder:text-slate-400 outline-none py-3.5 px-4 font-bold uppercase tracking-wide"
+                  />
+               </div>
+               <button
+                  type="submit"
+                  disabled={!trackId.trim()}
+                  className="shrink-0 flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-200 disabled:text-slate-400 disabled:cursor-not-allowed text-white px-8 py-3.5 rounded-xl font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2"
+                  aria-label="Lacak berkas"
+                >
+                  <Search size={18} aria-hidden="true" />
+                  Lacak
+                </button>
+            </form>
+          </div>
+
+          {/* Right Column: Office Hours Widget */}
+          <div className="lg:col-span-5 xl:col-span-4">
+             <div className="bg-slate-900 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden h-full flex flex-col justify-center border border-slate-800">
+                {/* Decorative background shapes */}
+                <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl -mx-10 -my-10 pointer-events-none"></div>
+                <div className="absolute bottom-0 left-0 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl -mx-10 -my-10 pointer-events-none"></div>
+                
+                <div className="relative z-10">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-10 h-10 bg-emerald-500/20 text-emerald-400 rounded-xl flex items-center justify-center shrink-0">
+                      <Clock size={20} />
+                    </div>
+                    <div>
+                      <h3 className="text-white font-bold text-lg leading-tight">Jam Buka Layanan</h3>
+                      <p className="text-slate-400 text-xs font-medium uppercase tracking-wider">Kantor DPMPTSP</p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-3 mb-8">
+                    {JAM_LAYANAN.map((item, idx) => {
+                      const isTutup = item.jam === "Tutup";
+                      return (
+                        <div key={idx} className={`flex items-center justify-between px-4 py-3.5 rounded-xl ${item.bg || 'bg-slate-800'}`}>
+                          <span className="text-slate-300 font-medium text-sm">{item.hari}</span>
+                          <span className={`font-black text-sm tabular-nums tracking-wide ${isTutup ? "text-emerald-400" : "text-white"}`}>
+                            {item.jam} {isTutup ? '' : 'WIB'}
+                          </span>
+                        </div>
+                      )
+                    })}
+                  </div>
+
+                  <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4 flex items-center gap-4">
+                    <div className="w-10 h-10 bg-slate-700 rounded-full flex items-center justify-center shrink-0 text-slate-300">
+                      <Phone size={18} />
+                    </div>
+                    <div>
+                      <p className="text-slate-400 text-xs font-medium mb-0.5">Konsultasi via Telepon</p>
+                      <a href="tel:+62274391942" className="text-emerald-400 font-bold hover:text-emerald-300 transition-colors">
+                        (0274) 391942
+                      </a>
+                    </div>
+                  </div>
+                </div>
+             </div>
           </div>
         </div>
 
-        {/* Berkas tracking */}
-        <div className="mb-14 max-w-xl mx-auto">
-          <form
-            onSubmit={handleTrack}
-            aria-label="Lacak status berkas perizinan"
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr">
+          
+          {/* Card 1: OSS (Top Left, 2 cols) */}
+          <a
+            href="https://oss.go.id"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="md:col-span-2 group bg-white rounded-3xl p-8 border border-slate-200 hover:border-emerald-500 hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-300 flex flex-col justify-between overflow-hidden relative"
           >
-            <label
-              htmlFor={inputId}
-              className="block text-sm font-semibold text-[#374151] mb-2 text-center"
-            >
-              Lacak Status Berkas Anda
-            </label>
-            <div className="flex gap-2 bg-white rounded-xl border border-slate-200 shadow-md p-2 focus-within:ring-2 focus-within:ring-emerald-500 focus-within:border-emerald-400 transition-all">
-              <div className="flex items-center pl-2">
-                <FileText size={18} className="text-slate-400" aria-hidden="true" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-emerald-50 to-transparent rounded-full -translate-y-1/2 translate-x-1/4 opacity-50 group-hover:scale-150 transition-transform duration-700"></div>
+            <div>
+              <div className="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center mb-6 text-emerald-600 group-hover:scale-110 transition-transform duration-300">
+                 <Briefcase size={24} />
               </div>
-              <input
-                id={inputId}
-                type="text"
-                value={trackId}
-                onChange={(e) => setTrackId(e.target.value)}
-                placeholder="Masukkan Nomor Pendaftaran..."
-                className="flex-1 bg-transparent text-sm text-[#374151] placeholder:text-[#374151] outline-none py-2 px-2"
-                aria-describedby="track-hint"
-              />
-              <button
-                type="submit"
-                disabled={!trackId.trim()}
-                className="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
-                aria-label="Lacak berkas"
-              >
-                <Search size={16} aria-hidden="true" />
-                <span>Lacak</span>
-              </button>
+              <h3 className="text-2xl font-bold text-slate-900 mb-3 tracking-tight group-hover:text-emerald-700 transition-colors">Sistem Perizinan OSS</h3>
+              <p className="text-slate-600 max-w-sm leading-relaxed mb-8">
+                Integrasi satu pintu untuk semua jenis izin usaha di wilayah Kabupaten Gunungkidul.
+              </p>
             </div>
-            <p id="track-hint" className="text-center text-xs text-[#374151] mt-2">
-              Contoh: 001/IMB/2024
-            </p>
-          </form>
+            <div className="flex items-center text-emerald-600 font-bold text-sm">
+              Pelajari Selengkapnya
+              <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </a>
+
+          {/* Card 2: Peta (Top Right, 1 col) */}
+          <Link
+            to="/prospektus"
+            className="md:col-span-1 group bg-[#1e293b] rounded-3xl p-8 border border-slate-700 hover:border-slate-500 hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden relative"
+          >
+            <div>
+              <div className="w-12 h-12 bg-slate-800 rounded-2xl flex items-center justify-center mb-6 text-[#93c5fd] group-hover:scale-110 transition-transform duration-300">
+                 <Map size={24} />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-3 tracking-tight group-hover:text-[#bae6fd] transition-colors">Peta Potensi</h3>
+              <p className="text-slate-400 leading-relaxed mb-8 text-sm">
+                Visualisasi data spasial untuk membantu investor memilih lokasi strategis.
+              </p>
+            </div>
+            <div className="w-full bg-[#86efac] text-emerald-950 font-bold text-center py-3.5 rounded-xl group-hover:bg-[#4ade80] transition-colors">
+              Buka Peta
+            </div>
+          </Link>
+
+          {/* Card 3: Regulasi (Bottom Left, 1 col) */}
+          <Link
+            to="/legal"
+            className="md:col-span-1 group bg-white rounded-3xl p-8 border border-slate-200 hover:border-emerald-500 hover:shadow-xl transition-all duration-300 flex flex-col"
+          >
+             <div className="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center mb-6 text-emerald-600 group-hover:scale-110 transition-transform duration-300">
+                 <FileText size={24} />
+             </div>
+             <h3 className="text-xl font-bold text-slate-900 mb-3 tracking-tight group-hover:text-emerald-700 transition-colors">Regulasi & Panduan</h3>
+             <p className="text-slate-500 leading-relaxed mb-6 text-sm">
+               Unduh dokumen hukum dan panduan teknis penanaman modal.
+             </p>
+             <ul className="space-y-3 mt-auto">
+               <li className="flex items-center text-sm font-medium text-slate-700 gap-2">
+                 <CheckCircle2 size={16} className="text-emerald-500 mt-0.5" />
+                 Perda No. 5 Tahun 2023
+               </li>
+               <li className="flex items-center text-sm font-medium text-slate-700 gap-2">
+                 <CheckCircle2 size={16} className="text-emerald-500 mt-0.5" />
+                 Panduan OSS RBA
+               </li>
+             </ul>
+          </Link>
+
+          {/* Card 4: Pengaduan (Bottom Right, 2 cols) */}
+          <Link
+            to="/pengaduan"
+            className="md:col-span-2 group relative bg-slate-900 rounded-3xl p-8 border border-slate-200 hover:border-emerald-500 hover:shadow-xl transition-all duration-300 flex flex-col justify-end overflow-hidden min-h-[300px]"
+          >
+            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1920')] bg-cover bg-center transition-transform duration-700 group-hover:scale-105"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent"></div>
+            
+            <div className="relative z-10">
+              <h3 className="text-2xl font-bold text-white mb-2 tracking-tight group-hover:text-emerald-300 transition-colors">Layanan Pengaduan</h3>
+              <p className="text-slate-300 leading-relaxed mb-6 max-w-md text-sm">
+                Sampaikan aspirasi atau keluhan layanan Anda secara langsung.
+              </p>
+              <div className="flex gap-3">
+                <span className="bg-emerald-900/50 text-emerald-400 border border-emerald-800/50 px-4 py-1.5 rounded-lg text-xs font-bold tracking-wider uppercase backdrop-blur-md">
+                  Respon 24 Jam
+                </span>
+                <span className="bg-slate-800/50 text-slate-300 border border-slate-700 px-4 py-1.5 rounded-lg text-xs font-bold tracking-wider uppercase backdrop-blur-md">
+                  Bebas Biaya
+                </span>
+              </div>
+            </div>
+          </Link>
+
         </div>
-
-        {/* Service cards */}
-        <ul
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
-          role="list"
-          aria-label="Daftar layanan"
-        >
-          {services.map((service) => {
-            const Icon = service.icon;
-            return (
-              <li key={service.title} role="listitem">
-                <a
-                  href={service.link}
-                  {...(service.external
-                    ? { target: '_blank', rel: 'noopener noreferrer' }
-                    : {})}
-                  className={`group relative flex gap-5 items-start bg-white rounded-2xl border border-slate-200 ${service.hoverBorder} hover:shadow-lg p-6 md:p-7 transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2`}
-                  aria-label={`${service.title}${service.external ? ' (tautan eksternal, terbuka di tab baru)' : ''}`}
-                >
-                  {/* Icon */}
-                  <div
-                    className={`flex-shrink-0 w-14 h-14 rounded-xl border flex items-center justify-center ${service.color} transition-transform group-hover:scale-110 duration-300`}
-                    aria-hidden="true"
-                  >
-                    <Icon size={26} />
-                  </div>
-
-                  {/* Text */}
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-start justify-between gap-2 mb-2">
-                      <h3 className="text-base font-bold text-slate-900 group-hover:text-emerald-700 transition-colors leading-snug">
-                        {service.title}
-                      </h3>
-                      <span
-                        className={`flex-shrink-0 text-[10px] font-bold px-2 py-0.5 rounded-full ${service.badgeStyle}`}
-                        aria-hidden="true"
-                      >
-                        {service.badge}
-                      </span>
-                    </div>
-                    <p className="text-sm text-black leading-relaxed mb-4">
-                      {service.description}
-                    </p>
-                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#005C35] group-hover:text-emerald-700 transition-colors">
-                      Akses Layanan
-                      <ArrowUpRight
-                        size={15}
-                        aria-hidden="true"
-                        className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                      />
-                    </span>
-                  </div>
-                </a>
-              </li>
-            );
-          })}
-        </ul>
       </div>
     </section>
   );

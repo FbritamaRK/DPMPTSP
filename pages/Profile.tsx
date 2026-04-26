@@ -176,18 +176,6 @@ const Profile = () => {
         aria-labelledby="page-heading"
         className="bg-[#0b1f4e] border-b-4 border-gk-blue"
       >
-        {/* Top micro-bar — like gov.sg "Official Government Site" */}
-        <div className="bg-[#071440] px-4 sm:px-6 lg:px-8 py-2">
-          <div className="max-w-7xl mx-auto flex items-center gap-2">
-            <div
-              className="w-4 h-4 rounded-sm bg-gk-blue flex-shrink-0"
-              aria-hidden="true"
-            />
-            <p className="text-[11px] text-blue-200/70 font-medium tracking-wide">
-              Situs Resmi Pemerintah Kabupaten Gunungkidul, Daerah Istimewa Yogyakarta
-            </p>
-          </div>
-        </div>
 
         {/* Main header content */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14">
@@ -694,18 +682,15 @@ const Profile = () => {
                 role="img"
                 aria-label="Peta lokasi kantor DPMPTSP Gunungkidul — Jl. Kasatrian No.38 Wonosari"
               >
-                {/*
-                  Ganti blok ini dengan Google Maps iframe:
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=..."
-                    className="w-full h-full border-0" loading="lazy"
-                    title="Peta lokasi DPMPTSP Gunungkidul"
-                    allowFullScreen
-                  />
-                */}
-                <MapPin className="w-8 h-8 text-gray-300" aria-hidden="true" />
-                <p className="text-sm text-gray-400">Peta Lokasi</p>
-                <p className="text-xs text-gray-400">Ganti dengan Google Maps embed</p>
+                {<iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63258.95076582807!2d110.44121715478565!3d-7.716969546178236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7bb3444ca72631%3A0xb104709a5322f518!2sDinas%20Penanaman%20Modal%20dan%20Pelayanan%20Terpadu%20Satu%20Pintu%20(%20DPMPTSP%20)%20Kabupaten%20Gunungkidul!5e0!3m2!1sen!2sid!4v1777033011394!5m2!1sen!2sid" 
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0 }} 
+                  allowFullScreen={true} 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>}
               </div>
             </Section>
 

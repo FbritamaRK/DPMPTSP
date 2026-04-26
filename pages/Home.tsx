@@ -1,12 +1,26 @@
 
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { motion } from 'motion/react';
 import Hero from './Hero.tsx';
+import Banner from '../components/Banner.tsx';
 import Services from './Services.tsx';
 import Stats from './Stats.tsx';
 import Investment from './Investment.tsx';
 import News from './News.tsx';
-import Banner from '../components/Banner.tsx';
+
+const FadeInSection = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 // Fix: Removed React.FC to avoid "Cannot find namespace 'React'" error
 const Home = () => {
@@ -28,14 +42,23 @@ const Home = () => {
   return (
     <main id="main-content">
       <Hero />
-      <Banner />
-      <Services />
-      <Stats />
-      <Investment />
-      <News />
+      <FadeInSection>
+        <Banner />
+      </FadeInSection>
+      <FadeInSection>
+        <Services />
+      </FadeInSection>
+      <FadeInSection>
+        <Stats />
+      </FadeInSection>
+      <FadeInSection>
+        <Investment />
+      </FadeInSection>
+      <FadeInSection>
+        <News />
+      </FadeInSection>
     </main>
   );
 };
 
 export default Home;
-

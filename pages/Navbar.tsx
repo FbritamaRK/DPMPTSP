@@ -63,7 +63,7 @@ const Navbar = () => {
   };
 
   const navBg = isScrolled || !isHome
-    ? 'bg-[#111827] backdrop-blur-md shadow-sm border-b border-slate-100'
+    ? 'bg-[#1a1a1a] backdrop-blur-md shadow-sm border-b border-slate-100'
     : 'bg-transparent';
 
   const textColor = isScrolled || !isHome ? 'text-white ' : 'text-white';
@@ -169,7 +169,7 @@ const Navbar = () => {
 
                 <button
                   onClick={() => navigate('/pengaduan')}
-                  className="ml-3 flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white px-4 py-2 rounded-full text-sm font-semibold transition-all shadow-md hover:shadow-lg hover:-translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
+                  className="ml-3 flex items-center gap-2 bg-[#1e40af] hover:bg-[#1e40af]/90 active:bg-emerald-800 text-white px-4 py-2 rounded-full text-sm font-semibold transition-all shadow-md hover:shadow-lg hover:-translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
                 >
                   <Phone size={14} aria-hidden="true" />
                   Pengaduan
