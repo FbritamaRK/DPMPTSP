@@ -174,7 +174,7 @@ const LegalProducts = () => {
                     {/* Sidebar Desktop */}
                     <div className="w-full lg:w-72 shrink-0 space-y-6">
                         <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
-                            <h3 className="font-bold text-slate-800 text-base mb-5">Filter Kategori</h3>
+                            <h2 className="font-bold text-slate-800 text-base mb-5">Filter Kategori</h2>
                             <div className="space-y-4">
                                 {categories.map((cat) => (
                                     <label key={cat} className="flex items-center gap-3 cursor-pointer group">
@@ -183,7 +183,7 @@ const LegalProducts = () => {
                                                 type="checkbox" 
                                                 checked={selectedCategory === cat}
                                                 onChange={() => handleChangeCategory(cat)}
-                                                className="w-4 h-4 rounded border-slate-300 text-[#0f172a] focus:ring-[#0f172a] transition-colors appearance-none peer checked:bg-[#15803d] checked:border-[#15803d]"
+                                                className="w-4 h-4 rounded border-black text-[#0f172a] focus:ring-[#0f172a] transition-colors appearance-none peer checked:bg-[#15803d] checked:border-[#15803d]"
                                             />
                                             {selectedCategory === cat && (
                                                 <svg className="absolute w-3 h-3 text-white pointer-events-none" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -198,10 +198,19 @@ const LegalProducts = () => {
                                 ))}
                             </div>
 
-                            <div className="mt-8 pt-6 border-t border-slate-100">
-                                <h4 className="text-xs font-bold text-slate-800 mb-3">Tahun Penerbitan</h4>
+                            {/* Filter Tahun Penerbitan */}
+                           <div className="mt-8 pt-6 border-t border-slate-100">
+                                {/* Mengubungkan 'htmlFor' dengan 'id' pada select */}
+                                <label 
+                                    htmlFor="tahun-penerbitan" 
+                                    className="block text-xs font-bold text-slate-800 mb-3"
+                                >
+                                    Tahun Penerbitan
+                                </label>
+                                
                                 <div className="relative">
                                     <select 
+                                        id="tahun-penerbitan" // ID harus unik
                                         value={selectedYear}
                                         onChange={(e) => setSelectedYear(e.target.value)}
                                         className="w-full bg-slate-50 border border-slate-200 rounded-lg pl-3 pr-10 py-2.5 text-sm text-slate-700 outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-400 appearance-none font-medium"
@@ -230,9 +239,9 @@ const LegalProducts = () => {
                             <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/60 to-transparent"></div>
                             <div className="absolute inset-0 p-6 flex flex-col justify-end">
                                 <span className="text-[#86efac] font-bold text-xs mb-2">Bantuan Hukum</span>
-                                <h4 className="text-white font-bold text-lg leading-snug mb-5">
+                                <h3 className="text-white font-bold text-lg leading-snug mb-5">
                                     Butuh bantuan interpretasi hukum?
-                                </h4>
+                                </h3>
                                 <a href="#" className="inline-flex items-center gap-2 text-sm text-white font-bold hover:text-[#86efac] transition-colors w-fit">
                                     Hubungi Kami <ArrowRight size={16} />
                                 </a>
@@ -250,6 +259,7 @@ const LegalProducts = () => {
                                 placeholder="Cari judul, nomor, atau kata kunci peraturan..." 
                                 className="w-full pl-11 pr-24 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-1 focus:ring-[#0f172a] focus:border-[#0f172a] bg-white text-sm font-medium placeholder:text-slate-400" 
                                 value={searchTerm}
+                                aria-label="Cari judul, nomor, atau kata kunci peraturan.."
                                 onChange={(e) => setSearchTerm(e.target.value)}
                             />
                             <button className="absolute right-1.5 top-1/2 -translate-y-1/2 bg-[#0f172a] text-white px-5 py-2 rounded-lg text-xs font-bold hover:bg-slate-800 transition-colors">
@@ -326,13 +336,13 @@ const LegalProducts = () => {
                             <div className="flex flex-col sm:flex-row justify-between items-center sm:items-end text-xs text-slate-500 font-medium pt-8 pb-4 gap-4">
                                 <span className="opacity-0 hidden sm:block">Menampilkan {filteredDocs.length} dari 156 dokumen</span>
                                 <div className="flex gap-1.5 self-center sm:self-end">
-                                    <button className="w-8 h-8 flex items-center justify-center rounded border border-slate-200 bg-white hover:bg-slate-50 text-slate-400 hover:text-slate-600 transition-colors">
+                                    <button className="w-8 h-8 flex items-center justify-center rounded border border-slate-200 bg-white hover:bg-slate-50 text-[#] hover:text-slate-600 transition-colors">
                                         <ChevronLeft size={16} />
                                     </button>
                                     <button className="w-8 h-8 flex items-center justify-center rounded bg-[#0f172a] text-white font-bold shadow-sm">1</button>
                                     <button className="w-8 h-8 flex items-center justify-center rounded border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-medium transition-colors">2</button>
                                     <button className="w-8 h-8 flex items-center justify-center rounded border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-medium transition-colors">3</button>
-                                    <button className="w-8 h-8 flex items-center justify-center rounded border border-slate-200 bg-white hover:bg-slate-50 text-slate-400 hover:text-slate-600 transition-colors">
+                                    <button className="w-8 h-8 flex items-center justify-center rounded border border-slate-200 bg-white hover:bg-slate-50 text-[#374151] hover:text-slate-600 transition-colors">
                                         <ChevronRight size={16} />
                                     </button>
                                 </div>

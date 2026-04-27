@@ -57,6 +57,7 @@ const Investment = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-90" />
               
+              
               <div className="absolute bottom-0 left-0 p-6 w-full">
                 <div className="text-gk-yellow text-xs font-bold uppercase tracking-wider mb-2">{sector.stats}</div>
                 <h3 className="text-xl font-bold mb-2 group-hover:text-gk-yellow transition-colors">{sector.title}</h3>

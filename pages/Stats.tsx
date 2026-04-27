@@ -142,11 +142,11 @@ const Stats = () => {
             </div>
             <div className="flex items-center gap-5 text-xs font-semibold" aria-hidden="true">
               <span className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-sm bg-[#e5ff00] inline-block" />
+                <span className="w-3 h-3 rounded-sm bg-[#B45309] inline-block" />
                 Target
               </span>
               <span className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-sm bg-[#fd0101] inline-block" />
+                <span className="w-3 h-3 rounded-sm bg-[#1E40AF] inline-block" />
                 Realisasi
               </span>
             </div>
@@ -160,17 +160,17 @@ const Stats = () => {
                   dataKey="year"
                   axisLine={false}
                   tickLine={false}
-                  tick={{ fontSize: 13, fill: '#64748b', fontWeight: 500 }}
+                  tick={{ fontSize: 13, fill: '#000000', fontWeight: 500 }}
                 />
                 <YAxis
                   axisLine={false}
                   tickLine={false}
-                  tick={{ fontSize: 12, fill: '#374151' }}
+                  tick={{ fontSize: 12, fill: '#000000' }}
                   tickFormatter={(v) => `${v}`}
                 />
-                <Tooltip content={<CustomTooltip />} cursor={{ fill: '#1a1a1a', radius: 8 }} />
-                <Bar dataKey="target"    name="Target"    fill="#e5ff00" radius={[6, 6, 0, 0]} maxBarSize={36} />
-                <Bar dataKey="realisasi" name="Realisasi" fill="#fd0101" radius={[6, 6, 0, 0]} maxBarSize={36} />
+                <Tooltip content={<CustomTooltip />} cursor={{ fill: '#EBF2F9', radius: 8 }} />
+                <Bar dataKey="target"    name="Target"    fill="#B45309" radius={[6, 6, 0, 0]} maxBarSize={36} />
+                <Bar dataKey="realisasi" name="Realisasi" fill="#1E40AF" radius={[6, 6, 0, 0]} maxBarSize={36} />
               </BarChart>
             </ResponsiveContainer>
           </div>
