@@ -116,7 +116,7 @@ const Complaints = () => {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 relative z-10">
           <div className="max-w-3xl">
-            <div className="flex items-center gap-2 mb-4 text-[#94a3b8] font-bold text-sm tracking-wide uppercase">
+            <div className="flex items-center gap-2 mb-4 text-white font-bold text-sm tracking-wide uppercase">
               <MessageSquare size={18} />
               <span>Layanan Pengaduan</span>
             </div>
@@ -182,7 +182,7 @@ const Complaints = () => {
               </motion.div>
             )}
 
-            <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm" noValidate>
+            <form onSubmit={handleSubmit} className="bg-white/90 rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm" noValidate>
               <div className="flex sm:items-center justify-between flex-col sm:flex-row gap-4 mb-8">
                 <div className="flex items-center gap-4">
                   <div className="bg-[#dcfce3] p-3.5 rounded-xl text-[#16a34a]">
@@ -196,7 +196,7 @@ const Complaints = () => {
                 <button
                   type="button"
                   onClick={handleFillExample}
-                  className="inline-flex items-center justify-center text-xs font-bold text-emerald-700 bg-emerald-50 px-4 py-2 rounded-lg border border-emerald-200 hover:bg-emerald-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 whitespace-nowrap"
+                  className="inline-flex items-center justify-center text-xs font-bold text-[#1A1A1A] bg-white px-4 py-2 rounded-lg border border-[#DC2626] hover:bg-[#FEF2F2] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 whitespace-nowrap"
                 >
                   Gunakan Data Contoh
                 </button>
@@ -412,7 +412,7 @@ const Complaints = () => {
                   <Info size={20} className="text-[#16a34a]" aria-hidden="true" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-[#16a34a] text-sm mb-1.5">Penting</h4>
+                  <h4 className="font-bold text-Black text-sm mb-1.5">Penting</h4>
                   <p className="text-[#14532d] text-xs font-medium leading-relaxed">
                     Setiap pengaduan akan diverifikasi dalam waktu maksimal <span className="font-bold">2x24 jam kerja</span>. Pastikan data yang Anda berikan valid untuk mempermudah koordinasi.
                   </p>
@@ -455,6 +455,7 @@ const Complaints = () => {
               onChange={(e) => setTrackId(e.target.value)}
               placeholder="ADU-2023-001"
               className="flex-1 w-full border border-slate-300 rounded-lg px-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-[#0f172a] text-slate-900 font-medium disabled:opacity-50"
+              aria-label='Lacak Status Tiket Anda'
               disabled={isCheckingTicket}
             />
             <button 
@@ -467,7 +468,7 @@ const Complaints = () => {
             </button>
           </form>
           <div className="mt-3">
-            <p className="text-xs text-slate-400 font-medium">Contoh: <button type="button" onClick={() => setTrackId('ADU-2024-8899')} className="text-emerald-600 hover:underline">ADU-2024-8899</button></p>
+            <p className="text-xs text-black font-medium">Contoh: <button type="button" onClick={() => setTrackId('ADU-2024-8899')} className="text-[#DC2626] hover:underline">ADU-2024-8899</button></p>
           </div>
         </div>
 
@@ -480,7 +481,7 @@ const Complaints = () => {
           >
             <div className="flex flex-col md:flex-row justify-between md:items-center mb-8 border-b border-slate-100 pb-6 gap-4">
               <div>
-                <span className="bg-[#bbf7d0] text-[#16a34a] px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full inline-block mb-3">Hasil Pencarian</span>
+                <span className="bg-[#ECFDF5] text-[#047857] px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full inline-block mb-3">Hasil Pencarian</span>
                 <h3 className="text-3xl font-black text-slate-900">Registrasi<br className="hidden md:block"/>#{ticketResult.ticketNo}</h3>
               </div>
               <div className="text-left md:text-right">
@@ -525,7 +526,7 @@ const Complaints = () => {
                       <Hourglass size={14} strokeWidth={2.5} />
                     </div>
                     <div className="pb-8">
-                      <h4 className="font-bold text-[#16a34a] text-base mb-1.5">Dalam Proses Teknis</h4>
+                      <h4 className="font-bold text-[#047857] text-base mb-1.5">Dalam Proses Teknis</h4>
                       <p className="text-sm text-slate-500 leading-relaxed font-medium mb-3">Saat ini berkas sedang dalam tinjauan lapangan atau penilaian teknis oleh tim terkait.</p>
                       <div className="bg-slate-50 border-l-2 border-slate-300 p-3 italic text-xs text-slate-600 font-medium rounded-r-lg">
                         Estimasi penyelesaian: 2-3 hari kerja mendatang.
@@ -562,7 +563,7 @@ const Complaints = () => {
               <div className="lg:col-span-5 flex flex-col gap-6">
                 
                 {/* Registration Info Guide */}
-                <div className="border border-[#bbf7d0] rounded-xl overflow-hidden bg-[#f0fdf4] shadow-sm">
+                <div className="border border-[#bbf7d0] rounded-xl overflow-hidden bg-[#ECFDF5] shadow-sm">
                   <div className="bg-[#bbf7d0] px-4 py-3 flex items-center gap-2">
                     <HelpCircle size={16} className="text-[#16a34a]" />
                     <h5 className="font-bold text-[#14532d] text-xs uppercase tracking-wide">Cara Menemukan No. Registrasi</h5>
@@ -574,16 +575,16 @@ const Complaints = () => {
                     </div>
                     <ul className="space-y-3">
                       <li className="flex gap-3 items-start">
-                        <span className="text-[#16a34a] font-bold text-sm">1.</span>
-                        <p className="text-sm text-[#14532d] font-medium leading-tight">Buka email konfirmasi pendaftaran Anda.</p>
+                        <span className="text-[#047857] font-bold text-sm">1.</span>
+                        <p className="text-sm text-[#047857] font-medium leading-tight">Buka email konfirmasi pendaftaran Anda.</p>
                       </li>
                       <li className="flex gap-3 items-start">
-                        <span className="text-[#16a34a] font-bold text-sm">2.</span>
-                        <p className="text-sm text-[#14532d] font-medium leading-tight">Cari Tanda Terima Permohonan yang diberikan petugas saat pendaftaran offline.</p>
+                        <span className="text-[#047857] font-bold text-sm">2.</span>
+                        <p className="text-sm text-[#047857] font-medium leading-tight">Cari Tanda Terima Permohonan yang diberikan petugas saat pendaftaran offline.</p>
                       </li>
                       <li className="flex gap-3 items-start">
-                        <span className="text-[#16a34a] font-bold text-sm">3.</span>
-                        <p className="text-sm text-[#14532d] font-medium leading-tight">Nomor dimulai dengan kode wilayah 'GK' diikuti tahun dan nomor urut.</p>
+                        <span className="text-[#047857] font-bold text-sm">3.</span>
+                        <p className="text-sm text-[#047857] font-medium leading-tight">Nomor dimulai dengan kode wilayah 'GK' diikuti tahun dan nomor urut.</p>
                       </li>
                     </ul>
                   </div>
@@ -629,7 +630,7 @@ const Complaints = () => {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <h2 className="text-3xl font-black text-slate-900 mb-3">Pertanyaan Sering Diajukan (FAQ)</h2>
-            <p className="text-slate-500 font-medium">Temukan jawaban cepat untuk pertanyaan umum sebelum mengirimkan pengaduan.</p>
+            <p className="text-black/80 font-medium">Temukan jawaban cepat untuk pertanyaan umum sebelum mengirimkan pengaduan.</p>
           </div>
           <div className="space-y-4">
             {faqs.map((faq, idx) => (

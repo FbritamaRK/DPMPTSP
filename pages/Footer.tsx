@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
           {/* Identity */}
           <div className="space-y-4">
             <div className="flex items-center space-x-3 mb-4">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Lambang_Kabupaten_Gunungkidul.png" alt="Logo" className="w-10 h-12" />
+              <img src="https://dpmpt.gunungkidulkab.go.id/themes/smartadmin/landing/images/logo.png" alt="Logo" className="w-10 h-12" />
               <div>
                 <h3 className="text-white font-bold text-lg">DPMPTSP</h3>
                 <p className="text-xs text-white">KABUPATEN GUNUNGKIDUL</p>

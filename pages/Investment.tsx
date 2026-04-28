@@ -58,7 +58,7 @@ const Investment = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-90" />
               
               
-              <div className="absolute bottom-0 left-0 p-6 w-full">
+              <div className="absolute bottom-0 left-0 p-6 w-full focus-within:ring-2 focus-within:ring-gk-yellow">
                 <div className="text-gk-yellow text-xs font-bold uppercase tracking-wider mb-2">{sector.stats}</div>
                 <h3 className="text-xl font-bold mb-2 group-hover:text-gk-yellow transition-colors">{sector.title}</h3>
                 <p className="text-gray-300 text-sm line-clamp-2 group-hover:line-clamp-none transition-all duration-300">
@@ -67,7 +67,7 @@ const Investment = () => {
                 <div className="mt-4 h-0 group-hover:h-auto overflow-hidden transition-all">
                   <button 
                     onClick={() => navigate('/prospektus')}
-                    className="text-sm font-semibold underline decoration-gk-yellow underline-offset-4 focus-visible:ring-2 focus-visible:ring-gk-yellow rounded-sm"
+                    className="text-sm font-semibold underline decoration-gk-yellow underline-offset-4 focus-visible:ring-10 focus-visible:ring-gk-yellow rounded-sm"
                     aria-label={`Pelajari Selengkapnya tentang ${sector.title}`}
                   >
                     Pelajari Selengkapnya

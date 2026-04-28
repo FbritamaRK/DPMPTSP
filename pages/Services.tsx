@@ -163,7 +163,7 @@ const Services = () => {
 
           {/* Right Column: Office Hours Widget */}
           <div className="lg:col-span-5 xl:col-span-4">
-             <div className="bg-slate-900 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden h-full flex flex-col justify-center border border-slate-800">
+             <div className="bg-[#374151] rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden h-full flex flex-col justify-center border border-slate-800">
                 {/* Decorative background shapes */}
                 <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl -mx-10 -my-10 pointer-events-none"></div>
                 <div className="absolute bottom-0 left-0 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl -mx-10 -my-10 pointer-events-none"></div>
@@ -292,10 +292,10 @@ const Services = () => {
                 Sampaikan aspirasi atau keluhan layanan Anda secara langsung.
               </p>
               <div className="flex gap-3">
-                <span className="bg-[#374151] text-white border border-white px-4 py-1.5 rounded-lg text-xs font-bold tracking-wider uppercase backdrop-blur-md">
+                <span className="bg-[#374151] text-white border border-white px-4 py-1.5 rounded-lg text-xs font-bold tracking-wider uppercase backdrop-blur-md hover:bg-white hover:text-black">
                   Respon 24 Jam
                 </span>
-                <span className="bg-[#374151] text-white border border-white px-4 py-1.5 rounded-lg text-xs font-bold tracking-wider uppercase backdrop-blur-md">
+                <span className="bg-[#374151] text-white border border-white px-4 py-1.5 rounded-lg text-xs font-bold tracking-wider uppercase backdrop-blur-md hover:bg-white hover:text-black">
                   Bebas Biaya
                 </span>
               </div>
