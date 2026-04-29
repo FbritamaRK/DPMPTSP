@@ -48,8 +48,8 @@ const InvestmentProspectus = () => {
                 />
                 <div className="absolute top-4 left-4">
                   <span className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg ${
-                    project.status === 'Ready to Offer' ? 'bg-green-500 text-white' :
-                    project.status === 'Strategic' ? 'bg-blue-500 text-white' : 'bg-orange-500 text-white'
+                    project.status === 'Ready to Offer' ? 'bg-[#004229] text-white' :
+                    project.status === 'Strategic' ? 'bg-[#1E40AF] text-white' : 'bg-[#B45309] text-white'
                   }`}>
                     {project.status}
                   </span>
@@ -59,15 +59,15 @@ const InvestmentProspectus = () => {
               <div className="lg:w-2/3 p-8 md:p-10 flex flex-col">
                 <div className="flex flex-col md:flex-row justify-between items-start mb-6 gap-4">
                   <div>
-                    <div className="flex items-center gap-2 text-gk-green font-semibold mb-1">
-                      <MapPin size={16} aria-hidden="true" />
-                      <span className="text-sm uppercase tracking-wider">{project.location}</span>
+                    <div className="flex items-center gap-2 text-gk-black font-semibold mb-1">
+                      <MapPin size={20} aria-hidden="true" />
+                      <span className="text-sm uppercase tracking-wider !text-white font-bold bg-[#1E40AF] rounded-lg px-2 py-1">{project.location}</span>
                     </div>
-                    <h2 className="text-2xl md:text-3xl font-bold text-gk-dark group-hover:text-gk-green transition-colors">{project.name}</h2>
+                    <h2 className="text-2xl md:text-3xl font-bold text-gk-black  transition-colors">{project.name}</h2>
                   </div>
                   <div className="text-right">
                     <span className="text-xs text-black block font-medium uppercase mb-1">Total Nilai Investasi</span>
-                    <span className="text-2xl font-bold text-gk-blue">{project.totalInvestment}</span>
+                    <span className="text-2xl font-bold text-[#991B1B]">{project.totalInvestment}</span>
                   </div>
                 </div>
 
@@ -77,7 +77,7 @@ const InvestmentProspectus = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                   <div className="bg-slate-50 p-6 rounded-xl border border-slate-100">
-                    <h3 className="text-sm font-bold text-black uppercase tracking-widest mb-4 flex items-center gap-2">
+                    <h3 className=" w-fit text-sm font-bold text-white bg-[#1A1A1A] rounded-lg px-2 py-0.5 uppercase tracking-widest mb-4 flex items-center gap-2">
                       <DollarSign size={16} aria-hidden="true" /> Alokasi Biaya
                     </h3>
                     <div className="space-y-4">
@@ -93,27 +93,27 @@ const InvestmentProspectus = () => {
                   </div>
 
                   <div className="bg-gk-blue/5 p-6 rounded-xl border border-gk-blue/10">
-                    <h3 className="text-sm font-bold text-gk-blue uppercase tracking-widest mb-4 flex items-center gap-2">
+                    <h3 className="text-sm font-bold text-white uppercase tracking-widest mb-4 flex items-center gap-2 bg-[#1A1A1A] rounded-lg px-2 py-0.5 w-fit">
                       <TrendingUp size={16} aria-hidden="true" /> Indikator Kelayakan
                     </h3>
                     <div className="grid grid-cols-3 gap-4 text-center">
                       <div>
-                        <span className="block text-[10px] font-bold text-gray-800 uppercase">NPV</span>
-                        <span className="text-base font-bold text-gk-blue">{project.npv}</span>
+                        <span className="block text-[12px] font-bold text-gray-800 uppercase">NPV</span>
+                        <span className="text-base font-bold text-[#991B1B]">{project.npv}</span>
                       </div>
                       <div>
-                        <span className="block text-[10px] font-bold text-gray-800 uppercase">IRR</span>
-                        <span className="text-base font-bold text-gk-blue">{project.irr}</span>
+                        <span className="block text-[12px] font-bold text-gray-800 uppercase">IRR</span>
+                        <span className="text-base font-bold text-[#991B1B]">{project.irr}</span>
                       </div>
                       <div className="flex items-center justify-center">
-                         <FileBarChart size={24} className="text-gk-green opacity-40" aria-hidden="true" />
+                         <FileBarChart size={24} className="text-[#15803D]" aria-hidden="true" />
                       </div>
                     </div>
                   </div>
                 </div>
 
                 <div className="mt-auto flex flex-col sm:flex-row gap-4 pt-6 border-t border-b-black-700">
-                  <button className="flex-1 bg-black text-white py-3 rounded-lg font-bold hover:bg-green-700 transition flex items-center justify-center gap-2 shadow-lg hover:shadow-gk-green/20 focus-visible:ring-2 focus-visible:ring-gk-green focus-visible:ring-offset-2">
+                  <button className="flex-1 bg-white text-black border-2 border-black py-3 rounded-lg font-bold hover:bg-black hover:text-white transition flex items-center justify-center gap-2 shadow-lg hover:shadow-gk-green/20 focus-visible:ring-2 focus-visible:ring-gk-green focus-visible:ring-offset-2">
                     <ExternalLink size={18} aria-hidden="true" /> Ajukan LoI
                   </button>
                   <button 

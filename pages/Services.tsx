@@ -1,27 +1,37 @@
-import React, { useState, useId } from 'react';
+import React, { useState, useId, useRef } from 'react';
 import {
-  Briefcase,
   FileText,
-  Map,
   ArrowRight,
   Search,
   CheckCircle2,
   Clock,
-  Phone
+  Phone,
+  Briefcase
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { motion } from 'motion/react';
+import { motion, useScroll, useTransform } from 'motion/react';
 
 const JAM_LAYANAN = [
-  { hari: "Senin – Kamis", jam: "07.30 - 15.30", bg: "bg-white" },
-  { hari: "Jumat",         jam: "07.30 - 14.00", bg: "bg-white" },
-  { hari: "Sabtu – Minggu", jam: "Tutup", bg: "bg-white border border-red-500" },
+  { hari: "Senin – Kamis", jam: "07.30 - 15.30", isTutup: false },
+  { hari: "Jumat",         jam: "07.30 - 14.00", isTutup: false },
+  { hari: "Sabtu – Minggu", jam: "Tutup", isTutup: true },
 ];
 
 const Services = () => {
   const [trackId, setTrackId] = useState('');
   const [trackingResult, setTrackingResult] = useState<any>(null);
   const inputId = useId();
+
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"]
+  });
+  const filter = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ["blur(0px)", "blur(10px)"]
+  );
 
   const handleTrack = (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,10 +56,18 @@ const Services = () => {
   return (
     <section
       id="layanan"
-      className="py-24 bg-slate-50"
+      className="py-24 bg-slate-50 relative overflow-hidden"
       aria-labelledby="layanan-heading"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Subtle Background Pattern */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-50 via-transparent to-white"></div>
+        <div className="absolute top-0 right-0 -mr-40 -mt-40 w-96 h-96 rounded-full bg-blue-100/40 blur-3xl mix-blend-multiply"></div>
+        <div className="absolute bottom-0 left-0 -ml-40 -mb-40 w-96 h-96 rounded-full bg-emerald-100/40 blur-3xl mix-blend-multiply"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Top Section: Header, Tracking, and Office Hours */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-16">
@@ -161,45 +179,44 @@ const Services = () => {
             )}
           </div>
 
-          {/* Right Column: Office Hours Widget */}
+         {/* Right Column: Office Hours Widget */}
           <div className="lg:col-span-5 xl:col-span-4">
-             <div className="bg-[#374151] rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden h-full flex flex-col justify-center border border-slate-800">
-                {/* Decorative background shapes */}
-                <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl -mx-10 -my-10 pointer-events-none"></div>
-                <div className="absolute bottom-0 left-0 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl -mx-10 -my-10 pointer-events-none"></div>
+             <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm relative overflow-hidden h-full flex flex-col justify-center border border-slate-200 ">
+                <div className="absolute top-0 right-0 p-8 opacity-[0.02] transform rotate-12 pointer-events-none">
+                  <Clock size={160} strokeWidth={2} className="text-slate-900" />
+                </div>
                 
                 <div className="relative z-10">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-10 h-10 bg-emerald-500/20 text-emerald-400 rounded-xl flex items-center justify-center shrink-0">
-                      <Clock size={20} />
+                  <div className="flex items-center gap-4 mb-8">
+                    <div className="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center shrink-0 border border-emerald-100">
+                      <Clock size={24} />
                     </div>
                     <div>
-                      <h3 className="text-white font-bold text-lg leading-tight">Jam Buka Layanan</h3>
-                      <p className="text-white text-xs font-medium uppercase tracking-wider">Kantor DPMPTSP</p>
+                      <h3 className="text-slate-900 font-extrabold text-xl tracking-tight leading-tight">Jam Layanan</h3>
+                      <p className="text-slate-500 text-xs font-bold uppercase tracking-widest mt-0.5">Kantor DPMPTSP</p>
                     </div>
                   </div>
 
                   <div className="space-y-3 mb-8">
                     {JAM_LAYANAN.map((item, idx) => {
-                      const isTutup = item.jam === "Tutup";
                       return (
-                        <div key={idx} className={`flex items-center justify-between px-4 py-3.5 rounded-xl ${item.bg || 'bg-slate-800'}`}>
-                          <span className="text-black font-medium text-sm">{item.hari}</span>
-                          <span className={`font-black text-sm tabular-nums tracking-wide ${isTutup ? "text-[#991B1B]" : "text-black"}`}>
-                            {item.jam} {isTutup ? '' : 'WIB'}
+                        <div key={idx} className={`flex items-center justify-between px-5 py-4 rounded-2xl transition-all ${item.isTutup ? 'bg-rose-50/50 border border-rose-100' : 'bg-slate-50 border border-slate-100'}`}>
+                          <span className={`font-semibold text-sm ${item.isTutup ? 'text-rose-600' : 'text-slate-600'}`}>{item.hari}</span>
+                          <span className={`font-bold text-sm tabular-nums tracking-wide ${item.isTutup ? "text-rose-600" : "text-slate-900"}`}>
+                            {item.jam} {item.isTutup ? '' : <span className="text-[#1A1A1A] font-medium text-xs ml-1">WIB</span>}
                           </span>
                         </div>
                       )
                     })}
                   </div>
 
-                  <div className="bg-[#EBF2F9] backdrop-blur-sm border border-slate-700/50 rounded-xl p-4 flex items-center gap-4">
-                    <div className="w-10 h-10 bg-slate-700 rounded-full flex items-center justify-center shrink-0 text-slate-300">
-                      <Phone size={18} />
+                  <div className="bg-slate-50 border border-slate-100 rounded-2xl p-4 flex items-center gap-4 hover:bg-slate-100 transition-colors cursor-pointer group/phone">
+                    <div className="w-12 h-12 bg-emerald-50 border border-emerald-100 rounded-xl flex items-center justify-center shrink-0 text-emerald-600 group-hover/phone:scale-110 transition-transform">
+                      <Phone size={20} />
                     </div>
                     <div>
-                      <p className="text-Black text-xs font-medium mb-0.5">Konsultasi via Telepon</p>
-                      <a href="tel:+62274391942" className="text-[#166534] font-bold hover:text-emerald-300 transition-colors">
+                      <p className="text-slate-500 text-[10px] font-bold mb-0.5 uppercase tracking-widest">Konsultasi Telepon</p>
+                      <a href="tel:+62274391942" className="text-slate-900 font-black text-lg group-hover/phone:text-emerald-600 transition-colors">
                         (0274) 391942
                       </a>
                     </div>
@@ -210,99 +227,173 @@ const Services = () => {
         </div>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr">
+        <motion.div 
+          ref={sectionRef}
+          style={{ filter }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { 
+              opacity: 1,
+              transition: { staggerChildren: 0.15 } 
+            }
+          }}
+        >
           
           {/* Card 1: OSS (Top Left, 2 cols) */}
-          <a
+          <motion.a
             href="https://oss.go.id"
             target="_blank"
             rel="noopener noreferrer"
-            className="md:col-span-2 group bg-[#fffbeb] rounded-3xl p-8 border border-slate-200 hover:border-[#f59e0b] hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-300 flex flex-col justify-between overflow-hidden relative"
+            variants={{
+              hidden: { opacity: 0, y: 30 },
+              visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 60, damping: 15 } }
+            }}
+            className="md:col-span-2 group bg-[#fffbeb] rounded-3xl p-8 border border-slate-200 hover:border-[#f59e0b] hover:shadow-xl hover:shadow-amber-500/10 transition-all duration-300 flex flex-col justify-between overflow-hidden relative"
           >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-emerald-50 to-transparent rounded-full -translate-y-1/2 translate-x-1/4 opacity-50 group-hover:scale-150 transition-transform duration-700"></div>
-            <div>
-              <div className="w-12 h-12 bg-[#fef3c7] rounded-2xl flex items-center justify-center mb-6 text-[#b45309] group-hover:scale-110 transition-transform duration-300">
-                 <Briefcase size={24} />
+            {/* Card Background Pattern */}
+            <div className="absolute inset-0 bg-[radial-gradient(#fcd34d_1px,transparent_1px)] [background-size:16px_16px] opacity-30"></div>
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-amber-100/50 to-transparent rounded-full -translate-y-1/2 translate-x-1/4 group-hover:scale-150 transition-transform duration-700"></div>
+
+            <div className="relative z-10">
+              <div className="w-20 h-20 bg-[#fef3c7] rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-amber-100 group-hover:scale-110 transition-transform duration-300 overflow-hidden">
+                <img 
+                  src="/path-ke-logo-oss.png" 
+                  alt="" 
+                  className="w-12 h-12 object-contain" 
+                />
               </div>
-              <h3 className="text-2xl font-bold text-black mb-3 tracking-tight group-hover:text-[#f59e0b] transition-colors">Sistem Perizinan OSS</h3>
+              <h3 className="text-2xl font-bold text-slate-900 mb-3 tracking-tight group-hover:text-[#d97706] transition-colors">Sistem Perizinan OSS</h3>
               <p className="text-slate-600 max-w-sm leading-relaxed mb-8">
                 Integrasi satu pintu untuk semua jenis izin usaha di wilayah Kabupaten Gunungkidul.
               </p>
             </div>
-            <div className="flex items-center text-black font-bold text-sm">
+            <div className="flex items-center text-slate-900 font-bold text-sm relative z-10">
               Pelajari Selengkapnya
-              <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 text-[#d97706] transition-transform" />
             </div>
-          </a>
+          </motion.a>
 
           {/* Card 2: Peta (Top Right, 1 col) */}
-          <Link
-            to="/prospektus"
-            className="md:col-span-1 group bg-[#ecfdf5] rounded-3xl p-8 border border-slate-200 hover:border-[#10b981] hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden relative"
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 30 },
+              visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 60, damping: 15 } }
+            }}
+            className="md:col-span-1 flex"
           >
-            <div>
-              <div className="w-12 h-12 bg-[#d1fae5] rounded-2xl flex items-center justify-center mb-6 text-[#047857] group-hover:scale-110 transition-transform duration-300">
-                 <Map size={24} />
+            <Link
+              to="/prospektus"
+              className="w-full h-full group bg-[#ecfdf5] rounded-3xl p-8 border border-slate-200 hover:border-[#10b981] hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-300 flex flex-col justify-between overflow-hidden relative"
+            >
+              {/* Card Background Pattern */}
+              <div className="absolute inset-0 bg-[radial-gradient(#6ee7b7_1px,transparent_1px)] [background-size:16px_16px] opacity-20"></div>
+              <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-emerald-100/50 to-transparent rounded-full -translate-y-1/4 translate-x-1/4 opacity-50 group-hover:scale-150 transition-transform duration-700"></div>
+
+              <div className="relative z-10">
+                <div className="w-20 h-20 bg-[#d1fae5] rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-emerald-100 group-hover:scale-110 transition-transform duration-300 overflow-hidden">
+                  <img 
+                    src="/path-ke-gambar-peta.png" 
+                    alt="" 
+                    className="w-full h-full object-cover" 
+                  />
+                </div>
+                <h3 className="text-2xl font-bold text-slate-900 mb-3 tracking-tight group-hover:text-[#059669] transition-colors">Peta Potensi</h3>
+                <p className="text-slate-600 leading-relaxed mb-8 text-sm">
+                  Visualisasi data spasial untuk membantu investor memilih lokasi strategis.
+                </p>
               </div>
-              <h3 className="text-2xl font-bold text- mb-3 blacktracking-tight group-hover:text-[#10b981] transition-colors">Peta Potensi</h3>
-              <p className="text-black  leading-relaxed mb-8 text-sm">
-                Visualisasi data spasial untuk membantu investor memilih lokasi strategis.
-              </p>
-            </div>
-            <div className="w-full bg-[#86efac] text-black font-bold text-center py-3.5 rounded-xl group-hover:bg-[#4ade80] transition-colors">
-              Buka Peta
-            </div>
-          </Link>
+              <div className="w-full bg-[#10b981] text-white font-bold text-center py-3.5 rounded-xl border border-[#059669] group-hover:bg-[#059669] transition-colors flex-shrink-0 relative z-10 shadow-sm">
+                Buka Peta
+              </div>
+            </Link>
+          </motion.div>
 
           {/* Card 3: Regulasi (Bottom Left, 1 col) */}
-          <Link
-            to="/legal"
-            className="md:col-span-1 group bg-[#f0f9ff] rounded-3xl p-8 border border-slate-200 hover:border-[#1E40AF] hover:shadow-xl transition-all duration-300 flex flex-col"
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 30 },
+              visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 60, damping: 15 } }
+            }}
+            className="md:col-span-1 flex"
           >
-             <div className="w-12 h-12 bg-[#e0f2fe] rounded-2xl flex items-center justify-center mb-6 text-[#0369a1] group-hover:scale-110 transition-transform duration-300">
-                 <FileText size={24} />
-             </div>
-             <h3 className="text-xl font-bold text-slate-900 mb-3 tracking-tight group-hover:text-[#0ea5e9] transition-colors">Regulasi & Panduan</h3>
-             <p className="text-black leading-relaxed mb-6 text-sm">
-               Unduh dokumen hukum dan panduan teknis penanaman modal.
-             </p>
-             <ul className="space-y-3 mt-auto">
-               <li className="flex items-center text-sm font-medium text-slate-700 gap-2">
-                 <CheckCircle2 size={16} className="text-emerald-500 mt-0.5" />
-                 Perda No. 5 Tahun 2023
-               </li>
-               <li className="flex items-center text-sm font-medium text-slate-700 gap-2">
-                 <CheckCircle2 size={16} className="text-emerald-500 mt-0.5" />
-                 Panduan OSS RBA
-               </li>
-             </ul>
-          </Link>
+            <Link
+              to="/legal"
+              className="w-full h-full group bg-[#f0f9ff] rounded-3xl p-8 border border-slate-200 hover:border-[#0ea5e9] hover:shadow-xl hover:shadow-sky-500/10 transition-all duration-300 flex flex-col overflow-hidden relative"
+            >
+               {/* Card Background Pattern */}
+               <div className="absolute inset-0 bg-[radial-gradient(#7dd3fc_1px,transparent_1px)] [background-size:16px_16px] opacity-30"></div>
+               <div className="absolute bottom-0 left-0 w-56 h-56 bg-gradient-to-tr from-sky-100/50 to-transparent rounded-full translate-y-1/4 -translate-x-1/4 opacity-50 group-hover:scale-150 transition-transform duration-700"></div>
+
+               <div className="relative z-10 flex flex-col h-full">
+                <div className="w-20 h-20 bg-[#e0f2fe] rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-sky-100 group-hover:scale-110 transition-transform duration-300 overflow-hidden">
+                  <img 
+                    src="/path-ke-ikon-dokumen.png" 
+                    alt="" 
+                    className="w-10 h-10 object-contain" 
+                  />
+                </div>
+                 <h3 className="text-xl font-bold text-slate-900 mb-3 tracking-tight group-hover:text-[#0284c7] transition-colors">Regulasi & Panduan</h3>
+                 <p className="text-slate-600 leading-relaxed mb-6 text-sm">
+                   Unduh dokumen hukum dan panduan teknis penanaman modal.
+                 </p>
+                 <ul className="space-y-3 mt-auto">
+                   <li className="flex items-center text-sm font-medium text-slate-700 gap-2">
+                     <CheckCircle2 size={16} className="text-[#0ea5e9] mt-0.5" />
+                     Perda No. 5 Tahun 2023
+                   </li>
+                   <li className="flex items-center text-sm font-medium text-slate-700 gap-2">
+                     <CheckCircle2 size={16} className="text-[#0ea5e9] mt-0.5" />
+                     Panduan OSS RBA
+                   </li>
+                 </ul>
+               </div>
+            </Link>
+          </motion.div>
 
           {/* Card 4: Pengaduan (Bottom Right, 2 cols) */}
-          <Link
-            to="/pengaduan"
-            className="md:col-span-2 group relative bg-slate-900 rounded-3xl p-8 border border-slate-200 hover:border-black hover:shadow-xl transition-all duration-300 flex flex-col justify-end overflow-hidden min-h-[300px]"
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 30 },
+              visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 60, damping: 15 } }
+            }}
+            className="md:col-span-2 flex"
           >
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1920')] bg-cover bg-center transition-transform duration-700 group-hover:scale-105"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent"></div>
-            
-            <div className="relative z-10">
-              <h3 className="text-2xl font-bold text-white mb-2 tracking-tight group-hover:text-[#10B981] transition-colors">Layanan Pengaduan</h3>
-              <p className="text-slate-300 leading-relaxed mb-6 max-w-md text-sm">
-                Sampaikan aspirasi atau keluhan layanan Anda secara langsung.
-              </p>
-              <div className="flex gap-3">
-                <span className="bg-[#374151] text-white border border-white px-4 py-1.5 rounded-lg text-xs font-bold tracking-wider uppercase backdrop-blur-md hover:bg-white hover:text-black">
-                  Respon 24 Jam
-                </span>
-                <span className="bg-[#374151] text-white border border-white px-4 py-1.5 rounded-lg text-xs font-bold tracking-wider uppercase backdrop-blur-md hover:bg-white hover:text-black">
-                  Bebas Biaya
-                </span>
+            <Link
+              to="/pengaduan"
+              className="w-full h-full group relative bg-slate-900 rounded-3xl p-8 border border-slate-200 hover:border-black hover:shadow-xl transition-all duration-300 flex flex-col justify-end overflow-hidden min-h-[300px]"
+            >
+              <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1920')] bg-cover bg-center transition-transform duration-700 group-hover:scale-105"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent"></div>
+              
+              <div className="relative z-10">
+                <div className="w-20 h-20 bg-[#e0f2fe] rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-sky-100 group-hover:scale-110 transition-transform duration-300 overflow-hidden">
+                  <img 
+                    src="/path-ke-ikon-dokumen.png" 
+                    alt="" 
+                    className="w-10 h-10 object-contain" 
+                  />
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-2 tracking-tight group-hover:text-[#10B981] transition-colors">Layanan Pengaduan</h3>
+                <p className="text-slate-300 leading-relaxed mb-6 max-w-md text-sm">
+                  Sampaikan aspirasi atau keluhan layanan Anda secara langsung.
+                </p>
+                <div className="flex gap-3">
+                  <span className="bg-[#374151] text-white border border-white px-4 py-1.5 rounded-lg text-xs font-bold tracking-wider uppercase backdrop-blur-md hover:bg-white hover:text-black">
+                    Respon 24 Jam
+                  </span>
+                  <span className="bg-[#374151] text-white border border-white px-4 py-1.5 rounded-lg text-xs font-bold tracking-wider uppercase backdrop-blur-md hover:bg-white hover:text-black">
+                    Bebas Biaya
+                  </span>
+                </div>
               </div>
-            </div>
-          </Link>
+            </Link>
+          </motion.div>
 
-        </div>
+        </motion.div>
       </div>
     </section>
   );

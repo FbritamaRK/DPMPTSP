@@ -5,6 +5,7 @@ import { motion } from 'motion/react';
 import Hero from './Hero.tsx';
 import Banner from '../components/Banner.tsx';
 import Services from './Services.tsx';
+import RelatedLinks from './RelatedLinks.tsx';
 import Stats from './Stats.tsx';
 import Investment from './Investment.tsx';
 import News from './News.tsx';
@@ -47,6 +48,9 @@ const Home = () => {
       </FadeInSection>
       <FadeInSection>
         <Services />
+      </FadeInSection>
+      <FadeInSection>
+        <RelatedLinks />
       </FadeInSection>
       <FadeInSection>
         <Stats />

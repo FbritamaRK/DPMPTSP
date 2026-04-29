@@ -52,11 +52,11 @@ const ProjectDetail = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <nav className="flex mb-4" aria-label="Breadcrumb">
             <ol className="flex items-center space-x-2 text-sm text-gray-500">
-              <li><Link to="/" className="hover:text-gk-green focus-visible:ring-2 focus-visible:ring-gk-blue rounded-sm">Beranda</Link></li>
+              <li><Link to="/" className=" text-black hover:text-[#004229] focus-visible:ring-2 focus-visible:ring-gk-blue rounded-sm">Beranda</Link></li>
               <li><ChevronRightIcon size={14} aria-hidden="true" /></li>
-              <li><Link to="/prospektus" className="hover:text-gk-green focus-visible:ring-2 focus-visible:ring-gk-blue rounded-sm">Prospektus</Link></li>
+              <li><Link to="/prospektus" className="h text-black hover:text-[#004229] focus-visible:ring-2 focus-visible:ring-gk-blue rounded-sm">Prospektus</Link></li>
               <li><ChevronRightIcon size={14} aria-hidden="true" /></li>
-              <li className="text-gk-green font-medium truncate max-w-[200px]">{(project as any).name}</li>
+              <li className="text-[#047857] font-medium truncate max-w-[200px]">{(project as any).name}</li>
             </ol>
           </nav>
           
@@ -72,22 +72,22 @@ const ProjectDetail = () => {
             <div className="flex-1">
               <Badge 
                 variant={(project as any).status === 'Ready to Offer' ? 'success' : (project as any).status === 'Strategic' ? 'primary' : 'warning'}
-                className="mb-4"
+                className="mb-4 text-red"
               >
                 {(project as any).status}
               </Badge>
               <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">{(project as any).name}</h1>
               <div className="flex items-center gap-2 text-gray-600 mb-6">
                 <MapPin size={18} className="text-gk-green" aria-hidden="true" />
-                <span className="text-lg">{(project as any).location}</span>
+                <span className="text-lg text-white bg-[#047857] rounded-lg px-2 py-1">{(project as any).location}</span>
               </div>
             </div>
-            <div className="bg-gk-blue text-white p-6 rounded-2xl shadow-lg w-full md:w-auto min-w-[280px]">
+            <div className="bg-[#1E40AF]/90 text-white p-6 rounded-2xl shadow-lg w-full md:w-auto min-w-[280px]">
               <div className="text-blue-100 text-xs uppercase font-bold tracking-widest mb-1">Estimasi Investasi</div>
               <div className="text-3xl font-bold mb-4">{(project as any).totalInvestment}</div>
               <Button 
                 variant="primary" 
-                className="w-full bg-gk-yellow text-gk-dark hover:bg-yellow-500 py-3 rounded-lg font-bold flex items-center justify-center gap-2 hover:scale-105 transition shadow-md"
+                className="w-full bg-[#1A1A1A] text-white hover:bg-white hover:text-[#1a1a1a] py-3 rounded-lg font-bold flex items-center justify-center gap-2 hover:scale-100 transition shadow-md border border-white hover:shadow-xl transition-shadow duration-300"
               >
                 <ExternalLink size={18} aria-hidden="true" /> Ajukan Peminatan (LoI)
               </Button>
@@ -203,8 +203,8 @@ const ProjectDetail = () => {
                       <div className={`w-10 h-10 ${item.bg} ${item.color} rounded-lg flex items-center justify-center mb-4`}>
                         <item.icon size={20} aria-hidden="true" />
                       </div>
-                      <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">{item.label}</div>
-                      <div className="text-xl font-bold text-gray-900">{item.value}</div>
+                      <div className="text-xs font-semibold text-[#1A1A1A] uppercase tracking-wider mb-1">{item.label}</div>
+                      <div className="text-xl font-bold text-[#991B1B]">{item.value}</div>
                     </CardContent>
                   </Card>
                 ))}
@@ -333,7 +333,7 @@ const ProjectDetail = () => {
                  </div>
                  <h3 className="font-bold text-gray-900 mb-2">Butuh Penjelasan Lebih Lanjut?</h3>
                  <p className="text-gray-600 text-sm mb-6">Konsultasikan minat investasi Anda dengan Account Manager kami secara gratis.</p>
-                 <Button variant="primary" className="w-full py-3 rounded-lg">
+                 <Button variant="primary" className="w-full py-3 rounded-lg hover:bg-[#1B3D5F] hover:text-white">
                     Hubungi Account Manager
                  </Button>
                </CardContent>
