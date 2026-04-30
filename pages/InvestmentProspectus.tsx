@@ -83,11 +83,11 @@ const InvestmentProspectus = () => {
                     <div className="space-y-4">
                       <div className="flex justify-between items-center border-b border-gray-200 pb-2">
                         <span className="text-black text-sm">Investasi Tanah</span>
-                        <span className="font-bold text-gray-900 text-sm">{project.landCost}</span>
+                        <span className="font-bold text-[#1a1a1a] text-sm">{project.landCost}</span>
                       </div>
                       <div className="flex justify-between items-center">
                         <span className="text-black text-sm">Pekerjaan Sipil</span>
-                        <span className="font-bold text-gray-900 text-sm">{project.civilWorkCost}</span>
+                        <span className="font-bold text-[#1a1a1a] text-sm">{project.civilWorkCost}</span>
                       </div>
                     </div>
                   </div>

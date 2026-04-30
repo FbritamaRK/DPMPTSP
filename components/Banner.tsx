@@ -24,7 +24,6 @@ const Banner = () => {
     },
     {
       id: 2,
-      // Placeholder for the newly uploaded image. Please update this URL if you have uploaded the file to your assets.
       src: "../img/banner zona integritas.png",
       alt: "Banner DPMPTSP Gunungkidul"
     }

@@ -102,7 +102,7 @@ const Hero = () => {
       {/* Divider */}
       <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none" aria-hidden="true">
         <svg viewBox="0 0 1440 72" preserveAspectRatio="none" className="w-full h-12 sm:h-16 md:h-[72px]" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 72 L1440 72 L1440 24 L0 60 Z" fill="#FFCA28" fillOpacity="0.7" />
+          <path d="M0 72 L1440 72 L1440 24 L0 60 Z" fill="#1E40AF" fillOpacity="0.7" />
           <path d="M0 72 L1440 72 L1440 36 L0 72 Z" fill="#f8fafc" />
         </svg>
       </div>

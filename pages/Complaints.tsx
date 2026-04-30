@@ -121,7 +121,7 @@ const Complaints = () => {
               <span>Layanan Pengaduan</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-black text-white mb-6 leading-tight">
-              Pengaduan & Saran - Rich & Professional
+              Pengaduan & Saran
             </h1>
             <p className="text-[#cbd5e1] text-lg leading-relaxed max-w-2xl font-medium">
               Kami berkomitmen untuk terus meningkatkan kualitas pelayanan publik di Kabupaten Gunungkidul. Sampaikan aspirasi, kritik, maupun keluhan Anda secara resmi di sini.
@@ -136,18 +136,18 @@ const Complaints = () => {
           <button 
             type="button"
             onClick={() => setActiveTab('buat')}
-            className={`flex-1 flex items-center justify-center gap-2 py-4 text-sm font-bold transition-colors ${activeTab === 'buat' ? 'bg-[#ecfdf5] text-[#064e3b]' : 'bg-white text-slate-500 hover:bg-slate-50'}`}
+            className={`flex-1 flex items-center justify-center gap-2 py-4 text-sm font-bold transition-colors ${activeTab === 'buat' ? 'bg-[#0EA5E9]/10 text-[#1a1a1a]' : 'bg-white text-slate-500 hover:bg-slate-50'}`}
           >
-            <MessageSquare size={18} className={activeTab === 'buat' ? 'text-[#059669]' : 'text-slate-400'} />
+            <MessageSquare size={18} className={activeTab === 'buat' ? 'text-[#1a1a1a]' : 'text-slate-400'} />
             Buat Pengaduan
           </button>
           <div className="w-[1px] bg-slate-200"></div>
           <button 
             type="button"
             onClick={() => setActiveTab('cek')}
-            className={`flex-1 flex items-center justify-center gap-2 py-4 text-sm font-bold transition-colors ${activeTab === 'cek' ? 'bg-[#ecfdf5] text-[#064e3b]' : 'bg-white text-slate-500 hover:bg-slate-50'}`}
+            className={`flex-1 flex items-center justify-center gap-2 py-4 text-sm font-bold transition-colors ${activeTab === 'cek' ? 'bg-[#0EA5E9]/10 text-[#1a1a1a]' : 'bg-white text-slate-500 hover:bg-slate-50'}`}
           >
-            <Search size={18} className={activeTab === 'cek' ? 'text-[#059669]' : 'text-slate-400'} />
+            <Search size={18} className={activeTab === 'cek' ? 'text-[#1a1a1a ]' : 'text-slate-400'} />
             Cek Status
           </button>
         </div>
@@ -173,9 +173,9 @@ const Complaints = () => {
                 </div>
                 <div className="text-center sm:text-left">
                   <h3 className="text-[#16a34a] font-bold text-lg mb-1">Pengaduan Berhasil Terkirim!</h3>
-                  <p className="text-slate-600 mb-2">Terima kasih atas laporan Anda. Nomor tiket pengaduan diproses.</p>
+                  <p className="text-[#374151] mb-2">Terima kasih atas laporan Anda. Nomor tiket pengaduan diproses.</p>
                   <p className="sr-only">Nomor tiket Anda adalah {ticketNumber}</p>
-                  <div className="inline-block bg-white border border-[#bbf7d0] px-4 py-2 rounded-lg text-xl font-bold text-[#15803d] tracking-widest mt-1" aria-hidden="true">
+                  <div className="inline-block bg-white border border-[#bbf7d0] px-4 py-2 rounded-lg text-xl font-bold text-[#1a1a1a] tracking-widest mt-1" aria-hidden="true">
                     {ticketNumber}
                   </div>
                 </div>
@@ -185,12 +185,12 @@ const Complaints = () => {
             <form onSubmit={handleSubmit} className="bg-white/90 rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm" noValidate>
               <div className="flex sm:items-center justify-between flex-col sm:flex-row gap-4 mb-8">
                 <div className="flex items-center gap-4">
-                  <div className="bg-[#dcfce3] p-3.5 rounded-xl text-[#16a34a]">
+                  <div className="bg-[#1a1a1a]/10 p-3.5 rounded-xl text-[#1a1a1a]">
                     <MessageSquare size={24} aria-hidden="true" />
                   </div>
                   <div>
-                    <h2 className="text-2xl font-bold text-slate-900">Formulir Aspirasi</h2>
-                    <p className="text-sm text-slate-500 font-medium">Lengkapi data di bawah untuk mengirim pengaduan</p>
+                    <h2 className="text-2xl font-bold text-[#1a1a1a]">Formulir Aspirasi</h2>
+                    <p className="text-sm text-[#1a1a1a]/60 font-medium">Lengkapi data di bawah untuk mengirim pengaduan</p>
                   </div>
                 </div>
                 <button
@@ -351,7 +351,7 @@ const Complaints = () => {
                   <button 
                     type="submit" 
                     disabled={isSubmitting}
-                    className="w-full sm:w-auto bg-[#0f172a] hover:bg-slate-800 disabled:opacity-70 disabled:cursor-not-allowed text-white font-bold px-8 py-3.5 rounded-lg flex items-center justify-center gap-2 transition-all focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2"
+                    className="w-full sm:w-auto bg-[#111827] hover:bg-[#1E40AF] disabled:opacity-70 disabled:cursor-not-allowed text-white font-bold px-8 py-3.5 rounded-lg flex items-center justify-center gap-2 transition-all focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2"
                   >
                     {isSubmitting ? 'Mengirim...' : (
                       <>
@@ -371,10 +371,10 @@ const Complaints = () => {
             
               {/* Saluran Lain Box */}
             <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
-              <h3 className="font-bold text-lg text-slate-800 mb-5">Saluran Lain</h3>
+              <h3 className="font-bold text-lg text-slate-800 mb-5">Kontak DPMPTSP</h3>
               <div className="space-y-4">
-                <div className="flex items-center gap-4 p-3 rounded-xl border border-slate-100 hover:border-emerald-200 hover:bg-emerald-50 transition-colors">
-                  <div className="bg-[#dcfce3] text-[#16a34a] p-2.5 rounded-full shrink-0">
+                <div className="flex items-center gap-4 p-3 rounded-xl border border-slate-100 hover:border-[#0EA5E9] hover:bg-[#0EA5E9]/10 transition-colors">
+                  <div className="bg-[#1A1A1A]/10 text-[#1A1A1A] p-2.5 rounded-full shrink-0">
                     <Phone size={18} aria-hidden="true" />
                   </div>
                   <div>
@@ -383,8 +383,8 @@ const Complaints = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4 p-3 rounded-xl border border-slate-100 hover:border-emerald-200 hover:bg-emerald-50 transition-colors">
-                  <div className="bg-[#dcfce3] text-[#16a34a] p-2.5 rounded-full shrink-0">
+                <div className="flex items-center gap-4 p-3 rounded-xl border border-slate-100 hover:border-[#0EA5E9] hover:bg-[#0EA5E9]/10 transition-colors">
+                  <div className="bg-[#166534]/10 text-[#16A34A] p-2.5 rounded-full shrink-0">
                     <MessageSquare size={18} aria-hidden="true" />
                   </div>
                   <div>
@@ -393,8 +393,8 @@ const Complaints = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4 p-3 rounded-xl border border-slate-100 hover:border-emerald-200 hover:bg-emerald-50 transition-colors">
-                  <div className="bg-[#dcfce3] text-[#16a34a] p-2.5 rounded-full shrink-0">
+                <div className="flex items-center gap-4 p-3 rounded-xl border border-slate-100 hover:border-[#0EA5E9] hover:bg-[#0EA5E9]/10 transition-colors">
+                  <div className="bg-[#0EA5E9]/10 text-[#1E40AF] p-2.5 rounded-full shrink-0">
                     <Mail size={18} aria-hidden="true" />
                   </div>
                   <div>
@@ -406,14 +406,14 @@ const Complaints = () => {
             </div>
 
             {/* Penting Info */}
-            <div className="bg-[#f0fdf4] border-l-4 border-[#16a34a] rounded-r-2xl p-6">
+            <div className="bg-[#FEF3C7]/60 border-l-4 border-[#FFCA28] rounded-r-2xl p-6">
               <div className="flex items-start gap-3">
                 <div className="shrink-0 mt-0.5">
-                  <Info size={20} className="text-[#16a34a]" aria-hidden="true" />
+                  <Info size={20} className="text-[#B45309]" aria-hidden="true" />
                 </div>
                 <div>
                   <h4 className="font-bold text-Black text-sm mb-1.5">Penting</h4>
-                  <p className="text-[#14532d] text-xs font-medium leading-relaxed">
+                  <p className="text-black text-xs font-medium leading-relaxed">
                     Setiap pengaduan akan diverifikasi dalam waktu maksimal <span className="font-bold">2x24 jam kerja</span>. Pastikan data yang Anda berikan valid untuk mempermudah koordinasi.
                   </p>
                 </div>
@@ -446,8 +446,8 @@ const Complaints = () => {
       ) : (
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-4">
           <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8 text-center mb-10">
-          <h2 className="text-xl font-bold text-slate-900 mb-2">Lacak Status Tiket Anda</h2>
-          <p className="text-sm text-slate-500 font-medium mb-6">Masukkan ID tiket yang Anda dapatkan saat membuat pengaduan.</p>
+          <h2 className="text-xl font-bold text-[#1a1a1a] mb-2">Lacak Status Tiket Anda</h2>
+          <p className="text-sm text-[#1a1a1a]/60 font-medium mb-6">Masukkan ID tiket yang Anda dapatkan saat membuat pengaduan.</p>
           <form onSubmit={handleCheckTicket} className="flex flex-col sm:flex-row gap-3 justify-center max-w-xl mx-auto">
             <input 
               type="text"
@@ -548,11 +548,11 @@ const Complaints = () => {
                 </div>
 
                 {/* Info Penting Box inside Left Column */}
-                <div className="mt-10 bg-[#0f172a] rounded-xl p-6 text-white shadow-md flex gap-4 items-start">
-                  <Info className="text-slate-400 shrink-0 mt-0.5" size={20} />
+                <div className="mt-10 bg-[#FEF3C7]/60 rounded-xl p-6 text-[#1A1A1A] shadow-md flex gap-4 items-start">
+                  <Info className="text-[#B45309] shrink-0 mt-0.5" size={20} />
                   <div>
                      <h5 className="font-bold text-sm mb-2">Informasi Penting</h5>
-                     <p className="text-slate-300 text-xs leading-relaxed font-medium">
+                     <p className="text-[#1A1A1A] text-xs leading-relaxed font-medium">
                        DPMPTSP Kabupaten Gunungkidul berkomitmen pada keterbukaan informasi. Seluruh proses perizinan tidak dipungut biaya tambahan (Gratis) kecuali yang diatur dalam Peraturan Daerah. Jika ada kendala atau permintaan biaya tidak resmi, silakan lapor melalui kanal pengaduan kami.
                      </p>
                   </div>
@@ -566,7 +566,7 @@ const Complaints = () => {
                 <div className="border border-[#bbf7d0] rounded-xl overflow-hidden bg-[#ECFDF5] shadow-sm">
                   <div className="bg-[#bbf7d0] px-4 py-3 flex items-center gap-2">
                     <HelpCircle size={16} className="text-[#16a34a]" />
-                    <h5 className="font-bold text-[#14532d] text-xs uppercase tracking-wide">Cara Menemukan No. Registrasi</h5>
+                    <h5 className="font-bold text-[#1A1A1A] text-xs uppercase tracking-wide">Cara Menemukan No. Registrasi</h5>
                   </div>
                   <div className="p-5">
                     <div className="w-full h-32 bg-slate-200 rounded-lg mb-4 relative overflow-hidden group">

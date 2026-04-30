@@ -63,7 +63,7 @@ const ProjectDetail = () => {
           <Button 
             onClick={() => navigate('/prospektus')}
             variant="ghost"
-            className="flex items-center gap-2 text-gk-blue font-bold hover:text-blue-800 transition mb-6 px-0 hover:bg-transparent"
+            className="flex items-center gap-2 text-gk-black font-bold hover:text-blue-800 transition mb-6 px-0 hover:bg-transparent"
           >
             <ArrowLeft size={18} aria-hidden="true" /> Kembali ke Daftar
           </Button>
@@ -82,12 +82,12 @@ const ProjectDetail = () => {
                 <span className="text-lg text-white bg-[#047857] rounded-lg px-2 py-1">{(project as any).location}</span>
               </div>
             </div>
-            <div className="bg-[#1E40AF]/90 text-white p-6 rounded-2xl shadow-lg w-full md:w-auto min-w-[280px]">
+            <div className="bg-[#111827]/90 text-white p-6 rounded-2xl shadow-lg w-full md:w-auto min-w-[280px]">
               <div className="text-blue-100 text-xs uppercase font-bold tracking-widest mb-1">Estimasi Investasi</div>
               <div className="text-3xl font-bold mb-4">{(project as any).totalInvestment}</div>
               <Button 
                 variant="primary" 
-                className="w-full bg-[#1A1A1A] text-white hover:bg-white hover:text-[#1a1a1a] py-3 rounded-lg font-bold flex items-center justify-center gap-2 hover:scale-100 transition shadow-md border border-white hover:shadow-xl transition-shadow duration-300"
+                className="w-full bg-[#1A1A1A] text-white py-3 rounded-lg font-bold flex items-center justify-center gap-2 hover:scale-100 transition shadow-md border border-white hover:shadow-xl hover:bg-[#ffffff] hover:text-[#1a1a1a] transition-shadow duration-300"
               >
                 <ExternalLink size={18} aria-hidden="true" /> Ajukan Peminatan (LoI)
               </Button>
@@ -254,7 +254,7 @@ const ProjectDetail = () => {
                  </h3>
                  <div className="space-y-4">
                     <button 
-                      className="w-full flex items-center justify-between p-4 rounded-xl border border-gray-100 hover:border-gk-green hover:bg-green-50 transition group text-left focus-visible:ring-2 focus-visible:ring-gk-green focus-visible:outline-none"
+                      className="w-full flex items-center justify-between p-4 rounded-xl border border-gray-100 hover:border-[#1E40AF] hover:bg-white transition group text-left focus-visible:ring-2 focus-visible:ring-gk-green focus-visible:outline-none"
                       aria-label="Unduh Pre-Feasibility Study (PDF, 12.5 MB)"
                     >
                        <div className="flex items-center gap-3">
@@ -269,7 +269,7 @@ const ProjectDetail = () => {
                        <Download size={18} className="text-gray-400" aria-hidden="true" />
                     </button>
                     <button 
-                      className="w-full flex items-center justify-between p-4 rounded-xl border border-gray-100 hover:border-gk-green hover:bg-green-50 transition group text-left focus-visible:ring-2 focus-visible:ring-gk-green focus-visible:outline-none"
+                      className="w-full flex items-center justify-between p-4 rounded-xl border border-gray-100 hover:border-[#1E40AF] hover:bg-white transition group text-left focus-visible:ring-2 focus-visible:ring-gk-green focus-visible:outline-none"
                       aria-label="Unduh Site Plan dan Layout Proyek (JPG, 4.2 MB)"
                     >
                        <div className="flex items-center gap-3">
@@ -284,7 +284,7 @@ const ProjectDetail = () => {
                        <Download size={18} className="text-gray-400" aria-hidden="true" />
                     </button>
                     <button 
-                      className="w-full flex items-center justify-between p-4 rounded-xl border border-gray-100 hover:border-gk-green hover:bg-green-50 transition group text-left focus-visible:ring-2 focus-visible:ring-gk-green focus-visible:outline-none"
+                      className="w-full flex items-center justify-between p-4 rounded-xl border border-gray-100 hover:border-[#1E40AF] hover:bg-white transition group text-left focus-visible:ring-2 focus-visible:ring-gk-green focus-visible:outline-none"
                       aria-label="Unduh Peraturan Zonasi Kawasan (PDF, 1.8 MB)"
                     >
                        <div className="flex items-center gap-3">
@@ -303,21 +303,21 @@ const ProjectDetail = () => {
             </Card>
 
             {/* Incentives Card */}
-            <Card className="bg-green-50 border-green-100">
+            <Card className="bg-white border-green-100">
                <CardContent className="p-6">
-                 <h3 className="font-bold text-green-900 mb-4 flex items-center gap-2">
+                 <h3 className="font-bold text-#1a1a1a mb-4 flex items-center gap-2">
                    <ShieldCheck size={20} aria-hidden="true" /> Fasilitas Insentif
-                 </h3>
+                 </h3>  
                  <ul className="space-y-3">
-                    <li className="flex gap-2 text-sm text-green-800">
+                    <li className="flex gap-2 text-sm text-#1a1a1a">
                       <div className="w-1.5 h-1.5 bg-gk-green rounded-full mt-1.5 shrink-0"></div>
                       <span>Pengurangan pajak daerah & retribusi perizinan tertentu.</span>
                     </li>
-                    <li className="flex gap-2 text-sm text-green-800">
+                    <li className="flex gap-2 text-sm text-text-#1a1a1a">
                       <div className="w-1.5 h-1.5 bg-gk-green rounded-full mt-1.5 shrink-0"></div>
                       <span>Layanan prioritas percepatan perizinan (Fast Track).</span>
                     </li>
-                    <li className="flex gap-2 text-sm text-green-800">
+                    <li className="flex gap-2 text-sm text-text-#1a1a1a">
                       <div className="w-1.5 h-1.5 bg-gk-green rounded-full mt-1.5 shrink-0"></div>
                       <span>Bantuan fasilitasi penyelesaian kendala di lapangan.</span>
                     </li>
