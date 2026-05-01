@@ -24,9 +24,12 @@ export interface NewsItem {
   title: string;
   date: string;
   category: string;
-  imageUrl: string;
-  excerpt: string;
+  imageUrl?: string;
+  excerpt?: string;
+  author?: string;
+  authorImg?: string;
 }
+
 
 export interface InvestmentSector {
   title: string;

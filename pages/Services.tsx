@@ -55,7 +55,7 @@ const Services = () => {
     >
       {/* Subtle Background Pattern */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-30"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-50"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-slate-50 via-transparent to-white"></div>
       </div>
 
@@ -240,7 +240,7 @@ const Services = () => {
               hidden: { opacity: 0, y: 30 },
               visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 60, damping: 15 } }
             }}
-            className="md:col-span-2 group bg-[#EBF2F9]/50 rounded-xl p-8 border border-[#374151]/20 hover:bg-slate-[#374151] hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden relative"
+            className="md:col-span-2 group bg-[#EBF2F9]/50 rounded-xl p-8 border border-[#374151]/10 hover:bg-slate-[#374151] hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden relative"
           >
             {/* Card Background Pattern */}
             <div className="absolute inset-0 bg-[radial-gradient(#fcd34d_1px,transparent_1px)] [background-size:16px_16px] opacity-10"></div>
@@ -275,7 +275,7 @@ const Services = () => {
           >
             <Link
               to="/prospektus"
-              className="w-full h-full group bg-[#EBF2F9]/50 rounded-xl p-8 border border-[#374151]/20 hover:bg-slate-[#374151] hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden relative"
+              className="w-full h-full group bg-[#EBF2F9]/50 rounded-xl p-8 border border-[#374151]/10 hover:bg-slate-[#374151] hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden relative"
             >
               {/* Card Background Pattern */}
               <div className="absolute inset-0 bg-[radial-gradient(#6ee7b7_1px,transparent_1px)] [background-size:16px_16px] opacity-20"></div>
@@ -310,7 +310,7 @@ const Services = () => {
           >
             <Link
               to="/legal"
-              className="w-full h-full group bg-[#EBF2F9]/50 rounded-xl p-8 border border-[#374151]/20 hover:bg-slate-[#374151] hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden relative"
+              className="w-full h-full group bg-[#EBF2F9]/50 rounded-xl p-8 border border-[#374151]/10 hover:bg-slate-[#374151] hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden relative"
             >
                {/* Card Background Pattern */}
                <div className="absolute inset-0 bg-[radial-gradient(#7dd3fc_1px,transparent_1px)] [background-size:16px_16px] opacity-10"></div>
@@ -352,7 +352,7 @@ const Services = () => {
           >
             <Link
               to="/pengaduan"
-              className="w-full h-full group relative bg-slate-900 rounded-xl p-8 border border-[#374151] hover:bg-slate-[#374151] hover:shadow-xl transition-all duration-300 flex flex-col justify-end overflow-hidden min-h-[300px]"
+              className="w-full h-full group relative bg-slate-900 rounded-xl p-8 border border-[#374151]/10 hover:bg-slate-[#374151] hover:shadow-xl transition-all duration-300 flex flex-col justify-end overflow-hidden min-h-[300px]"
             >
               <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1920')] bg-cover bg-center transition-transform duration-700 group-hover:scale-105 blur-sm " ></div>
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent"></div>

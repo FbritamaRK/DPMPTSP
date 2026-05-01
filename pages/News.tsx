@@ -1,145 +1,167 @@
-import React from 'react';
-import { Calendar, ArrowRight, ArrowUpRight, Tag } from 'lucide-react';
 
-const newsItems = [
+import React from 'react';
+import { ArrowUpRight } from 'lucide-react';
+import { NewsItem } from '../types';
+
+const newsItems: NewsItem[] = [
+  // Left 1
   {
     id: 1,
-    title: 'Sosialisasi OSS RBA bagi Pelaku UMKM di Kapanewon Wonosari',
-    date: '12 Oktober 2023',
-    category: 'Kegiatan',
-    excerpt:
-      'DPMPTSP Gunungkidul mengadakan pendampingan langsung pembuatan NIB bagi 100 pelaku usaha mikro dan kecil di wilayah Wonosari.',
-    imageUrl: 'https://picsum.photos/id/119/800/600',
-    categoryStyle: 'bg-emerald-100 text-emerald-800',
+    title: "Sosialisasi OSS RBA bagi Pelaku UMKM di Kapanewon Wonosari semakin gencar",
+    date: "Tue, Oct 27 2023 • 7:00AM WIB",
+    category: "Kegiatan",
+    imageUrl: "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=800",
   },
+  // Left 2
   {
     id: 2,
-    title: 'Peluang Investasi Sektor Pariwisata Pantai Selatan Terbuka Lebar',
-    date: '10 Oktober 2023',
-    category: 'Investasi',
-    excerpt:
-      'Pemerintah daerah menawarkan insentif menarik bagi investor yang ingin mengembangkan kawasan pantai selatan Gunungkidul.',
-    imageUrl: 'https://picsum.photos/id/164/800/600',
-    categoryStyle: 'bg-sky-100 text-sky-800',
+    title: "Pelatihan Perizinan Berusaha Berbasis Risiko untuk Sektor Pariwisata",
+    date: "Tue, Oct 27 2023 • 7:00AM WIB",
+    category: "Edukasi",
+    imageUrl: "https://images.unsplash.com/photo-1590650153855-d9e808231d41?auto=format&fit=crop&q=80&w=800",
   },
+  // Center (Hero)
   {
     id: 3,
-    title: 'Jadwal Pelayanan Keliling MPP Bulan November 2023',
-    date: '08 Oktober 2023',
-    category: 'Pelayanan',
-    excerpt:
-      'Cek jadwal mobil pelayanan keliling kami di kecamatan Anda. Urus izin jadi lebih dekat dan mudah tanpa perlu datang ke kantor.',
-    imageUrl: 'https://picsum.photos/id/160/800/600',
-    categoryStyle: 'bg-amber-100 text-amber-800',
+    title: "Peluang Investasi Sektor Pariwisata Pantai Selatan Terbuka Lebar di Gunungkidul",
+    date: "Tue, Oct 27 2023 • 7:00AM WIB",
+    category: "Investasi",
+    excerpt: "Pemerintah daerah menawarkan berbagai skema kemudahan dan fasilitasi menarik bagi investor yang berminat mengembangkan sport tourism kawasan pantai terpadu dengan standar internasional.",
+    imageUrl: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&q=80&w=1200",
+    author: "Tim Redaksi",
+    authorImg: "https://ui-avatars.com/api/?name=Tim+Redaksi&background=f1f5f9&color=0f172a"
   },
+  // Right 1
+  {
+    id: 4,
+    title: "Jadwal Pelayanan Keliling MPP Bulan November 2023 siap menjangkau Anda",
+    date: "Tue, Oct 27 2023 • 7:00AM WIB",
+    category: "Pelayanan",
+    imageUrl: "https://images.unsplash.com/photo-1520697830682-8e100e008ba9?auto=format&fit=crop&q=80&w=800",
+  },
+  // Right 2
+  {
+    id: 5,
+    title: "Realisasi Investasi Triwulan III Tumbuh Signifikan dan cetak rekor baru",
+    date: "Tue, Oct 27 2023 • 7:00AM WIB",
+    category: "Laporan",
+  },
+  // Right 3
+  {
+    id: 6,
+    title: "Bupati Dorong Implementasi Smart City Melalui Pelayanan Digital",
+    date: "Tue, Oct 27 2023 • 7:00AM WIB",
+    category: "Pemerintah",
+  }
 ];
 
-const News = () => {
-  return (
-    <section
-      id="berita"
-      className="py-20 bg-slate-50"
-      aria-labelledby="berita-heading"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+const getCategoryColor = (cat: string) => {
+  switch (cat) {
+    case 'Kegiatan': return 'text-[#ea4335]';    // Red
+    case 'Investasi': return 'text-[#4285f4]';   // Blue
+    case 'Pelayanan': return 'text-[#34a853]';   // Green
+    case 'Edukasi': return 'text-[#34a853]';     // Green
+    case 'Laporan': return 'text-[#fbbc04]';     // Yellow 
+    case 'Pemerintah': return 'text-[#4285f4]';  // Blue
+    default: return 'text-slate-600';
+  }
+};
 
-        {/* Header */}
+const ArticleCard = ({ item, isHero = false, noImage = false }: { item: NewsItem, isHero?: boolean, noImage?: boolean }) => {
+  return (
+    <article className="flex flex-col group cursor-pointer">
+      {!noImage && item.imageUrl && (
+        <div className={`w-full overflow-hidden mb-3 ${isHero ? 'h-[300px] sm:h-[400px]' : 'h-40 sm:h-48'} rounded`}>
+          <img 
+            src={item.imageUrl} 
+            alt="" 
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+        </div>
+      )}
+      
+      <div className="flex items-center gap-1.5 mb-2 mt-1">
+        <span className={`w-1.5 h-1.5 rounded-full ${getCategoryColor(item.category).replace('text-', 'bg-')}`}></span>
+        <span className={`text-sm font-semibold tracking-wide ${getCategoryColor(item.category)}`}>
+          {item.category}
+        </span>
+      </div>
+
+      <h3 className={`${isHero ? 'text-2xl sm:text-3xl lg:text-4xl' : 'text-lg sm:text-xl'} font-bold text-slate-900 leading-tight mb-3 group-hover:text-blue-800 transition-colors`}>
+        {item.title}
+      </h3>
+
+      {isHero && item.excerpt && (
+        <p className="text-slate-500 text-base leading-relaxed mb-4">
+          {item.excerpt}
+        </p>
+      )}
+
+      <div className="flex items-center text-slate-500 text-xs mt-auto">
+        {isHero && item.author && item.authorImg && (
+          <div className="flex items-center mr-3 border-r border-slate-300 pr-3">
+             <img src={item.authorImg} alt={item.author} className="w-6 h-6 rounded-full mr-2 object-cover" />
+             <span className="font-semibold text-slate-700">{item.author}</span>
+          </div>
+        )}
+        <time dateTime={item.date}>{item.date}</time>
+      </div>
+    </article>
+  );
+}
+
+const News = () => {
+  const leftItems = newsItems.slice(0, 2);
+  const heroItem = newsItems[2];
+  const rightItems = newsItems.slice(3, 6);
+
+  return (
+    <section id="berita" className="py-20 bg-white" aria-labelledby="berita-heading">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Header Section */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
           <div>
-            <span className="inline-block bg-amber-100 text-amber-800 text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full mb-4">
-              Terbaru
-            </span>
-            <h2
-              id="berita-heading"
-              className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight"
-            >
-              Berita &amp; Informasi
+            <h2 id="berita-heading" className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+              Berita & Informasi Terkini
             </h2>
           </div>
-          <a
-            href="#"
-            className="group hidden sm:flex items-center gap-2 text-sm font-semibold text-emerald-700 hover:text-emerald-800 border border-emerald-200 hover:border-emerald-400 bg-white hover:bg-emerald-50 px-5 py-2.5 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
+          
+          <a 
+            href="#" 
+            className="flex items-center gap-1.5 text-sm font-bold text-[#023e70] hover:text-blue-800 transition-colors"
           >
-            Lihat Semua Berita
-            <ArrowRight size={14} aria-hidden="true" className="transition-transform group-hover:translate-x-0.5" />
+            Lihat Semua Berita 
+            <ArrowUpRight size={18} aria-hidden="true" />
           </a>
         </div>
 
-        {/* Cards */}
-        <ul
-          className="grid grid-cols-1 md:grid-cols-3 gap-7"
-          role="list"
-          aria-label="Daftar berita terkini"
-        >
-          {newsItems.map((news) => (
-            <li key={news.id} role="listitem">
-              <article
-                className="group bg-white rounded-2xl border border-slate-200 hover:border-slate-300 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col h-full"
-                aria-labelledby={`news-title-${news.id}`}
-              >
-                {/* Image */}
-                <div className="relative h-52 overflow-hidden">
-                  <img
-                    src={news.imageUrl}
-                    alt={`Ilustrasi berita: ${news.title}`}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" aria-hidden="true" />
-                  {/* Category badge */}
-                  <div className="absolute top-4 left-4">
-                    <span
-                      className={`inline-flex items-center gap-1 text-[11px] font-bold px-3 py-1.5 rounded-full ${news.categoryStyle} shadow-sm`}
-                    >
-                      <Tag size={9} aria-hidden="true" />
-                      {news.category}
-                    </span>
-                  </div>
-                </div>
+        {/* CSS grid for news layout matching the photo */}
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          
+          {/* Left Column (2 items) */}
+          <div className="flex flex-col gap-8 lg:border-r lg:border-slate-200 lg:pr-8">
+             <ArticleCard item={leftItems[0]} />
+             <div className="hidden lg:block w-full h-px bg-slate-200"></div>
+             <ArticleCard item={leftItems[1]} />
+          </div>
 
-                {/* Content */}
-                <div className="flex flex-col flex-1 p-5 md:p-6">
-                  <div className="flex items-center gap-1.5 text-[#374151] text-xs mb-3">
-                    <Calendar size={12} aria-hidden="true" />
-                    <time dateTime="2023-10-12">{news.date}</time>
-                  </div>
-                  <h3
-                    id={`news-title-${news.id}`}
-                    className="text-base font-bold text-slate-900 mb-3 leading-snug group-hover:text-emerald-700 transition-colors line-clamp-2"
-                  >
-                    {news.title}
-                  </h3>
-                  <p className="text-sm text-[#374151] leading-relaxed mb-5 flex-1 line-clamp-3">
-                    {news.excerpt}
-                  </p>
-                  <a
-                    href="#"
-                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#005C35] hover:text-emerald-700 transition-colors group/link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 rounded"
-                    aria-label={`Baca selengkapnya: ${news.title}`}
-                  >
-                    Baca Selengkapnya
-                    <ArrowUpRight
-                      size={13}
-                      aria-hidden="true"
-                      className="transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5"
-                    />
-                  </a>
-                </div>
-              </article>
-            </li>
-          ))}
-        </ul>
+          {/* Middle Column (Hero) */}
+          <div className="lg:col-span-2 flex flex-col lg:border-r lg:border-slate-200 lg:pr-8">
+            <ArticleCard item={heroItem} isHero />
+          </div>
 
-        {/* Mobile CTA */}
-        <div className="mt-8 text-center sm:hidden">
-          <a
-            href="#"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-700 hover:text-emerald-800 border border-emerald-200 bg-white px-6 py-3 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
-          >
-            Lihat Semua Berita
-            <ArrowRight size={14} aria-hidden="true" />
-          </a>
+          {/* Right Column (3 items) */}
+          <div className="flex flex-col gap-8">
+            <ArticleCard item={rightItems[0]} />
+            <div className="hidden lg:block w-full h-px bg-slate-200"></div>
+            <ArticleCard item={rightItems[1]} noImage />
+            <div className="hidden lg:block w-full h-px bg-slate-200"></div>
+            <ArticleCard item={rightItems[2]} noImage />
+          </div>
+
         </div>
+        
       </div>
     </section>
   );
