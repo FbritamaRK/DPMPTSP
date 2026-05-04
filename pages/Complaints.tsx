@@ -203,6 +203,13 @@ const Complaints = () => {
               </div>
 
               <div className="space-y-6">
+
+                {/* GROUP 1: DATA PRIBADI */}
+                <fieldset className="border border-slate-200 rounded-xl p-6 bg-slate-50/50">
+                  <legend className="text-sm font-black text-slate-800 bg-white px-3 py-1 rounded-full border border-slate-200 shadow-sm">
+                    Data Pribadi Pelapor
+                  </legend>
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Nama Lengkap */}
                   <div>
@@ -244,6 +251,12 @@ const Complaints = () => {
                     {errors.nik && <p id="nik-error" className="text-red-500 text-xs font-semibold mt-1.5">{errors.nik}</p>}
                   </div>
                 </div>
+                </fieldset>
+
+               <fieldset className="border border-slate-200 rounded-xl p-6 bg-slate-50/50">
+                <legend className="text-sm font-black text-slate-800 bg-white px-3 py-1 rounded-full border border-slate-200 shadow-sm">
+                  Informasi Kontak Aktif
+                </legend> 
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Email Aktif */}
@@ -285,6 +298,7 @@ const Complaints = () => {
                     {errors.phone && <p id="phone-error" className="text-red-500 text-xs font-semibold mt-1.5">{errors.phone}</p>}
                   </div>
                 </div>
+                </fieldset>
 
                 {/* Kategori Layanan */}
                 <div>

@@ -28,7 +28,7 @@ function App() {
         </main>
         <Footer />
         
-        <button 
+        {/* <button 
           className="fixed bottom-6 right-6 bg-[#047857] text-white rounded-full p-4 shadow-2xl transition-transform hover:scale-110 z-40 group flex items-center gap-2 focus-visible:ring-4 focus-visible:ring-gk-blue focus-visible:outline-none"
           aria-label="Butuh Bantuan?"
         >
@@ -38,7 +38,7 @@ function App() {
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
           </svg>
-        </button>
+        </button> */}
       </div>
     </Router>
   );

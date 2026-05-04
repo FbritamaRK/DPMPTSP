@@ -180,13 +180,13 @@ const Services = () => {
           {/* Left Content */}
           <div className="flex-1 p-8 md:p-12 lg:pr-16 flex flex-col justify-center">
             <span className="text-white/80 font-bold text-xs tracking-widest uppercase mb-4 block">
-              Fasilitas Layanan Fisik
+              Fasilitas Layanan Langsung
             </span>
             <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
               Mal Pelayanan Publik (MPP) Gunungkidul
             </h3>
             <p className="text-slate-200 leading-relaxed mb-10 max-w-lg text-sm sm:text-base">
-              Terwujudnya Pelayanan Prima Dibidang Penanaman Modal dan Perizinan Didukung Sumber Daya Manusia yang Profesional.
+              Terwujudnya Pelayanan Prima di Bidang Penanaman Modal dan Perizinan Didukung Sumber Daya Manusia yang Profesional.
             </p>
 
             <div className="flex items-start gap-4">
@@ -205,7 +205,7 @@ const Services = () => {
           
           {/* Right Image */}
           <div className="lg:w-[50%] min-h-[250px] sm:min-h-[300px] lg:min-h-full relative overflow-hidden">
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200')] bg-cover bg-center"></div>
+            <div className="absolute inset-0 bg-[url('https://dpmpt.gunungkidulkab.go.id/upload/kontent/5f0784dcedb833c79248f0c6981bc1f3_DPAD%20DIY%202.jpg')] bg-cover bg-center"></div>
             {/* Soft overlay on the image for blending and readability if needed */}
             <div className="absolute inset-0 bg-[#00337A]/20"></div>
             {/* Gradient overlay to smoothly blend with the blue side on desktop */}
@@ -240,18 +240,18 @@ const Services = () => {
               hidden: { opacity: 0, y: 30 },
               visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 60, damping: 15 } }
             }}
-            className="md:col-span-2 group bg-[#EBF2F9]/50 rounded-xl p-8 border border-[#374151]/10 hover:bg-slate-[#374151] hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden relative"
+            className="md:col-span-2 group bg-[#EBF2F9]/40 rounded-xl p-8 border border-[#374151]/10 hover:bg-slate-[#374151] hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden relative"
           >
             {/* Card Background Pattern */}
             <div className="absolute inset-0 bg-[radial-gradient(#fcd34d_1px,transparent_1px)] [background-size:16px_16px] opacity-10"></div>
             <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-amber-100/50 to-transparent rounded-full -translate-y-1/2 translate-x-1/4 group-hover:scale-150 transition-transform duration-700"></div>
 
             <div className="relative z-10">
-              <div className="w-20 h-20 bg-[#fef3c7] rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-amber-100 group-hover:scale-110 transition-transform duration-300 overflow-hidden">
+              <div className="w-20 h-20 bg-[#fef3c7]/30 rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-amber-100 group-hover:scale-110 transition-transform duration-300 overflow-hidden">
                 <img 
-                  src="/path-ke-logo-oss.png" 
+                  src="../img/oss.jpg" 
                   alt="" 
-                  className="w-12 h-12 object-contain" 
+                  className="w-15 h-15 object-contain" 
                 />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-3 tracking-tight group-hover:text-[#d97706] transition-colors">Sistem Perizinan OSS</h3>
@@ -260,7 +260,7 @@ const Services = () => {
               </p>
             </div>
             <div className="flex items-center text-slate-900 font-bold text-sm relative z-10 group-hover:text-[#d97706]">
-              Pelajari Selengkapnya
+              Akses Layanan OSS
               <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 text-[#d97706] transition-transform" />
             </div>
           </motion.a>
@@ -275,7 +275,7 @@ const Services = () => {
           >
             <Link
               to="/prospektus"
-              className="w-full h-full group bg-[#EBF2F9]/50 rounded-xl p-8 border border-[#374151]/10 hover:bg-slate-[#374151] hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden relative"
+              className="w-full h-full group bg-[#EBF2F9]/40 rounded-xl p-8 border border-[#374151]/10 hover:bg-slate-[#374151] hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden relative"
             >
               {/* Card Background Pattern */}
               <div className="absolute inset-0 bg-[radial-gradient(#6ee7b7_1px,transparent_1px)] [background-size:16px_16px] opacity-20"></div>
@@ -284,7 +284,7 @@ const Services = () => {
               <div className="relative z-10">
                 <div className="w-20 h-20 bg-[#d1fae5] rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-emerald-100 group-hover:scale-110 transition-transform duration-300 overflow-hidden">
                   <img 
-                    src="/path-ke-gambar-peta.png" 
+                    src="../img/pi.png" 
                     alt="" 
                     className="w-full h-full object-cover" 
                   />
@@ -310,7 +310,7 @@ const Services = () => {
           >
             <Link
               to="/legal"
-              className="w-full h-full group bg-[#EBF2F9]/50 rounded-xl p-8 border border-[#374151]/10 hover:bg-slate-[#374151] hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden relative"
+              className="w-full h-full group bg-[#EBF2F9]/40 rounded-xl p-8 border border-[#374151]/10 hover:bg-slate-[#374151] hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden relative"
             >
                {/* Card Background Pattern */}
                <div className="absolute inset-0 bg-[radial-gradient(#7dd3fc_1px,transparent_1px)] [background-size:16px_16px] opacity-10"></div>
@@ -319,9 +319,9 @@ const Services = () => {
                <div className="relative z-10 flex flex-col h-full">
                 <div className="w-20 h-20 bg-[#e0f2fe]/50 rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-sky-100 group-hover:scale-110 transition-transform duration-300 overflow-hidden">
                   <img 
-                    src="/path-ke-ikon-dokumen.png" 
+                    src="../img/ph.png" 
                     alt="" 
-                    className="w-10 h-10 object-contain" 
+                    className="w-15 h-15 object-contain rounded-full" 
                   />
                 </div>
                  <h3 className="text-xl font-bold text-slate-900 mb-3 tracking-tight group-hover:text-[#0284c7] transition-colors">Regulasi & Panduan</h3>
@@ -360,9 +360,9 @@ const Services = () => {
               <div className="relative z-10">
                 <div className="w-20 h-20 bg-[#e0f2fe] rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-sky-100 group-hover:scale-110 transition-transform duration-300 overflow-hidden">
                   <img 
-                    src="/path-ke-ikon-dokumen.png" 
+                    src="../img/lp.png" 
                     alt="" 
-                    className="w-10 h-10 object-contain" 
+                    className="w-15 h-15 object-contain rounded-full" 
                   />
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-2 tracking-tight group-hover:text-[#0EA5E9] transition-colors">Layanan Pengaduan</h3>

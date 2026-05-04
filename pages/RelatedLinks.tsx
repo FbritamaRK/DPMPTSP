@@ -39,7 +39,7 @@ const RelatedLinks = () => {
           {links.map((item, idx) => {
             return (
               <a href={item.link} key={idx} className="block group">
-                <Card hoverable className="h-full text-center py-8 px-6 transition-all duration-300 border-slate-200 group-hover:border-blue-200 group-hover:shadow-lg group-hover:-translate-y-2">
+                <Card hoverable className="h-full text-center py-8 px-6 transition-all duration-300 border-[#374151]/30 group-hover:border-blue-200 group-hover:shadow-lg group-hover:-translate-y-2">
                   <CardContent className="p-0 flex flex-col items-center justify-center h-full">
                     <div className={`w-24 h-24 flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110`}>
                         <img 
