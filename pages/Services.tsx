@@ -6,7 +6,9 @@ import {
   CheckCircle2,
   Clock,
   Phone,
-  Briefcase
+  Briefcase,
+  LineChart,
+  ClipboardCheck
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'motion/react';
@@ -73,19 +75,19 @@ const Services = () => {
             >
               Akses Layanan Publik Terpadu
             </h2>
-            <p className="text-slate-600 text-lg leading-relaxed max-w-xl font-medium">
+            <p className="text-[#374151] text-lg leading-relaxed max-w-xl font-medium">
               Platform digital yang memudahkan pelaku usaha dalam mengelola perizinan dan memantau status aplikasi secara real-time.
             </p>
           </div>
 
-          <div className="max-w-2xl w-full">
+          <div className="max-w-3xl w-full h-10">
             {/* Berkas tracking */}
             <form
               onSubmit={handleTrack}
               aria-label="Lacak status berkas perizinan"
-              className="flex flex-col sm:flex-row gap-3 bg-white p-3 rounded-2xl shadow-sm border border-slate-200 w-full"
+              className="flex flex-col sm:flex-row gap-3 bg-white p-3 rounded-lg shadow-sm border border-slate-200 w-full h-13"
             >
-               <div className="flex items-center pl-4 bg-slate-50 rounded-xl flex-1 border border-slate-100 focus-within:border-[#023e70] focus-within:ring-1 focus-within:ring-emerald-500 transition-all">
+               <div className="flex items-center pl-4 bg-slate-50 rounded-xl flex-1 border border-[#EBF2F9] focus-within:border-[#023e70] focus-within:ring-2 focus-within:ring-emerald-500 transition-all">
                   <FileText size={20} className="text-slate-400 shrink-0" aria-hidden="true" />
                   <input
                     id={inputId}
@@ -175,7 +177,7 @@ const Services = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="w-full bg-[#00337A] rounded-3xl overflow-hidden shadow-xl mb-16 flex flex-col lg:flex-row"
+          className="w-full bg-[#00337A] rounded-xl overflow-hidden shadow-xl mb-16 flex flex-col lg:flex-row"
         >
           {/* Left Content */}
           <div className="flex-1 p-8 md:p-12 lg:pr-16 flex flex-col justify-center">
@@ -189,16 +191,23 @@ const Services = () => {
               Terwujudnya Pelayanan Prima di Bidang Penanaman Modal dan Perizinan Didukung Sumber Daya Manusia yang Profesional.
             </p>
 
-            <div className="flex items-start gap-4">
-              <div className="mt-1 shrink-0">
-                <Clock className="w-5 h-5 text-sky-400" />
+            <div className="bg-white/10 backdrop-blur rounded-xl p-5 sm:p-6 border border-[#0EA5E9] max-w-md">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-10 h-10 bg-sky-500/20 text-white rounded-xl flex items-center justify-center shrink-0 border border-white">
+                  <Clock size={20} />
+                </div>
+                <h4 className="text-white font-semibold text-lg tracking-tight">Jam Layanan Operasional</h4>
               </div>
-              <div>
-                <h4 className="text-white font-bold text-base mb-3">Jam Layanan</h4>
-                <p className="text-white text-lg">
-                  Senin - Kamis (07:30 - 15:30) <br/>
-                  Jumat (07:30 - 11:00)
-                </p>
+              
+              <div className="space-y-3">
+                <div className="flex items-center justify-between pb-3 border-b border-white/10">
+                  <span className="text-[#FEF2F2] font-medium text-sm">Senin – Kamis</span>
+                  <span className="text-white font-bold tabular-nums tracking-wide">07:30 - 15:30 <span className="text-white/60 text-xs ml-0.5">WIB</span></span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-[#FEF2F2] font-medium text-sm">Jumat</span>
+                  <span className="text-white font-bold tabular-nums tracking-wide">07:30 - 11:00 <span className="text-white/60 text-xs ml-0.5">WIB</span></span>
+                </div>
               </div>
             </div>
           </div>
@@ -218,7 +227,7 @@ const Services = () => {
         <motion.div 
           ref={sectionRef}
           style={{ filter }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr"
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-fr"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
@@ -231,6 +240,69 @@ const Services = () => {
           }}
         >
           
+          {/* Card 6: Pengaduan (Top, spans full 3 cols on md screens) */}
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 30 },
+              visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 60, damping: 15 } }
+            }}
+            className="md:col-span-3 flex"
+          >
+            <Link
+              to="/pengaduan"
+              className="w-full h-full group relative bg-[#111827] rounded-xl p-6 lg:p-8 border border-[#374151]/10 hover:bg-slate-[#374151] hover:shadow-xl transition-all duration-300 flex flex-col lg:flex-row justify-between overflow-hidden min-h-[250px] md:min-h-[200px]"
+            >
+              <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-slate-900 via-slate-900/80 to-slate-900/40"></div>
+              
+              <div className="relative z-10 w-full flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
+   
+                {/* SISI KIRI: TEKS & BADGE */}
+                <div className="flex-1 text-center md:text-left flex flex-col items-center md:items-start justify-center">
+
+                   <div className="w-16 h-16 bg-[#e0f2fe] rounded-2xl flex items-center justify-center mb-4 shadow-sm border border-sky-100 group-hover:scale-110 transition-transform duration-300 overflow-hidden">
+                      <img 
+                        src="../img/lp.png" 
+                        alt="" 
+                        className="w-12 h-12 object-contain rounded-full" 
+                      />
+                    </div>
+
+                  <h3 className="text-2xl font-bold text-white mb-2 tracking-tight group-hover:text-[#0EA5E9] transition-colors">
+                    Layanan Pengaduan Terpadu
+                  </h3>
+                  <p className="text-white/80 leading-relaxed mb-6 max-w-xl text-sm md:text-base">
+                    Sampaikan aspirasi atau keluhan layanan Anda secara langsung. Tim kami siap merespon dan memberikan sosulusi terbaik.
+                  </p>
+                  
+                  {/* Kontainer Tombol */}
+                  <div className="flex flex-wrap justify-center md:justify-start gap-2">
+                    <span className="bg-[#374151]/80 text-white border border-white/30 px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase backdrop-blur-md group-hover:bg-white group-hover:text-slate-900 transition-colors">
+                        Respon 24 Jam
+                      </span>
+                      <span className="bg-[#374151]/80 text-white border border-white/30 px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase backdrop-blur-md group-hover:bg-white group-hover:text-slate-900 transition-colors">
+                        Bebas Biaya
+                      </span>
+                  </div>
+                </div>
+
+                {/* SISI KANAN: DOKUMEN / ILUSTRASI */}
+                <div 
+                  aria-hidden="true"
+                  className="hidden lg:flex w-36 h-48 bg-white/95 rounded-2xl shadow-2xl border border-white/20 p-5 flex-col justify-start gap-3 shrink-0 
+                            rotate-0 group-hover:rotate-6 group-hover:-translate-y-4 transition-all duration-500 ease-out z-10"
+                >
+                  <div className="w-10 h-10 bg-sky-100 rounded-full flex items-center justify-center mb-1">
+                    <div className="w-6 h-6 bg-sky-500 rounded-full animate-pulse"></div>
+                  </div>
+                  <div className="w-full h-2.5 bg-slate-200 rounded-full"></div>
+                  <div className="w-5/6 h-2.5 bg-slate-200 rounded-full"></div>
+                  <div className="w-full h-2.5 bg-slate-200 rounded-full"></div>
+                  <div className="w-3/4 h-2.5 bg-slate-200 rounded-full mt-auto"></div>
+                </div>
+              </div>
+            </Link>
+          </motion.div>
+
           {/* Card 1: OSS (Top Left, 2 cols) */}
           <motion.a
             href="https://oss.go.id"
@@ -240,28 +312,28 @@ const Services = () => {
               hidden: { opacity: 0, y: 30 },
               visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 60, damping: 15 } }
             }}
-            className="md:col-span-2 group bg-[#EBF2F9]/40 rounded-xl p-8 border border-[#374151]/10 hover:bg-slate-[#374151] hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden relative"
+            className="md:col-span-2 group bg-[#EBF2F9]/40 rounded-xl p-6 border border-[#374151]/10 hover:bg-slate-[#374151] hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden relative"
           >
             {/* Card Background Pattern */}
             <div className="absolute inset-0 bg-[radial-gradient(#fcd34d_1px,transparent_1px)] [background-size:16px_16px] opacity-10"></div>
-            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-amber-100/50 to-transparent rounded-full -translate-y-1/2 translate-x-1/4 group-hover:scale-150 transition-transform duration-700"></div>
+            <div className="absolute top-0 right-0 w-56 h-56 bg-gradient-to-br from-amber-100/50 to-transparent rounded-full -translate-y-1/2 translate-x-1/4 group-hover:scale-150 transition-transform duration-700"></div>
 
             <div className="relative z-10">
-              <div className="w-20 h-20 bg-[#fef3c7]/30 rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-amber-100 group-hover:scale-110 transition-transform duration-300 overflow-hidden">
+              <div className="w-16 h-16 bg-[#fef3c7]/30 rounded-2xl flex items-center justify-center mb-4 shadow-sm border border-amber-100 group-hover:scale-110 transition-transform duration-300 overflow-hidden">
                 <img 
                   src="../img/oss.jpg" 
                   alt="" 
-                  className="w-15 h-15 object-contain" 
+                  className="w-12 h-12 object-contain" 
                 />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-3 tracking-tight group-hover:text-[#d97706] transition-colors">Sistem Perizinan OSS</h3>
-              <p className="text-slate-600 max-w-sm leading-relaxed mb-8">
+              <h3 className="text-xl font-bold text-[#1A1A1A/90] mb-2 tracking-tight group-hover:text-[#d97706] transition-colors">Sistem Perizinan OSS</h3>
+              <p className="text-[#374151/90] max-w-sm leading-relaxed mb-6 text-sm">
                 Integrasi satu pintu untuk semua jenis izin usaha di wilayah Kabupaten Gunungkidul.
               </p>
             </div>
-            <div className="flex items-center text-slate-900 font-bold text-sm relative z-10 group-hover:text-[#d97706]">
+            <div className="flex items-center text-[#1A1A1A]/80 font-bold text-sm relative z-10 group-hover:text-[#d97706]">
               Akses Layanan OSS
-              <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 text-[#d97706] transition-transform" />
+              <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 text-[#1a1a1a] transition-transform" />
             </div>
           </motion.a>
 
@@ -275,32 +347,32 @@ const Services = () => {
           >
             <Link
               to="/prospektus"
-              className="w-full h-full group bg-[#EBF2F9]/40 rounded-xl p-8 border border-[#374151]/10 hover:bg-slate-[#374151] hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden relative"
+              className="w-full h-full group bg-[#EBF2F9]/40 rounded-xl p-6 border border-[#374151]/10 hover:bg-slate-[#374151] hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden relative"
             >
               {/* Card Background Pattern */}
               <div className="absolute inset-0 bg-[radial-gradient(#6ee7b7_1px,transparent_1px)] [background-size:16px_16px] opacity-20"></div>
-              <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-emerald-100/50 to-transparent rounded-full -translate-y-1/4 translate-x-1/4 opacity-50 group-hover:scale-150 transition-transform duration-700"></div>
+              <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-emerald-100/50 to-transparent rounded-full -translate-y-1/4 translate-x-1/4 opacity-50 group-hover:scale-150 transition-transform duration-700"></div>
 
               <div className="relative z-10">
-                <div className="w-20 h-20 bg-[#d1fae5] rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-emerald-100 group-hover:scale-110 transition-transform duration-300 overflow-hidden">
+                <div className="w-16 h-16 bg-[#d1fae5] rounded-2xl flex items-center justify-center mb-4 shadow-sm border border-emerald-100 group-hover:scale-110 transition-transform duration-300 overflow-hidden">
                   <img 
                     src="../img/pi.png" 
                     alt="" 
                     className="w-full h-full object-cover" 
                   />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-3 tracking-tight group-hover:text-[#059669] transition-colors">Peta Potensi</h3>
-                <p className="text-slate-600 leading-relaxed mb-8 text-sm">
+                <h3 className="text-xl font-bold text-slate-900 mb-2 tracking-tight group-hover:text-[#059669] transition-colors">Peta Potensi</h3>
+                <p className="text-[#374151] leading-relaxed mb-6 text-sm">
                   Visualisasi data spasial untuk membantu investor memilih lokasi strategis.
                 </p>
               </div>
-              <div className="w-full bg-[#059669] text-white font-bold text-center py-3.5 rounded-xl border border-[#059669] group-hover:bg-[#10b981] transition-colors flex-shrink-0 relative z-10 shadow-sm">
+              <div className="w-full bg-[#166534] text-white font-bold text-sm text-center py-3 rounded-xl border border-[#059669] group-hover:bg-[#10b981] transition-colors flex-shrink-0 relative z-10 shadow-sm">
                 Buka Peta
               </div>
             </Link>
           </motion.div>
 
-          {/* Card 3: Regulasi (Bottom Left, 1 col) */}
+          {/* Card 3: Regulasi (1 col) */}
           <motion.div
             variants={{
               hidden: { opacity: 0, y: 30 },
@@ -310,31 +382,31 @@ const Services = () => {
           >
             <Link
               to="/legal"
-              className="w-full h-full group bg-[#EBF2F9]/40 rounded-xl p-8 border border-[#374151]/10 hover:bg-slate-[#374151] hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden relative"
+              className="w-full h-full group bg-[#EBF2F9]/40 rounded-xl p-6 border border-[#374151]/10 hover:bg-slate-[#374151] hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden relative"
             >
                {/* Card Background Pattern */}
                <div className="absolute inset-0 bg-[radial-gradient(#7dd3fc_1px,transparent_1px)] [background-size:16px_16px] opacity-10"></div>
-               <div className="absolute bottom-0 left-0 w-56 h-56 bg-gradient-to-tr from-sky-100/50 to-transparent rounded-full translate-y-1/4 -translate-x-1/4 opacity-50 group-hover:scale-150 transition-transform duration-700"></div>
+               <div className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-to-tr from-sky-100/50 to-transparent rounded-full translate-y-1/4 -translate-x-1/4 opacity-50 group-hover:scale-150 transition-transform duration-700"></div>
 
                <div className="relative z-10 flex flex-col h-full">
-                <div className="w-20 h-20 bg-[#e0f2fe]/50 rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-sky-100 group-hover:scale-110 transition-transform duration-300 overflow-hidden">
+                <div className="w-16 h-16 bg-[#e0f2fe]/50 rounded-2xl flex items-center justify-center mb-4 shadow-sm border border-sky-100 group-hover:scale-110 transition-transform duration-300 overflow-hidden">
                   <img 
                     src="../img/ph.png" 
                     alt="" 
-                    className="w-15 h-15 object-contain rounded-full" 
+                    className="w-12 h-12 object-contain rounded-full" 
                   />
                 </div>
-                 <h3 className="text-xl font-bold text-slate-900 mb-3 tracking-tight group-hover:text-[#0284c7] transition-colors">Regulasi & Panduan</h3>
-                 <p className="text-slate-600 leading-relaxed mb-6 text-sm">
+                 <h3 className="text-lg font-bold text-slate-900 mb-2 tracking-tight group-hover:text-[#0284c7] transition-colors">Regulasi & Panduan</h3>
+                 <p className="text-[#374151] leading-relaxed mb-4 text-sm">
                    Unduh dokumen hukum dan panduan teknis penanaman modal.
                  </p>
-                 <ul className="space-y-3 mt-auto">
-                   <li className="flex items-center text-sm font-medium text-slate-700 gap-2">
-                     <CheckCircle2 size={16} className="text-[#0ea5e9] mt-0.5" />
+                 <ul className="space-y-2 mt-auto">
+                   <li className="flex items-center text-xs font-medium text-slate-700 gap-2">
+                     <CheckCircle2 size={14} className="text-[#0ea5e9] mt-0.5" />
                      Perda No. 5 Tahun 2023
                    </li>
-                   <li className="flex items-center text-sm font-medium text-slate-700 gap-2">
-                     <CheckCircle2 size={16} className="text-[#0ea5e9] mt-0.5" />
+                   <li className="flex items-center text-xs font-medium text-slate-700 gap-2">
+                     <CheckCircle2 size={14} className="text-[#0ea5e9] mt-0.5" />
                      Panduan OSS RBA
                    </li>
                  </ul>
@@ -342,45 +414,77 @@ const Services = () => {
             </Link>
           </motion.div>
 
-          {/* Card 4: Pengaduan (Bottom Right, 2 cols) */}
+          {/* Card 4: Profil Investasi (1 col) */}
           <motion.div
             variants={{
               hidden: { opacity: 0, y: 30 },
               visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 60, damping: 15 } }
             }}
-            className="md:col-span-2 flex"
+            className="md:col-span-1 flex"
           >
             <Link
-              to="/pengaduan"
-              className="w-full h-full group relative bg-slate-900 rounded-xl p-8 border border-[#374151]/10 hover:bg-slate-[#374151] hover:shadow-xl transition-all duration-300 flex flex-col justify-end overflow-hidden min-h-[300px]"
+              to="/prospektus"
+              className="w-full h-full group bg-[#EBF2F9]/40 rounded-xl p-6 border border-[#374151]/10 hover:bg-slate-[#374151] hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden relative"
             >
-              <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1920')] bg-cover bg-center transition-transform duration-700 group-hover:scale-105 blur-sm " ></div>
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent"></div>
-              
-              <div className="relative z-10">
-                <div className="w-20 h-20 bg-[#e0f2fe] rounded-2xl flex items-center justify-center mb-6 shadow-sm border border-sky-100 group-hover:scale-110 transition-transform duration-300 overflow-hidden">
+               {/* Card Background Pattern */}
+               <div className="absolute inset-0 bg-[radial-gradient(#c4b5fd_1px,transparent_1px)] [background-size:16px_16px] opacity-10"></div>
+               <div className="absolute bottom-0 right-0 w-40 h-40 bg-gradient-to-tl from-violet-100/50 to-transparent rounded-full translate-y-1/4 translate-x-1/4 opacity-50 group-hover:scale-150 transition-transform duration-700"></div>
+
+               <div className="relative z-10 flex flex-col h-full">
+                  <div className="w-16 h-16 bg-[#fef3c7]/30 rounded-2xl flex items-center justify-center mb-4 shadow-sm border border-amber-100 group-hover:scale-110 transition-transform duration-300 overflow-hidden">
                   <img 
-                    src="../img/lp.png" 
+                    src="../img/PINV.png" 
                     alt="" 
-                    className="w-15 h-15 object-contain rounded-full" 
+                    className="w-12 h-12 object-contain" 
                   />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-2 tracking-tight group-hover:text-[#0EA5E9] transition-colors">Layanan Pengaduan</h3>
-                <p className="text-white leading-relaxed mb-6 max-w-md text-sm">
-                  Sampaikan aspirasi atau keluhan layanan Anda secara langsung.
-                </p>
-                <div className="flex gap-3">
-                  <span className="bg-[#374151] text-white border border-white px-4 py-1.5 rounded-lg text-xs font-bold tracking-wider uppercase backdrop-blur-md group-hover:bg-white group-hover:text-black">
-                    Respon 24 Jam
-                  </span>
-                  <span className="bg-[#374151] text-white border border-white px-4 py-1.5 rounded-lg text-xs font-bold tracking-wider uppercase backdrop-blur-md group-hover:bg-white group-hover:text-black">
-                    Bebas Biaya
-                  </span>
+                 <h3 className="text-lg font-bold text-slate-900 mb-2 tracking-tight group-hover:text-violet-700 transition-colors">Profil Investasi</h3>
+                 <p className="text-[#374151] leading-relaxed mb-4 text-sm">
+                   Pelajari peluang dan potensi investasi unggulan di berbagai sektor Kabupaten Gunungkidul.
+                 </p>
+                 <div className="mt-auto flex items-center text-violet-700 font-bold text-sm group-hover:text-violet-800">
+                   Lihat Profil
+                   <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                 </div>
+               </div>
+            </Link>
+          </motion.div>      
+          
+          {/* Card 5: Laporan IKM (1 col) */}
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 30 },
+              visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 60, damping: 15 } }
+            }}
+            className="md:col-span-1 flex"
+          >
+            <Link
+              to="/ikm"
+              className="w-full h-full group bg-[#EBF2F9]/40 rounded-xl p-6 border border-[#374151]/10 hover:bg-slate-[#374151] hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden relative"
+            >
+               {/* Card Background Pattern */}
+               <div className="absolute inset-0 bg-[radial-gradient(#fdba74_1px,transparent_1px)] [background-size:16px_16px] opacity-10"></div>
+               <div className="absolute top-0 left-0 w-40 h-40 bg-gradient-to-br from-orange-100/50 to-transparent rounded-full -translate-y-1/4 -translate-x-1/4 opacity-50 group-hover:scale-150 transition-transform duration-700"></div>
+
+               <div className="relative z-10 flex flex-col h-full">
+                  <div className="w-16 h-16 bg-[#fef3c7]/30 rounded-2xl flex items-center justify-center mb-4 shadow-sm border border-amber-100 group-hover:scale-110 transition-transform duration-300 overflow-hidden">
+                  <img 
+                    src="../img/LI.png" 
+                    alt="" 
+                    className="w-12 h-12 object-contain" 
+                  />
                 </div>
-              </div>
+                 <h3 className="text-lg font-bold text-slate-900 mb-2 tracking-tight group-hover:text-orange-600 transition-colors">Laporan IKM</h3>
+                 <p className="text-[#374151] leading-relaxed mb-4 text-sm">
+                   Indeks Kepuasan Masyarakat terhadap layanan perizinan dan penanaman modal.
+                 </p>
+                 <div className="mt-auto flex items-center text-orange-600 font-bold text-sm group-hover:text-orange-700">
+                   Lihat Laporan
+                   <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                 </div>
+               </div>
             </Link>
           </motion.div>
-
         </motion.div>
       </div>
     </section>

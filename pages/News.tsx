@@ -57,12 +57,12 @@ const newsItems: NewsItem[] = [
 
 const getCategoryColor = (cat: string) => {
   switch (cat) {
-    case 'Kegiatan': return 'text-[#ea4335]';    // Red
-    case 'Investasi': return 'text-[#4285f4]';   // Blue
-    case 'Pelayanan': return 'text-[#34a853]';   // Green
-    case 'Edukasi': return 'text-[#34a853]';     // Green
-    case 'Laporan': return 'text-[#fbbc04]';     // Yellow 
-    case 'Pemerintah': return 'text-[#4285f4]';  // Blue
+    case 'Kegiatan': return 'text-[#991B1B]';    // Red
+    case 'Investasi': return 'text-[#1B3D5F]';   // Blue
+    case 'Pelayanan': return 'text-[#166534]';   // Green
+    case 'Edukasi': return 'text-[#166534]';     // Green
+    case 'Laporan': return 'text-[#B45309]';     // Yellow 
+    case 'Pemerintah': return 'text-[#1B3D5F]';  // Blue
     default: return 'text-slate-600';
   }
 };

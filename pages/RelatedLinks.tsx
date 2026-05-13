@@ -1,7 +1,5 @@
 import React from 'react';
-import { SectionHeader } from '../components/SectionHeader';
-import { Card, CardContent } from '../components/Card';
-import { Shield, Map, Landmark } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const links = [
   {
@@ -27,39 +25,75 @@ const links = [
 
 const RelatedLinks = () => {
   return (
-    <section className="py-16 bg-[#EBF2F9]/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader 
-          title="Link Terkait" 
-          alignment="center" 
-          underlineColor="blue"
-        />
+    <section className="relative w-full pb-20 mt-10 bg-slate-50/50">
+      {/* Background Top Half (Blue) Content */}
+      <div className="relative bg-[#1752a9] pt-16 pb-28 overflow-hidden">
+         {/* Subtle wave on the left */}
+         <div className="absolute bottom-0 left-0 w-1/2 h-full opacity-20 pointer-events-none">
+            <svg viewBox="0 0 1440 320" preserveAspectRatio="none" className="absolute bottom-0 left-0 w-full h-full">
+               <path fill="#ffffff" fillOpacity="0.4" d="M0,256L80,240C160,224,320,192,480,181.3C640,171,800,181,960,208C1120,235,1280,277,1360,298.7L1440,320L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
+            </svg>
+         </div>
+
+         {/* Angle shapes on the right */}
+         <div className="absolute top-0 right-0 w-1/2 h-full overflow-hidden opacity-[0.08] pointer-events-none">
+           <div className="absolute w-64 h-64 bg-white rotate-[40deg] rounded-3xl -top-10 -right-20"></div>
+           <div className="absolute w-48 h-48 bg-white rotate-[40deg] rounded-3xl top-16 right-32"></div>
+           <div className="absolute w-32 h-32 bg-white rotate-[40deg] rounded-3xl top-44 right-72"></div>
+         </div>
+
+         {/* Header Text */}
+         <div className="relative z-10 text-center max-w-2xl mx-auto mb-4 px-4 sm:px-6 lg:px-8">
+           <h2 className="text-2xl md:text-[28px] font-bold text-white mb-3 tracking-tight">
+             Akses Cepat
+           </h2>
+           <p className="text-white/90 text-sm md:text-base leading-relaxed px-4 font-medium">
+             Dapatkan kemudahan akses ke beberapa layanan Pemerintah Kabupaten Gunungkidul untuk kebutuhan Anda.
+           </p>
+         </div>
+      </div>
+      
+      {/* Content */}
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-16">
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {links.map((item, idx) => {
             return (
               <a href={item.link} key={idx} className="block group">
-                <Card hoverable className="h-full text-center py-8 px-6 transition-all duration-300 border-[#374151]/30 group-hover:border-blue-200 group-hover:shadow-lg group-hover:-translate-y-2">
-                  <CardContent className="p-0 flex flex-col items-center justify-center h-full">
-                    <div className={`w-24 h-24 flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110`}>
-                        <img 
+                <div className="bg-white rounded-[1.25rem] p-5 shadow-[0_4px_20px_rgb(0,0,0,0.06)] hover:shadow-lg hover:shadow-blue-900/10 border border-slate-100 flex flex-col sm:flex-row gap-5 h-full transition-all duration-300 transform group-hover:-translate-y-1">
+                  
+                  {/* Icon/Image Box */}
+                  <div className="w-[84px] h-[84px] shrink-0 rounded-[1rem] flex items-center justify-center overflow-hidden bg-slate-50 border border-slate-100">
+                      <img 
                         src={item.image} 
-                        alt="" // Kosong karena nama sistem ada di <h3> di bawahnya (WCAG 1.1.1)
-                        className="w-full h-full object-contain p-2 rounded-xl bg-slate-50 shadow-sm" 
-                        />
+                        alt="" 
+                        className="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-500" 
+                      />
+                  </div>
+                  
+                  {/* Content Box */}
+                  <div className="flex flex-col flex-1 text-left justify-between py-0.5">
+                    <div>
+                      <h3 className="text-[17px] font-bold text-slate-800 mb-1 leading-snug group-hover:text-blue-700 transition-colors">
+                        {item.title}
+                      </h3>
+                      <p className="text-slate-500 text-xs leading-[1.6] mb-3 line-clamp-3">
+                         {item.description}
+                      </p>
                     </div>
-                    <h3 className="text-xl font-black text-slate-800 mb-3 group-hover:text-blue-700 transition-colors uppercase tracking-tight">
-                      {item.title}
-                    </h3>
-                    <p className="text-slate-500 text-sm font-medium leading-relaxed">
-                      {item.description}
-                    </p>
-                  </CardContent>
-                </Card>
+                    <div className="flex items-center text-blue-600 font-bold text-xs group-hover:text-blue-700 transition-colors">
+                      Selengkapnya
+                      <ArrowRight size={14} className="ml-1.5 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+
+                </div>
               </a>
             );
           })}
         </div>
+
       </div>
     </section>
   );
