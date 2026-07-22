@@ -160,11 +160,11 @@ const LegalProducts = () => {
     };
 
     return (
-        <div className="bg-slate-50 min-h-screen pt-24 pb-20">
+        <main className="bg-slate-50 min-h-screen pt-24 pb-20" aria-labelledby="legal-products-heading">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-8">
                 {/* Page Header */}
                 <div className="mb-2">
-                    <h1 className="text-4xl font-extrabold text-[#0f172a] tracking-tight mb-4">Produk Hukum</h1>
+                    <h1 id="legal-products-heading" className="text-4xl font-extrabold text-[#0f172a] tracking-tight mb-4">Produk Hukum</h1>
                     <p className="text-slate-500 max-w-2xl text-[15px] leading-relaxed">
                         Akses koleksi peraturan daerah, keputusan bupati, dan dokumen hukum lainnya untuk mendukung transparansi tata kelola perizinan dan investasi di Kabupaten Gunungkidul.
                     </p>
@@ -278,10 +278,10 @@ const LegalProducts = () => {
                                 filteredDocs.map((doc) => (
                                     <Card key={doc.id} hoverable className="p-6 flex flex-col sm:flex-row gap-5 items-start group">
                                         <div className={`w-14 h-14 rounded-lg flex items-center justify-center shrink-0 shadow-sm transition-transform group-hover:scale-110 ${
-                                            doc.category === 'Perda' ? 'bg-red-50 text-red-600' :
-                                            doc.category === 'Perbup' ? 'bg-blue-50 text-blue-600' :
-                                            doc.category === 'UU' ? 'bg-yellow-50 text-yellow-600' :
-                                            'bg-green-50 text-green-600'
+                                            doc.category === 'Perda' ? 'bg-red-100 text-red-800' :
+                                            doc.category === 'Perbup' ? 'bg-blue-400 text-slate-200' :
+                                            doc.category === 'UU' ? 'bg-gold-500 text-slate-200' :
+                                            'bg-green-400 text-slate-200'
                                         }`}>
                                             <FileText size={28} aria-hidden="true" />
                                         </div>
@@ -302,14 +302,14 @@ const LegalProducts = () => {
                                             <p className="text-sm text-gray-600 mb-4 line-clamp-2">{doc.description}</p>
                                             
                                             <div className="flex items-center justify-between border-t border-gray-50 pt-3 mt-auto w-full">
-                                                <span className="text-xs text-black font-medium bg-gray-50 px-2 py-1 rounded border border-gray-100">{doc.fileSize}</span>
-                                                <Button 
-                                                    size="sm"
+                                                <span className="text-xs text-black font-medium bg-gray-200 px-2 py-1 rounded border border-gray-100">{doc.fileSize}</span>
+                                                <button
                                                     onClick={() => alert(`Mengunduh dokumen: ${doc.title}`)}
                                                     aria-label={`Unduh ${doc.title} (PDF, ${doc.fileSize})`}
+                                                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-slate-700 text-white text-sm font-semibold hover:bg-slate-700 active:scale-95 transition-all duration-150 shadow-sm"
                                                 >
-                                                    <Download size={16} className="mr-1.5" aria-hidden="true" /> Unduh
-                                                </Button>
+                                                    <Download size={15} aria-hidden="true" /> Unduh
+                                                </button>
                                             </div>
                                         </div>
                                     </Card>
@@ -334,7 +334,7 @@ const LegalProducts = () => {
                         {/* Pagination Footer */}
                         {filteredDocs.length > 0 && (
                             <div className="flex flex-col sm:flex-row justify-between items-center sm:items-end text-xs text-slate-500 font-medium pt-8 pb-4 gap-4">
-                                <span className="opacity-0 hidden sm:block">Menampilkan {filteredDocs.length} dari 156 dokumen</span>
+                                <span className="opacity-100 hidden sm:block">Menampilkan {filteredDocs.length} dari 156 dokumen</span>
                                 <div className="flex gap-1.5 self-center sm:self-end">
                                     <button className="w-8 h-8 flex items-center justify-center rounded border border-slate-200 bg-white hover:bg-slate-50 text-[#] hover:text-slate-600 transition-colors">
                                         <ChevronLeft size={16} />
@@ -351,7 +351,7 @@ const LegalProducts = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
     );
 };
 

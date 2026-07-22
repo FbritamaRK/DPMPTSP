@@ -11,10 +11,10 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
     const baseStyles = "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold";
     
     const variants = {
-      primary: "bg-gk-blue text-white",
-      secondary: "bg-gray-100 text-gray-800",
-      success: "bg-gk-green text-white",
-      warning: "bg-gk-yellow text-gray-900",
+      primary: "bg-blue-700 text-slate-200",
+      secondary: "bg-grey-200 text-gray-800",
+      success: "bg-green-500 text-slate-200",
+      warning: "bg-gold-500 text-slate-700",
       danger: "bg-red-100 text-red-800",
       outline: "border border-gray-200 text-gray-800",
     };

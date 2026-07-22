@@ -9,6 +9,7 @@ import RelatedLinks from './RelatedLinks.tsx';
 import Stats from './Stats.tsx';
 import Investment from './Investment.tsx';
 import News from './News.tsx';
+import OperationalHoursPopup from './OperationalHoursPopup.tsx';
 
 const FadeInSection = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -42,6 +43,7 @@ const Home = () => {
 
   return (
     <main id="main-content">
+      <OperationalHoursPopup />
       <Hero />
       <FadeInSection>
         <Banner />

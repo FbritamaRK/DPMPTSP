@@ -9,7 +9,7 @@ const sectors: InvestmentSector[] = [
   {
     title: "Pariwisata & Ekonomi Kreatif",
     description: "Pengembangan resort pantai, glamping, dan desa wisata yang sedang berkembang pesat.",
-    image: "https://picsum.photos/id/10/800/600", 
+    image: "https://picsum.photos/id/10/800/600",
     stats: "45% dari Total Investasi"
   },
   {
@@ -30,17 +30,17 @@ const Investment = () => {
   const navigate = useNavigate();
 
   return (
-    <section id="investasi" className="py-20 bg-gk-dark text-white">
+    <section id="investasi" className="py-20 bg-slate-700 text-white" aria-labelledby="investasi-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12">
           <div className="max-w-2xl">
-            <h2 className="text-3xl font-bold sm:text-4xl text-white">Potensi Investasi Unggulan</h2>
+            <h2 id="investasi-heading" className="text-3xl font-bold sm:text-4xl text-white">Potensi Investasi Unggulan</h2>
             <p className="mt-4 text-white">Jelajahi peluang emas di Bumi Handayani. Kami menyediakan data dan fasilitasi bagi calon investor.</p>
           </div>
           <div className="flex gap-4 mt-4 md:mt-0">
-            <Button 
+            <Button
               variant="secondary"
-              className="rounded-full hover:scale-105 transition-transform"
+              className="rounded-full hover:scale-100 transition-transform "
               onClick={() => navigate('/prospektus')}
             >
               Lihat Prospektus Finansial <ArrowRight size={18} className="ml-2" aria-hidden="true" />
@@ -51,23 +51,23 @@ const Investment = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {sectors.map((sector, index) => (
             <div key={index} className="group relative overflow-hidden rounded-xl h-[400px]">
-              <div 
+              <div
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
                 style={{ backgroundImage: `url(${sector.image})` }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-90" />
-              
-              
-              <div className="absolute bottom-0 left-0 p-6 w-full focus-within:ring-2 focus-within:ring-gk-yellow">
-                <div className="text-gk-yellow text-xs font-bold uppercase tracking-wider mb-2">{sector.stats}</div>
-                <h3 className="text-xl font-bold mb-2 group-hover:text-gk-yellow transition-colors">{sector.title}</h3>
+
+
+              <div className="absolute bottom-0 left-0 p-6 w-full focus-within:ring-2 focus-within:ring-gold-500">
+                <div className="text-gold-500 text-xs font-bold uppercase tracking-wider mb-2">{sector.stats}</div>
+                <h3 className="text-xl font-bold mb-2 group-hover:text-gold-500 transition-colors">{sector.title}</h3>
                 <p className="text-gray-300 text-sm line-clamp-2 group-hover:line-clamp-none transition-all duration-300">
                   {sector.description}
                 </p>
                 <div className="mt-4 h-0 group-hover:h-auto overflow-hidden transition-all">
-                  <button 
+                  <button
                     onClick={() => navigate('/prospektus')}
-                    className="text-sm font-semibold underline decoration-gk-yellow underline-offset-4 focus-visible:ring-10 focus-visible:ring-gk-yellow rounded-sm"
+                    className="text-sm text-gold-500 font-semibold underline decoration-gold-500 underline-offset-4 focus-visible:ring-10 focus-visible:ring-gold-500 rounded-sm"
                     aria-label={`Pelajari Selengkapnya tentang ${sector.title}`}
                   >
                     Pelajari Selengkapnya
@@ -77,13 +77,13 @@ const Investment = () => {
             </div>
           ))}
         </div>
-        
+
         <div className="mt-12 text-center">
-           <p className="text-white text-sm italic mb-4">Ingin berdiskusi lebih lanjut mengenai peluang investasi?</p>
-           <Button 
-             variant="outline" 
-             className="rounded-full border-gk-yellow text-gk-yellow hover:bg-gk-yellow hover:text-gk-dark focus-visible:ring-gk-yellow focus-visible:ring-offset-gk-dark"
-           >
+          <p className="text-white text-sm italic mb-4">Ingin berdiskusi lebih lanjut mengenai peluang investasi?</p>
+          <Button
+            variant="outline"
+            className="rounded-full border-gold-500 text-gold-500 hover:bg-gold-500 hover:text-slate-700 focus-visible:ring-gold-500 focus-visible:ring-offset-gk-dark"
+          >
             Jadwalkan Konsultasi Investor
           </Button>
         </div>

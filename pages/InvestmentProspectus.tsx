@@ -12,14 +12,14 @@ const InvestmentProspectus = () => {
   }, []);
 
   return (
-    <div className="bg-slate-50 min-h-screen pt-20">
-      <div className="bg-gk-dark py-16 md:py-24 relative overflow-hidden">
+    <main className="bg-slate-50 min-h-screen pt-20" aria-labelledby="prospektus-heading">
+      <div className="bg-slate-700 py-16 md:py-24 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="text-center md:text-left">
-              <span className="inline-block bg-gk-yellow/20 text-gk-yellow px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-4">Investor Relations</span>
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Prospektus Investasi <br/><span className="text-gk-yellow">Gunungkidul</span></h1>
+              {/* <span className="inline-block bg-gk-yellow/20 text-gk-yellow px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-4">Investor Relations</span> */}
+              <h1 id="prospektus-heading" className="text-4xl md:text-6xl font-bold text-white mb-6">Prospektus Investasi <br/><span className="text-gk-yellow">Gunungkidul</span></h1>
               <p className="text-white text-lg max-w-2xl">
                 Data komprehensif peluang investasi strategis di Kabupaten Gunungkidul. Analisis kelayakan finansial yang transparan untuk mendukung keputusan investasi Anda.
               </p>
@@ -59,15 +59,15 @@ const InvestmentProspectus = () => {
               <div className="lg:w-2/3 p-8 md:p-10 flex flex-col">
                 <div className="flex flex-col md:flex-row justify-between items-start mb-6 gap-4">
                   <div>
-                    <div className="flex items-center gap-2 text-gk-black font-semibold mb-1">
+                    <div className="flex items-center gap-2 text-green-500 font-semibold mb-1">
                       <MapPin size={20} aria-hidden="true" />
-                      <span className="text-sm uppercase tracking-wider !text-white font-bold bg-[#1E40AF] rounded-lg px-2 py-1">{project.location}</span>
+                      <span className="text-sm uppercase tracking-wider !text-slate-800 font-bold rounded-lg px-2 py-1">{project.location}</span>
                     </div>
                     <h2 className="text-2xl md:text-3xl font-bold text-gk-black  transition-colors">{project.name}</h2>
                   </div>
                   <div className="text-right">
                     <span className="text-xs text-black block font-medium uppercase mb-1">Total Nilai Investasi</span>
-                    <span className="text-2xl font-bold text-[#991B1B]">{project.totalInvestment}</span>
+                    <span className="text-2xl font-bold text-[#1E40AF]"><span className="text-base font-normal text-slate-500 mr-1">Rp</span>{project.totalInvestment}</span>
                   </div>
                 </div>
 
@@ -83,11 +83,11 @@ const InvestmentProspectus = () => {
                     <div className="space-y-4">
                       <div className="flex justify-between items-center border-b border-gray-200 pb-2">
                         <span className="text-black text-sm">Investasi Tanah</span>
-                        <span className="font-bold text-[#1a1a1a] text-sm">{project.landCost}</span>
+                        <span className="font-bold text-[#1B3D5F] text-sm">{project.landCost}</span>
                       </div>
                       <div className="flex justify-between items-center">
                         <span className="text-black text-sm">Pekerjaan Sipil</span>
-                        <span className="font-bold text-[#1a1a1a] text-sm">{project.civilWorkCost}</span>
+                        <span className="font-bold text-[#1B3D5F] text-sm">{project.civilWorkCost}</span>
                       </div>
                     </div>
                   </div>
@@ -99,11 +99,11 @@ const InvestmentProspectus = () => {
                     <div className="grid grid-cols-3 gap-4 text-center">
                       <div>
                         <span className="block text-[12px] font-bold text-gray-800 uppercase">NPV</span>
-                        <span className="text-base font-bold text-[#991B1B]">{project.npv}</span>
+                        <span className="text-base font-bold text-[#15803D]">{project.npv}</span>
                       </div>
                       <div>
                         <span className="block text-[12px] font-bold text-gray-800 uppercase">IRR</span>
-                        <span className="text-base font-bold text-[#991B1B]">{project.irr}</span>
+                        <span className="text-base font-bold text-[#15803D]">{project.irr}</span>
                       </div>
                       <div className="flex items-center justify-center">
                          <FileBarChart size={24} className="text-[#15803D]" aria-hidden="true" />
@@ -113,12 +113,12 @@ const InvestmentProspectus = () => {
                 </div>
 
                 <div className="mt-auto flex flex-col sm:flex-row gap-4 pt-6 border-t border-b-black-700">
-                  <button className="flex-1 bg-white text-black border-2 border-black py-3 rounded-lg font-bold hover:bg-black hover:text-white transition flex items-center justify-center gap-2 shadow-lg hover:shadow-gk-green/20 focus-visible:ring-2 focus-visible:ring-gk-green focus-visible:ring-offset-2">
+                  <button className="flex-1 bg-green-500 text-slate-200 border-2  py-3 rounded-lg font-bold hover:bg-[#166534] hover:text-white transition flex items-center justify-center gap-2 shadow-lg hover:shadow-gk-green/20 focus-visible:ring-2 focus-visible:ring-gk-green focus-visible:ring-offset-2">
                     <ExternalLink size={18} aria-hidden="true" /> Ajukan LoI
                   </button>
                   <button 
                     onClick={() => navigate(`/prospektus/${project.id}`)}
-                    className="px-6 py-3 rounded-lg font-bold border-2 border-gk-blue text-gk-blue hover:bg-gk-blue hover:text-white transition focus-visible:ring-2 focus-visible:ring-gk-blue focus-visible:ring-offset-2"
+                    className="px-6 py-3 rounded-lg bg bg-blue-800  font-bold border-2 border-blue-700 text-slate-200 hover:bg-blue-700 hover:text-white transition focus-visible:ring-2 focus-visible:ring-gk-blue focus-visible:ring-offset-2"
                     aria-label={`Detail Proyek ${project.name}`}
                   >
                     Detail Proyek
@@ -129,7 +129,7 @@ const InvestmentProspectus = () => {
           ))}
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

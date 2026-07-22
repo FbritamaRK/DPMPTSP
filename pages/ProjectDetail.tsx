@@ -82,12 +82,12 @@ const ProjectDetail = () => {
                 <span className="text-lg text-white bg-[#047857] rounded-lg px-2 py-1">{(project as any).location}</span>
               </div>
             </div>
-            <div className="bg-[#111827]/90 text-white p-6 rounded-2xl shadow-lg w-full md:w-auto min-w-[280px]">
-              <div className="text-blue-100 text-xs uppercase font-bold tracking-widest mb-1">Estimasi Investasi</div>
-              <div className="text-3xl font-bold mb-4">{(project as any).totalInvestment}</div>
+            <div className="text-white p-6 rounded-2xl shadow-lg w-full md:w-auto min-w-[280px] border border-grey-600 bg-grey-200">
+              <div className="text-slate-800 text-xs uppercase font-bold tracking-widest mb-1">Estimasi Investasi</div>
+              <div className="text-3xl font-bold mb-4 text-slate-700">{(project as any).totalInvestment}</div>
               <Button 
                 variant="primary" 
-                className="w-full bg-[#1A1A1A] text-white py-3 rounded-lg font-bold flex items-center justify-center gap-2 hover:scale-100 transition shadow-md border border-white hover:shadow-xl hover:bg-[#ffffff] hover:text-[#1a1a1a] transition-shadow duration-300"
+                className="w-full bg-grey-600 border border-grey-600 text-blue-700 py-3 rounded-lg font-bold flex items-center justify-center gap-2 transition-all duration-200 shadow-md hover:bg-blue-700 hover:text-white hover:shadow-xl active:scale-95"
               >
                 <ExternalLink size={18} aria-hidden="true" /> Ajukan Peminatan (LoI)
               </Button>
@@ -191,12 +191,12 @@ const ProjectDetail = () => {
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {[
-                  { label: 'NPV (Net Present Value)', value: (project as any).npv, icon: DollarSign, color: 'text-blue-600', bg: 'bg-blue-50' },
-                  { label: 'IRR (Int. Rate of Return)', value: (project as any).irr, icon: TrendingUp, color: 'text-green-600', bg: 'bg-green-50' },
-                  { label: 'Economic IRR (EIRR)', value: (project as any).eirr, icon: TrendingUp, color: 'text-purple-600', bg: 'bg-purple-50' },
-                  { label: 'Payback Period', value: (project as any).paybackPeriod, icon: Clock, color: 'text-orange-600', bg: 'bg-orange-50' },
-                  { label: 'DSCR (Debt Service)', value: (project as any).dscr, icon: ShieldCheck, color: 'text-red-600', bg: 'bg-red-50' },
-                  { label: 'Total CapEx', value: (project as any).totalInvestment, icon: DollarSign, color: 'text-slate-600', bg: 'bg-slate-50' },
+                  { label: 'NPV (Net Present Value)', value: (project as any).npv, icon: DollarSign, color: 'text-[#15803D]', bg: 'bg-green-50' },
+                  { label: 'IRR (Int. Rate of Return)', value: (project as any).irr, icon: TrendingUp, color: 'text-[#15803D]', bg: 'bg-green-50' },
+                  { label: 'Economic IRR (EIRR)', value: (project as any).eirr, icon: TrendingUp, color: 'text-[#B45309]', bg: 'bg-amber-50' },
+                  { label: 'Payback Period', value: (project as any).paybackPeriod, icon: Clock, color: 'text-[#1B3D5F]', bg: 'bg-blue-50' },
+                  { label: 'DSCR (Debt Service)', value: (project as any).dscr, icon: ShieldCheck, color: 'text-[#1B3D5F]', bg: 'bg-blue-50' },
+                  { label: 'Total CapEx', value: (project as any).totalInvestment, icon: DollarSign, color: 'text-[#1E40AF]', bg: 'bg-blue-50' },
                 ].map((item, i) => (
                   <Card key={i} className="border-gray-100 shadow-sm">
                     <CardContent className="p-6">
@@ -204,7 +204,7 @@ const ProjectDetail = () => {
                         <item.icon size={20} aria-hidden="true" />
                       </div>
                       <div className="text-xs font-semibold text-[#1A1A1A] uppercase tracking-wider mb-1">{item.label}</div>
-                      <div className="text-xl font-bold text-[#991B1B]">{item.value}</div>
+                      <div className={`text-xl font-bold ${item.color}`}>{item.value}</div>
                     </CardContent>
                   </Card>
                 ))}
@@ -212,28 +212,27 @@ const ProjectDetail = () => {
             </section>
 
             {/* Infrastructure Section */}
-            <section className="bg-gk-dark text-white p-8 md:p-10 rounded-2xl shadow-xl relative overflow-hidden">
-               <div className="absolute top-0 right-0 w-64 h-64 bg-gk-blue/10 rounded-full -mr-32 -mt-32"></div>
+            <section className="bg-slate-700 text-white p-8 md:p-10 rounded-2xl shadow-xl relative overflow-hidden">
                <h3 className="text-2xl font-bold mb-8 flex items-center gap-2 relative z-10">
                  <HardHat aria-hidden="true" /> Infrastruktur & Sarana Penunjang
                </h3>
                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
                   <div className="space-y-4">
-                     <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-gk-yellow">
+                     <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-gold-500">
                         <Zap aria-hidden="true" />
                      </div>
                      <h4 className="font-bold">Ketenagalistrikan</h4>
                      <p className="text-gray-400 text-sm">Tersedia jaringan PLN tegangan menengah dengan kapasitas cadangan yang mencukupi.</p>
                   </div>
                   <div className="space-y-4">
-                     <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-gk-blue">
+                     <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-blue-500">
                         <Droplets aria-hidden="true" />
                      </div>
                      <h4 className="font-bold">Air Bersih</h4>
                      <p className="text-gray-400 text-sm">Koneksi pipa PDAM utama dan izin pemanfaatan air tanah/sumur dalam tersedia.</p>
                   </div>
                   <div className="space-y-4">
-                     <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-gk-green">
+                     <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-green-500">
                         <MapPin aria-hidden="true" />
                      </div>
                      <h4 className="font-bold">Aksesibilitas</h4>

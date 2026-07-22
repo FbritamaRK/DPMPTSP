@@ -1,38 +1,80 @@
+/**
+ * CSS Custom Properties – DPMPTSP Gunungkidul Design System
+ * Lampiran B: Warna yang Digunakan pada Purwarupa
+ *
+ * Semua warna brand didefinisikan di sini sebagai CSS variables
+ * agar mudah digunakan di mana saja (termasuk inline style dan Tailwind arbitrary values).
+ */
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* ── Warna Gelap / Teks ──────────────────────────────────────── */
+  --color-dark:            #1A1A1A;   /* Latar Navbar & Elemen Gelap */
+  --color-text-primary:    #111827;   /* Teks Primer Utama */
+  --color-text-secondary:  #374151;   /* Teks Sekunder */
+  --color-text-hint:       #6B7280;   /* Teks Petunjuk / Hint */
+
+  /* ── Warna Biru (Brand Utama) ───────────────────────────────── */
+  --color-blue-primary:    #1E40AF;   /* Tombol, Link Aktif – Royal Blue */
+  --color-blue-navy:       #1B3D5F;   /* Navigasi Aktif – Navy */
+  --color-navy-deep:       #00337A;   /* Navy Dalam */
+  --color-sky:             #0EA5E9;   /* Sky / Cyan */
+
+  /* ── Warna Hijau ────────────────────────────────────────────── */
+  --color-green-primary:   #10B981;   /* Hijau Primer – Fokus, Tag Sukses */
+  --color-green-dark:      #15803D;   /* Hijau Gelap – Forest */
+  --color-green-text:      #166534;   /* Status Sukses – Teks Hijau */
+
+  /* ── Warna Amber / Emas ─────────────────────────────────────── */
+  --color-gold:            #FFCA28;   /* Aksen Kuning Emas */
+  --color-amber:           #B45309;   /* Aksen Amber / Status Waspada */
+
+  /* ── Warna Ungu (hanya untuk label/kategori statistik) ──────── */
+  --color-purple:          #9333EA;   /* Teks Ungu / Kategori Statistik */
+
+  /* ── Warna Merah ────────────────────────────────────────────── */
+  --color-red:             #991B1B;   /* Status Error / Bahaya */
+  --color-red-light:       #FEF2F2;   /* Latar Error Ringan */
+
+  /* ── Latar / Background ─────────────────────────────────────── */
+  --color-bg-page:         #EBF2F9;   /* Latar Halaman Utama */
+  --color-bg-card:         #F7F5F0;   /* Latar Kartu dan Komponen */
+  --color-bg-white:        #FFFFFF;   /* Latar Kartu Putih */
+
+  /* ── Batas / Border ─────────────────────────────────────────── */
+  --color-border:          #D1CEC4;   /* Batas / Border Struktural */
+
+  /* ── Font & Base ─────────────────────────────────────────────── */
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+/* ── Reset dasar ─────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: var(--color-bg-white);
+  color: var(--color-text-primary);
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+a {
+  font-weight: 500;
+  color: var(--color-blue-primary);
+  text-decoration: inherit;
+}
+a:hover {
+  color: var(--color-blue-navy);
 }
 
 button {
@@ -42,27 +84,12 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
+/* Scroll bar tipis ─────────────────────────────────────────────── */
+::-webkit-scrollbar        { width: 6px; height: 6px; }
+::-webkit-scrollbar-track  { background: var(--color-bg-page); }
+::-webkit-scrollbar-thumb  { background: var(--color-border); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-text-hint); }

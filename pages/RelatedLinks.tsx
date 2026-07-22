@@ -25,7 +25,7 @@ const links = [
 
 const RelatedLinks = () => {
   return (
-    <section className="relative w-full pb-20 mt-10 bg-slate-50/50">
+    <section className="relative w-full pb-20 mt-10 bg-slate-50/50" aria-labelledby="akses-cepat-heading">
       {/* Background Top Half (Blue) Content */}
       <div className="relative bg-[#1752a9] pt-16 pb-28 overflow-hidden">
          {/* Subtle wave on the left */}
@@ -44,7 +44,7 @@ const RelatedLinks = () => {
 
          {/* Header Text */}
          <div className="relative z-10 text-center max-w-2xl mx-auto mb-4 px-4 sm:px-6 lg:px-8">
-           <h2 className="text-2xl md:text-[28px] font-bold text-white mb-3 tracking-tight">
+           <h2 id="akses-cepat-heading" className="text-2xl md:text-[28px] font-bold text-white mb-3 tracking-tight">
              Akses Cepat
            </h2>
            <p className="text-white/90 text-sm md:text-base leading-relaxed px-4 font-medium">
@@ -84,7 +84,7 @@ const RelatedLinks = () => {
                     </div>
                     <div className="flex items-center text-blue-600 font-bold text-xs group-hover:text-blue-700 transition-colors">
                       Selengkapnya
-                      <ArrowRight size={14} className="ml-1.5 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight size={14} className="ml-1.5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                     </div>
                   </div>
 

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Send, Search, MessageSquare, MapPin, Phone, Mail, UploadCloud, Info, CheckCircle2, Hourglass, HelpCircle, ChevronDown, ChevronUp, AlertCircle, Check } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Send, Search, MessageSquare, MapPin, Phone, Mail, UploadCloud, Info, CheckCircle2, Hourglass, HelpCircle, ChevronDown, ChevronUp, AlertCircle, Check, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 const Complaints = () => {
@@ -13,14 +13,46 @@ const Complaints = () => {
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [ticketNumber, setTicketNumber] = useState('');
-  
+
   const [trackId, setTrackId] = useState('');
   const [ticketResult, setTicketResult] = useState<any>(null);
   const [isCheckingTicket, setIsCheckingTicket] = useState(false);
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
   const [activeTab, setActiveTab] = useState<'buat' | 'cek'>('buat');
+
+  const modalRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  // Focus trap + Escape key for modal
+  useEffect(() => {
+    if (!showSuccessModal) return;
+    // Move focus to close button when modal opens
+    closeButtonRef.current?.focus();
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setShowSuccessModal(false);
+        return;
+      }
+      // Focus trap
+      if (e.key === 'Tab' && modalRef.current) {
+        const focusable = modalRef.current.querySelectorAll<HTMLElement>(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey) {
+          if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+        } else {
+          if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [showSuccessModal]);
 
   const faqs = [
     { question: 'Berapa lama waktu respon untuk setiap pengaduan?', answer: 'Kami berusaha merespon setiap laporan dalam waktu maksimal 3x24 jam hari kerja untuk tahap verifikasi awal.' },
@@ -88,20 +120,121 @@ const Complaints = () => {
     if (!validateForm()) return;
     
     setIsSubmitting(true);
-    setSubmitSuccess(false); // Reset success state if resubmitting quickly
-    
+
     // Simulate API submission
     setTimeout(() => {
       setIsSubmitting(false);
-      setSubmitSuccess(true);
       setTicketNumber(`ADU-${new Date().getFullYear()}-${Math.floor(Math.random() * 10000)}`);
       setFormData({ name: '', nik: '', email: '', phone: '', category: '', message: '' });
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setShowSuccessModal(true);
     }, 1500);
   };
 
   return (
     <div className="bg-slate-50 min-h-screen pt-20">
+
+      {/* ─── Success Modal Popup ─── */}
+      <AnimatePresence>
+        {showSuccessModal && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              key="backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
+              onClick={() => setShowSuccessModal(false)}
+              aria-hidden="true"
+            />
+
+            {/* Dialog */}
+            <motion.div
+              key="modal"
+              ref={modalRef}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="success-modal-title"
+              aria-describedby="success-modal-desc"
+              initial={{ opacity: 0, scale: 0.92, y: 24 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.92, y: 24 }}
+              transition={{ type: 'spring', duration: 0.4, bounce: 0.25 }}
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none"
+            >
+              <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md pointer-events-auto overflow-hidden">
+
+                {/* Header strip */}
+                <div className="bg-gradient-to-r from-[#16a34a] to-[#15803d] px-6 pt-6 pb-10 text-center relative">
+                  <button
+                    ref={closeButtonRef}
+                    type="button"
+                    onClick={() => setShowSuccessModal(false)}
+                    aria-label="Tutup notifikasi"
+                    className="absolute top-3 right-3 text-white/70 hover:text-white p-1.5 rounded-full hover:bg-white/20 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                  >
+                    <X size={18} aria-hidden="true" />
+                  </button>
+
+                  {/* Animated checkmark circle */}
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 0.15, type: 'spring', bounce: 0.5 }}
+                    className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3"
+                  >
+                    <div className="w-11 h-11 bg-white rounded-full flex items-center justify-center">
+                      <Check size={24} className="text-[#16a34a]" strokeWidth={3} aria-hidden="true" />
+                    </div>
+                  </motion.div>
+
+                  <h2 id="success-modal-title" className="text-white font-black text-xl">
+                    Pengaduan Berhasil Terkirim!
+                  </h2>
+                </div>
+
+                {/* Body — pulled up to overlap header strip */}
+                <div className="-mt-6 mx-4 bg-white rounded-xl border border-slate-100 shadow-sm px-6 py-5 text-center">
+
+                  {/* sr-only: full announcement for screen readers */}
+                  <p className="sr-only" aria-live="assertive">
+                    Pengaduan berhasil terkirim. Nomor tiket Anda adalah {ticketNumber}.
+                    Simpan nomor ini untuk melacak status pengaduan Anda.
+                  </p>
+
+                  <p id="success-modal-desc" className="text-slate-800 text-sm font-sm mb-4 mt-5" aria-hidden="true">
+                    Terima kasih atas laporan Anda. Berikut adalah nomor tiket pengaduan Anda:
+                  </p>
+
+                  {/* Ticket number display */}
+                  <div
+                    className="inline-flex items-center gap-2 bg-[#f0fdf4] border border-[#bbf7d0] px-5 py-3 rounded-xl mb-5"
+                    aria-hidden="true"
+                  >
+                    <span className="text-2xl font-black text-[#1a1a1a] tracking-widest">{ticketNumber}</span>
+                  </div>
+
+                  <p className="text-slate-800 text-xs font-medium mb-5" aria-hidden="true">
+                    Simpan nomor tiket ini untuk memantau status pengaduan Anda melalui tab <strong>Cek Status</strong>.
+                  </p>
+
+                  <button
+                    type="button"
+                    onClick={() => setShowSuccessModal(false)}
+                    className="w-full bg-red-800 hover:bg-red-500 text-white font-bold py-3 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2"
+                  >
+                    Tutup
+                  </button>
+                </div>
+
+                <div className="h-4" />
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+      {/* ── MAIN CONTENT ── */}
+      <main id="pengaduan" tabIndex={-1} aria-labelledby="complaints-heading" className="outline-none">
       {/* Header */}
       <div className="bg-[#1e3a5f] relative overflow-hidden">
         {/* Subtle background abstract shapes overlay */}
@@ -120,7 +253,7 @@ const Complaints = () => {
               <MessageSquare size={18} />
               <span>Layanan Pengaduan</span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-black text-white mb-6 leading-tight">
+            <h1 id="complaints-heading" className="text-4xl md:text-5xl font-black text-white mb-6 leading-tight">
               Pengaduan & Saran
             </h1>
             <p className="text-[#cbd5e1] text-lg leading-relaxed max-w-2xl font-medium">
@@ -159,28 +292,7 @@ const Complaints = () => {
           {/* Main Form Area */}
           <div className="w-full lg:w-2/3">
             
-            {/* Target Alert for successful submission, announced to screen readers immediately */}
-            {submitSuccess && (
-              <motion.div 
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                role="alert" 
-                aria-live="assertive" 
-                className="mb-8 bg-[#f0fdf4] border border-[#bbf7d0] rounded-2xl p-6 shadow-sm flex flex-col sm:flex-row items-center sm:items-start gap-4"
-              >
-                <div className="bg-[#bbf7d0] text-[#16a34a] p-3 rounded-full shrink-0">
-                   <MessageSquare size={24} aria-hidden="true" />
-                </div>
-                <div className="text-center sm:text-left">
-                  <h3 className="text-[#16a34a] font-bold text-lg mb-1">Pengaduan Berhasil Terkirim!</h3>
-                  <p className="text-[#374151] mb-2">Terima kasih atas laporan Anda. Nomor tiket pengaduan diproses.</p>
-                  <p className="sr-only">Nomor tiket Anda adalah {ticketNumber}</p>
-                  <div className="inline-block bg-white border border-[#bbf7d0] px-4 py-2 rounded-lg text-xl font-bold text-[#1a1a1a] tracking-widest mt-1" aria-hidden="true">
-                    {ticketNumber}
-                  </div>
-                </div>
-              </motion.div>
-            )}
+
 
             <form onSubmit={handleSubmit} className="bg-white/90 rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm" noValidate>
               <div className="flex sm:items-center justify-between flex-col sm:flex-row gap-4 mb-8">
@@ -680,6 +792,7 @@ const Complaints = () => {
           </div>
         </div>
       </div>
+      </main>
     </div>
   );
 };
