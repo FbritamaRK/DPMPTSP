@@ -33,15 +33,19 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  /* Close dropdown on outside click */
+  /* Close dropdown on outside click / tap */
   useEffect(() => {
-    const handler = (e: MouseEvent) => {
+    const handler = (e: MouseEvent | TouchEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
         setActiveDropdown(null);
       }
     };
     document.addEventListener('mousedown', handler);
-    return () => document.removeEventListener('mousedown', handler);
+    document.addEventListener('touchstart', handler, { passive: true });
+    return () => {
+      document.removeEventListener('mousedown', handler);
+      document.removeEventListener('touchstart', handler);
+    };
   }, []);
 
   /* Close mobile menu on route change */
@@ -192,7 +196,9 @@ const Navbar = () => {
           {/* Mobile menu */}
           <div
             id="mobile-menu"
-            className={`md:hidden bg-white border-t border-slate-100 shadow-xl transition-all duration-300 overflow-hidden ${isOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'}`}
+            className={`md:hidden bg-white border-t border-slate-100 shadow-xl transition-all duration-300 ${
+              isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none max-h-0 overflow-hidden'
+            }`}
             aria-hidden={!isOpen}
           >
             <div className="px-4 py-4 space-y-1">
@@ -219,10 +225,10 @@ const Navbar = () => {
                               key={child.label}
                               to={child.href}
                               onClick={(e) => handleNavClick(e, child.href)}
-                              className="flex items-center justify-between py-2.5 px-2 text-sm text-slate-600 hover:text-emerald-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 rounded"
+                              className="flex items-center justify-between min-h-[48px] py-3 px-3 text-sm font-medium text-slate-600 hover:text-emerald-700 active:bg-emerald-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 rounded-lg"
                             >
                               {child.label}
-                              {(child as any).external && <ExternalLink size={11} aria-label="(eksternal)" className="text-slate-400" />}
+                              {(child as any).external && <ExternalLink size={12} aria-label="(eksternal)" className="text-slate-400 shrink-0" />}
                             </Link>
                           ))}
                         </div>
