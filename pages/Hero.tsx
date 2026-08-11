@@ -49,7 +49,7 @@ const Hero = () => {
       {/* ── FOTO LATAR PENUH */}
       <motion.div className="absolute inset-0 z-0" aria-hidden="true">
         <img
-          src="../img/1.png"
+          src="/img/1.png"
           alt=""
           className="absolute inset-0 w-full h-full object-cover object-center brightnes-80"
         />
