@@ -155,7 +155,7 @@ const Navbar = () => {
                             key={child.label}
                             to={child.href}
                             onClick={(e) => handleNavClick(e, child.href)}
-                            className="block px-4 py-2.5 text-sm text-gray-900 hover:bg-gk-black/10 hover:text-[#ffca28] transition-colors"
+                            className="block px-4 py-2.5 rounded-lg text-sm text-gray-900 hover:bg-gk-black/10 hover:text-[#ffca28] transition-colors"
                           >
                             {child.label}
                           </Link>

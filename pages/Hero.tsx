@@ -44,7 +44,7 @@ const Hero = () => {
     <section
       ref={ref}
       aria-labelledby="hero-heading"
-      className="relative w-full min-h-screen flex flex-col items-start justify-center overflow-hidden"
+      className="relative w-full min-h-[100svh] flex flex-col items-start justify-center overflow-hidden"
     >
       {/* ── FOTO LATAR PENUH */}
       <motion.div className="absolute inset-0 z-0" aria-hidden="true">
@@ -62,7 +62,7 @@ const Hero = () => {
       </motion.div>
 
       <motion.div 
-        className="relative z-10 flex flex-col items-start text-left px-8 sm:px-12 lg:px-20 w-full max-w-3xl pt-24 pb-40"
+        className="relative z-10 flex flex-col items-start text-left px-5 sm:px-12 lg:px-20 w-full max-w-3xl pt-20 pb-24 sm:pt-24 sm:pb-40"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -93,7 +93,7 @@ const Hero = () => {
         </motion.p>
 
         {/* CTA Buttons */}
-        <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-start gap-4 mt-8">
+        <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-start gap-3 mt-6 sm:mt-8">
           <button
             onClick={() => navigate('/layanan')}
             className="inline-flex items-center gap-2 bg-[#FFCA28] hover:bg-yellow-400 text-gray-900 font-bold text-sm sm:text-base px-6 py-3 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFCA28] focus-visible:ring-offset-2"
