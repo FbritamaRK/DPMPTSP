@@ -83,7 +83,7 @@ const Navbar = () => {
         Lewati ke konten utama
       </a>
 
-      <header className="fixed w-full z-50" role="banner">
+      <header ref={dropdownRef} className="fixed w-full z-50" role="banner">
         <nav
           className={`transition-all duration-300 ${navBg}`}
           aria-label="Navigasi utama"
@@ -117,7 +117,7 @@ const Navbar = () => {
               </Link>
 
               {/* Desktop nav */}
-              <div ref={dropdownRef} className="hidden md:flex items-center gap-1">
+              <div className="hidden md:flex items-center gap-1">
                 {navItems.map((item) => (
                   <div
                     key={item.label}
