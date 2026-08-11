@@ -15,6 +15,7 @@ const Complaints = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [ticketNumber, setTicketNumber] = useState('');
+  const [formErrorAnnouncement, setFormErrorAnnouncement] = useState('');
 
   const [trackId, setTrackId] = useState('');
   const [ticketResult, setTicketResult] = useState<any>(null);
@@ -117,8 +118,33 @@ const Complaints = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!validateForm()) return;
-    
+    if (!validateForm()) {
+      // Kumpulkan semua pesan error agar dibacakan screen reader
+      const newErrors: Record<string, string> = {};
+      if (!formData.name.trim()) newErrors.name = 'Nama lengkap wajib diisi';
+      if (!formData.nik.trim() || formData.nik.length !== 16 || !/^\d+$/.test(formData.nik)) {
+        newErrors.nik = 'NIK wajib diisi dengan 16 digit angka';
+      }
+      if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+        newErrors.email = 'Email aktif yang valid wajib diisi';
+      }
+      if (!formData.phone.trim()) newErrors.phone = 'Nomor telepon/WA wajib diisi';
+      if (!formData.category.trim()) newErrors.category = 'Kategori layanan wajib dipilih';
+      if (!formData.message.trim()) newErrors.message = 'Isi pengaduan wajib diisi';
+
+      const errorList = Object.values(newErrors).join('. ');
+      const errorCount = Object.keys(newErrors).length;
+      // Reset lalu set ulang agar aria-live memicu pembacaan ulang
+      setFormErrorAnnouncement('');
+      setTimeout(() => {
+        setFormErrorAnnouncement(
+          `Formulir belum lengkap. Terdapat ${errorCount} kesalahan: ${errorList}.`
+        );
+      }, 50);
+      return;
+    }
+
+    setFormErrorAnnouncement('');
     setIsSubmitting(true);
 
     // Simulate API submission
@@ -197,11 +223,13 @@ const Complaints = () => {
                 <div className="-mt-6 mx-4 bg-white rounded-xl border border-slate-100 shadow-sm px-6 py-5 text-center">
 
                   {/* sr-only: full announcement for screen readers */}
-                  <p className="sr-only" aria-live="assertive">
-                    Pengaduan berhasil terkirim. Nomor tiket Anda adalah {ticketNumber}.
+                  {/* Gunakan aria-live untuk membacakan pesan otomatis dan gunakan aria-hidden=true untuk mematikan pembacaan otomatis */}
+                  <p className="sr-only" aria-live="assertive" >
+                    Terima kasih atas laporan Anda. Berikut adalah nomor tiket pengaduan Anda {ticketNumber}.
                     Simpan nomor ini untuk melacak status pengaduan Anda.
                   </p>
 
+                  {/* Teks pada  modal */}
                   <p id="success-modal-desc" className="text-slate-800 text-sm font-sm mb-4 mt-5" aria-hidden="true">
                     Terima kasih atas laporan Anda. Berikut adalah nomor tiket pengaduan Anda:
                   </p>
@@ -295,6 +323,15 @@ const Complaints = () => {
 
 
             <form onSubmit={handleSubmit} className="bg-white/90 rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm" noValidate>
+              {/* Notifikasi error untuk screen reader — aria-live assertive agar langsung dibacakan */}
+              {/* Gunakan aria-live untuk membacakan pesan otomatis atau hapus untuk mematikan pembacaan otomatis */}
+              <p
+                className="sr-only"
+                aria-live="assertive"
+                aria-atomic="true"
+              >
+                {formErrorAnnouncement}
+              </p>
               <div className="flex sm:items-center justify-between flex-col sm:flex-row gap-4 mb-8">
                 <div className="flex items-center gap-4">
                   <div className="bg-[#1a1a1a]/10 p-3.5 rounded-xl text-[#1a1a1a]">
@@ -607,7 +644,7 @@ const Complaints = () => {
           >
             <div className="flex flex-col md:flex-row justify-between md:items-center mb-8 border-b border-slate-100 pb-6 gap-4">
               <div>
-                <span className="bg-[#ECFDF5] text-[#047857] px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full inline-block mb-3">Hasil Pencarian</span>
+                <span className="bg-[#ECFDF5] text-[#047857] px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full inline-block mb-3 " aria-live="assertive">Hasil Pencarian</span>
                 <h3 className="text-3xl font-black text-slate-900">Registrasi<br className="hidden md:block"/>#{ticketResult.ticketNo}</h3>
               </div>
               <div className="text-left md:text-right">

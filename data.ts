@@ -16,9 +16,9 @@ export const mockProjects: InvestmentProject[] = [
     dscr: "1,85x",
     status: "Ready to Offer",
     images: [
-      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1544124499-58912cbddaad?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&q=80&w=1200"
+      "https://asset.kompas.com/crops/9vWJ4Z-StmWL-BA_UVOiYsuGOng=/0x0:1800x1200/1200x900/data/photo/2026/06/21/6a37cc179c4f5.jpg",
+      "https://sewamobiljogja.id/wp-content/uploads/2019/07/Pantai-Wediombo.jpg",
+      "https://asset.kompas.com/crops/RPRhM0TLDwES5yEWbE46-4qlBm0=/0x0:0x0/1200x800/data/photo/2022/05/17/62836abc662c4.jpg"
     ]
   },
   {
@@ -36,9 +36,9 @@ export const mockProjects: InvestmentProject[] = [
     dscr: "2,10x",
     status: "Strategic",
     images: [
-      "https://images.unsplash.com/photo-1544256718-3bcf237f3974?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1516710114944-1383812702a0?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1498654077810-12c21d4d6dc3?auto=format&fit=crop&q=80&w=1200"
+      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEioFgEpG_iZElDGKlzGIGQqFBarg0WnRQJ4OuSQ5JZ9UUHJkjag01XogTsRb3a6S0Z4PQDAjzutYGEH_ZVCSnDrR-zfzp-Z2NGNG2VXjm2cGYsamgPa4TnM9NxB1Vr3RBoxaIPWFZV9d1yF/s1600/IMG-20170804-WA0006.jpg",
+      "https://visitingjogja.jogjaprov.go.id/wp-content/uploads/2016/11/v4.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSFv6fpv93fNKXHH9u50O_mAWUeA4XOWbMrJ7CZG_RAciEGgrV_TVOEPt4&s=10"
     ]
   },
   {
@@ -56,9 +56,9 @@ export const mockProjects: InvestmentProject[] = [
     dscr: "1,65x",
     status: "Ready to Offer",
     images: [
-      "https://images.unsplash.com/photo-1615485290382-441e4d0c9cb5?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1471193945509-9ad0617afabf?auto=format&fit=crop&q=80&w=1200"
+      "https://asset.kompas.com/crops/Eza50IUYJ1eVhmf7yR-sGwCIL_8=/0x0:0x0/1200x900/data/photo/2025/03/05/67c7c35e799e6.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_sFHJbQaT3nyAUPkwXWbnNpD-8IXR7fbj7fmvkCuZ4w&s=10",
+      "https://jogja.akurat.co/_next/image?url=https%3A%2F%2Fakurat.sgp1.cdn.digitaloceanspaces.com%2Fimages%2Fjogja%2F2025%2F09%2F24%2Fmelon-3478773266.jpg&w=3840&q=100"
     ]
   },
   {
@@ -76,9 +76,9 @@ export const mockProjects: InvestmentProject[] = [
     dscr: "1,55x",
     status: "Under Review",
     images: [
-      "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1466611653911-954ffec136ce?auto=format&fit=crop&q=80&w=1200"
+      "https://ecadin.org/wp-content/uploads/2022/11/Desain-tanpa-judul-18.webp",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRutdHYmQOSUuAQbIWb-Xc5N8kcyWtrsoElviNm1u7p5o9GITN7Fq1R9_Cr&s=10",
+      "https://ugm.ac.id/wp-content/uploads/2025/10/sampah-kompas-e1759373302374.jpg"
     ]
   }
 ];

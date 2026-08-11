@@ -76,7 +76,7 @@ const Services = () => {
             >
               Akses Layanan Publik Terpadu
             </h2>
-            <p className="text-[#374151] text-lg leading-relaxed max-w-xl font-medium">
+            <p className="text-[#374151] ml-10 text-lg leading-relaxed max-w-xl font-medium ">
               Platform digital yang memudahkan pelaku usaha dalam mengelola perizinan dan memantau status aplikasi secara real-time.
             </p>
           </div>
@@ -404,7 +404,7 @@ const Services = () => {
             className="md:col-span-1 flex"
           >
             <Link
-              to="/legal"
+              to="/produk-hukum"
               aria-label="Buka halaman Regulasi dan Panduan"
               className="w-full h-full group bg-white rounded-2xl p-6 border border-slate-200 shadow-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col overflow-hidden relative focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#0EA5E9] focus-visible:ring-offset-2"
             >

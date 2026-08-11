@@ -54,9 +54,9 @@ const Home = () => {
       <FadeInSection>
         <RelatedLinks />
       </FadeInSection>
-      <FadeInSection>
+      {/* <FadeInSection>
         <Stats />
-      </FadeInSection>
+      </FadeInSection> */}
       <FadeInSection>
         <Investment />
       </FadeInSection>

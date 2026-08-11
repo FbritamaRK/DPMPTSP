@@ -44,8 +44,8 @@ const RelatedLinks = () => {
 
          {/* Header Text */}
          <div className="relative z-10 text-center max-w-2xl mx-auto mb-4 px-4 sm:px-6 lg:px-8">
-           <h2 id="akses-cepat-heading" className="text-2xl md:text-[28px] font-bold text-white mb-3 tracking-tight">
-             Akses Cepat
+           <h2 id="akses-cepat-heading" className="text-2xl md:text-[30px] font-bold text-white mb-3 tracking-tight">
+             AKSES CEPAT
            </h2>
            <p className="text-white/90 text-sm md:text-base leading-relaxed px-4 font-medium">
              Dapatkan kemudahan akses ke beberapa layanan Pemerintah Kabupaten Gunungkidul untuk kebutuhan Anda.

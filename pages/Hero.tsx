@@ -79,7 +79,7 @@ const Hero = () => {
           </p>
         </motion.div> */}
 
-        <motion.h1 variants={itemVariants} id="hero-heading" className="text-white font-black leading-[1.1] mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]"
+        <motion.h1 role="heading" aria-level={1} variants={itemVariants} id="hero-heading" className="text-white font-black leading-[1.1] mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]"
             style={{ fontFamily: "'Georgia', serif", letterSpacing: "-0.01em", filter }}>
           Selamat Datang di<br />
           <span className="text-[#FFCA28]">DPMPTSP</span>
