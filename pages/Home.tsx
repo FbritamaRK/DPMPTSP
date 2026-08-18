@@ -43,7 +43,7 @@ const Home = () => {
 
   return (
     <main id="main-content">
-      <OperationalHoursPopup />
+      {/* <OperationalHoursPopup /> */}
       <Hero />
       <FadeInSection>
         <Banner />

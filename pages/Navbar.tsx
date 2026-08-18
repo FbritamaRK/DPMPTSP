@@ -173,7 +173,7 @@ const Navbar = () => {
 
                 <button
                   onClick={() => navigate('/pengaduan')}
-                  className="ml-3 flex items-center gap-2 border bg bg-white text-[#1e40af] border-[#1e40af] hover:bg-[#1e40af] hover:text-white  px-4 py-2 rounded-xl text-sm font-semibold transition-all shadow-md hover:shadow-lg hover:-translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
+                  className="ml-3 flex items-center gap-2 border bg bg-[#1e40af] text-white border-[#1e40af] hover:bg-white hover:text-[#1e40af]  px-4 py-2 rounded-xl text-sm font-semibold transition-all shadow-md hover:shadow-lg hover:-translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
                 >
                   <Phone size={14} aria-hidden="true" />
                   Pengaduan
