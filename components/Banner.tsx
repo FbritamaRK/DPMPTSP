@@ -6,12 +6,12 @@ const banners = [
   {
     id: 1,
     src: '../img/perizinan.png',
-    alt: 'Banner Perizinan DPMPTSP Gunungkidul',
+    alt: 'Banner Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu Kabupaten Gunungkidul. Menampilkan latar pemandangan alam, logo MPP Gunungkidul, logo Garuda Pancasila, logo OSS, serta informasi alamat, email dpmptsp@gunungkidulkab.go.id, dan WhatsApp Layanan Berbantuan MPP 0811 2953 451.',
   },
   {
     id: 2,
     src: '../img/banner zona integritas.png',
-    alt: 'Banner Zona Integritas DPMPTSP Gunungkidul – Wilayah Bebas Korupsi',
+    alt: 'Banner Zona Integritas DPMPTSP Gunungkidul bertuliskan "NO Korupsi, Gratifikasi, Pungli" dengan ilustrasi telapak tangan merah, tagline "Wilayah Bebas Korupsi dan Menuju Wilayah Birokrasi Bersih Melayani", logo BerAKHLAK, serta suasana pelayanan kantor.',
   },
 ];
 
